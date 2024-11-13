@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Welcome to Restaurant at Ammersee!</h1>
+
+  <p>Write a short description of the restaurant and atmosphere here.</p>
+
+  <h2>Our Menu:</h2>
+  <ul>
+    {% for dish in dishes %}
+      <li>{{ dish.name }} - {{ dish.description }} ({{ dish.price }} €)</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'make_reservation' %}" class="btn btn-primary">Reserve a Table</a>
+{% endblock %}
