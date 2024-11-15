@@ -21,5 +21,6 @@ from reservations import views as reservation_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', reservation_views.home, name='home'), 
+    path('accounts/', include('django.contrib.auth.urls')),
     path('reservations/', include('reservations.urls')), 
 ]
