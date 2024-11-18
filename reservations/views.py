@@ -4,6 +4,7 @@ from .forms import ReservationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm  # Import for registration
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 def home(request):
     dishes = Dish.objects.all()
@@ -70,6 +71,7 @@ def delete_reservation(request, reservation_id):
         return redirect("my_reservations")
     return render(request, "reservations/delete_reservation.html", {"reservation": reservation})
 
+@ensure_csrf_cookie 
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
