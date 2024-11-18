@@ -70,8 +70,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ammersee.wsgi.application'
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-amila3951-restaurantamm-4eacfhp2kut.ws-eu116.gitpod.io/']
-
+CSRF_TRUSTED_ORIGINS = ['https://*.ws-eu116.gitpod.io']
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -124,3 +123,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'home' 
