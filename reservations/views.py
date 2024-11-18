@@ -62,6 +62,7 @@ def edit_reservation(request, reservation_id):
         form = ReservationForm(instance=reservation)
     return render(request, "reservations/edit_reservation.html", {"form": form, "reservation": reservation})
 
+
 @login_required
 def delete_reservation(request, reservation_id):
     reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
@@ -71,6 +72,7 @@ def delete_reservation(request, reservation_id):
         return redirect("my_reservations")
     return render(request, "reservations/delete_reservation.html", {"reservation": reservation})
 
+
 @ensure_csrf_cookie 
 def register(request):
     if request.method == 'POST':
@@ -79,7 +81,10 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}!')
-            return redirect('login')  # Redirect to login after successful registration
+            print(f"User {username} created successfully!") 
+            return redirect('login')
+        else:
+            print(form.errors)
     else:
         form = UserCreationForm()
     return render(request, 'reservations/register.html', {'form': form})

@@ -24,5 +24,5 @@ urlpatterns = [
     path('', reservation_views.home, name='home'), 
     path('accounts/', include('django.contrib.auth.urls')),
     path('reservations/', include('reservations.urls')), 
-    path('accounts/login/', LoginView.as_view(template_name='registration/login.html'), name='login'), # Dodana linija
-]
+    path('login/', LoginView.as_view(template_name='registration/login.html'), name='login'),
+    ]
