@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from reservations import views as reservation_views
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', reservation_views.home, name='home'), 
     path('accounts/', include('django.contrib.auth.urls')),
     path('reservations/', include('reservations.urls')), 
+    path('accounts/login/', LoginView.as_view(template_name='registration/login.html'), name='login'), # Dodana linija
 ]
