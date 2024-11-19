@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'reservations',
+    'restaurant',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ammersee.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'restaurant' / 'templates'],
+        'DIRS':  [BASE_DIR / 'restaurant' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

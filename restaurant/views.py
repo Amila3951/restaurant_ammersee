@@ -8,7 +8,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 
 def home(request):
     dishes = Dish.objects.all()
-    return render(request, "reservations/home.html", {"dishes": dishes})
+    return render(request, 'reservations/home.html', {"dishes": dishes})
 
 def menu(request):
     dishes = Dish.objects.all()

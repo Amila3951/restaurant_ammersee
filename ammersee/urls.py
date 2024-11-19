@@ -7,6 +7,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', reservation_views.home, name='home'), 
     path('accounts/', include('django.contrib.auth.urls')), 
-    path('restaurant/', include('reservations.urls')), 
+    path('restaurant/', include('restaurant.urls')),
     path('login/', LoginView.as_view(template_name='registration/login.html'), name='login'), 
 ]
