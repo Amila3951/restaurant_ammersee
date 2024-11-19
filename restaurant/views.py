@@ -1,10 +1,9 @@
-Python
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Reservation, Dish
 from .forms import ReservationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm  
+from django.contrib.auth.forms import UserCreationForm 
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 def home(request):
@@ -37,7 +36,7 @@ def make_reservation(request):
 
             reservation.save()
 
-            return redirect("reservation_confirmation")  # Redirect to confirmation page
+            return redirect("reservation_confirmation") 
     else:
         form = ReservationForm()
     return render(request, "reservations/reservation_form.html", {"form": form})
@@ -48,7 +47,8 @@ def reservation_confirmation(request):
 @login_required
 def my_reservations(request):
     reservations = Reservation.objects.filter(user=request.user)
-    return render(request, "reservations/my_reservations.html", {"reservations": reservations})
+    context = {'reservations': reservations}
+    return render(request, 'reservations/my_reservations.html', context)
 
 @login_required
 def edit_reservation(request, reservation_id):
@@ -83,16 +83,9 @@ def register(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}!')
             print(f"User {username} created successfully!") 
-            return redirect('login')
+            return redirect('login')  
         else:
             print(form.errors)
     else:
         form = UserCreationForm()
-    return render(request, 'reservations/register.html', {'form': form})
-
-@login_required
-def my_reservations(request):
-    reservations = Reservation.objects.filter(user=request.user)
-    context = {'reservations': reservations}
-    return render(request, 'reservations/my_reservations.html',
- context)
+    return render(request, 'registration/register.html', {'form': form})  
