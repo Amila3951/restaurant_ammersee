@@ -3,52 +3,42 @@ from .models import Reservation, Dish
 from .forms import ReservationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm 
+from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import ensure_csrf_cookie
+
 
 def home(request):
     dishes = Dish.objects.all()
-    return render(request, 'reservations/home.html', {"dishes": dishes})
+    return render(request, "reservations/home.html", {"dishes": dishes})
+
 
 def menu(request):
     dishes = Dish.objects.all()
     return render(request, "reservations/menu.html", {"dishes": dishes})
 
+
 def make_reservation(request):
     if request.method == "POST":
         form = ReservationForm(request.POST)
         if form.is_valid():
-            name = form.cleaned_data["name"]
-            email = form.cleaned_data["email"]
-            phone = form.cleaned_data["phone"]
-            date = form.cleaned_data["date"]
-            time = form.cleaned_data["time"]
-            num_people = form.cleaned_data["num_people"]
-
-            reservation = Reservation(
-                name=name,
-                email=email,
-                phone=phone,
-                date=date,
-                time=time,
-                num_people=num_people,
-            )
-
-            reservation.save()
-
-            return redirect("reservation_confirmation") 
+            request.user
+            form.save()
+        return redirect("reservation_confirmation")
     else:
         form = ReservationForm()
-    return render(request, "reservations/reservation_form.html", {"form": form})
+    return render(request, "reservations/make_reservation.html", {"form": form})
+
 
 def reservation_confirmation(request):
     return render(request, "reservations/reservation_confirmation.html")
 
+
 @login_required
 def my_reservations(request):
     reservations = Reservation.objects.filter(user=request.user)
-    context = {'reservations': reservations}
-    return render(request, 'reservations/my_reservations.html', context)
+    context = {"reservations": reservations}
+    return render(request, "reservations/my_reservations.html", context)
+
 
 @login_required
 def edit_reservation(request, reservation_id):
@@ -61,7 +51,11 @@ def edit_reservation(request, reservation_id):
             return redirect("my_reservations")
     else:
         form = ReservationForm(instance=reservation)
-    return render(request, "reservations/edit_reservation.html", {"form": form, "reservation": reservation})
+    return render(
+        request,
+        "reservations/edit_reservation.html",
+        {"form": form, "reservation": reservation},
+    )
 
 
 @login_required
@@ -71,21 +65,23 @@ def delete_reservation(request, reservation_id):
         reservation.delete()
         messages.success(request, "Reservation successfully deleted!")
         return redirect("my_reservations")
-    return render(request, "reservations/delete_reservation.html", {"reservation": reservation})
+    return render(
+        request, "reservations/delete_reservation.html", {"reservation": reservation}
+    )
 
 
-@ensure_csrf_cookie 
+@ensure_csrf_cookie
 def register(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
-            print(f"User {username} created successfully!") 
-            return redirect('login')  
+            username = form.cleaned_data.get("username")
+            messages.success(request, f"Account created for {username}!")
+            print(f"User {username} created successfully!")
+            return redirect("login")
         else:
             print(form.errors)
     else:
         form = UserCreationForm()
-    return render(request, 'registration/register.html', {'form': form})  
+    return render(request, "registration/register.html", {"form": form})

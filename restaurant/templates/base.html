@@ -19,14 +19,14 @@
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'make_reservation' %}">Reserve a table</a>
+              <a class="nav-link" href="{% url 'restaurant:make_reservation' %}">Reserve a table</a> 
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'my_reservations' %}">My reservations</a>
+              <a class="nav-link" href="{% url 'restaurant:my_reservations' %}">My reservations</a>
             </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'register' %}">Sign up / Log in</a> 
+              <a class="nav-link" href="{% url 'restaurant:register' %}">Sign up / Log in</a> 
             </li>
           {% endif %}
         </ul>
