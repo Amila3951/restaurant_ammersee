@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Our Menu</h2>
+  <ul>
+    {% for dish in dishes %}
+      <li>{{ dish.name }} - {{ dish.description }} ({{ dish.price }} €)</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
