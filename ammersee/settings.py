@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ammersee.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'reservations' / 'templates'],
+        'DIRS': [BASE_DIR / 'restaurant' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
