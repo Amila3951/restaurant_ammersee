@@ -1,9 +1,10 @@
+Python
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Reservation, Dish
 from .forms import ReservationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm  # Import for registration
+from django.contrib.auth.forms import UserCreationForm  
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 def home(request):
@@ -88,3 +89,10 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'reservations/register.html', {'form': form})
+
+@login_required
+def my_reservations(request):
+    reservations = Reservation.objects.filter(user=request.user)
+    context = {'reservations': reservations}
+    return render(request, 'reservations/my_reservations.html',
+ context)
