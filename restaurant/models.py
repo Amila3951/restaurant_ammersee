@@ -2,7 +2,6 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, EmailValidator, RegexValidator
 from datetime import date, datetime, timedelta
-from django.contrib.auth.models import User 
 from django.conf import settings
 
 
@@ -22,21 +21,17 @@ def validate_future_date(value):
 class Reservation(models.Model):
     """
     Model representing a table reservation.
-    """
-
-    date = models.DateField(
-        validators=[validate_future_date]
-    ) 
+    """ 
     time = models.TimeField() 
     num_people = models.IntegerField(
         validators=[MinValueValidator(1)]
     ) 
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=200, default='Unknown')
     email = models.EmailField(validators=[EmailValidator()])
     phone = models.CharField(
         max_length=20, validators=[RegexValidator(r"^\+?\d{9,15}$")]
     )
+    date = models.DateField(validators=[validate_future_date]) 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
 

@@ -5,8 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import ensure_csrf_cookie
-from django.shortcuts import render
-from .models import Reservation
 
 
 def home(request):
@@ -27,7 +25,7 @@ def make_reservation(request):
             if request.user.is_authenticated:
                 reservation.user = request.user
             reservation.save()
-            return redirect('reservation_confirmation')
+            return redirect('restaurant:reservation_confirmation')
     else:
         form = ReservationForm()
     return render(request, 'reservations/make_reservation.html', {'form': form})
@@ -41,8 +39,7 @@ def reservation_confirmation(request):
 def my_reservations(request):
     reservations = Reservation.objects.filter(user=request.user)
     context = {'reservations': reservations}
-    return render(request, 'reservations/my_reservations.html', 
- context)
+    return render(request, 'reservations/my_reservations.html', context)
 
 
 @login_required
@@ -53,7 +50,7 @@ def edit_reservation(request, reservation_id):
         if form.is_valid():
             form.save()
             messages.success(request, "Reservation successfully updated!")
-            return redirect("my_reservations")
+            return redirect("restaurant:my_reservations")
     else:
         form = ReservationForm(instance=reservation)
     return render(
@@ -69,10 +66,11 @@ def delete_reservation(request, reservation_id):
     if request.method == "POST":
         reservation.delete()
         messages.success(request, "Reservation successfully deleted!")
-        return redirect("my_reservations")
+        return redirect("restaurant:my_reservations")
     return render(
         request, "reservations/delete_reservation.html", {"reservation": reservation}
-    )
+          )
+        
 
 
 @ensure_csrf_cookie
@@ -84,7 +82,7 @@ def register(request):
             username = form.cleaned_data.get("username")
             messages.success(request, f"Account created for {username}!")
             print(f"User {username} created successfully!")
-            return redirect("login")
+            return redirect("restaurant:login")
         else:
             print(form.errors)
     else:
