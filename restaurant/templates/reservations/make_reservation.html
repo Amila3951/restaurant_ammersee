@@ -4,7 +4,13 @@
   <h2>Make a Reservation</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }} 
+    {{ form.as_p }}
+    <input type="hidden" id="tomorrow" value="{% now 'Y-m-d' %}" /> 
+    <script>
+      var tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      document.getElementById("id_date").min = tomorrow.toISOString().split('T')[0];
+    </script>
     <button type="submit">Reserve</button>
   </form>
 {% endblock %}
