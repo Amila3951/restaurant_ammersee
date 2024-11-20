@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.shortcuts import render
+from .models import Reservation
 
 
 def home(request):
@@ -18,15 +20,17 @@ def menu(request):
 
 
 def make_reservation(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
-            request.user
-            form.save()
-        return redirect("reservation_confirmation")
+            reservation = form.save(commit=False)
+            if request.user.is_authenticated:
+                reservation.user = request.user
+            reservation.save()
+            return redirect('reservation_confirmation')
     else:
         form = ReservationForm()
-    return render(request, "reservations/make_reservation.html", {"form": form})
+    return render(request, 'reservations/make_reservation.html', {'form': form})
 
 
 def reservation_confirmation(request):
@@ -36,8 +40,9 @@ def reservation_confirmation(request):
 @login_required
 def my_reservations(request):
     reservations = Reservation.objects.filter(user=request.user)
-    context = {"reservations": reservations}
-    return render(request, "reservations/my_reservations.html", context)
+    context = {'reservations': reservations}
+    return render(request, 'reservations/my_reservations.html', 
+ context)
 
 
 @login_required

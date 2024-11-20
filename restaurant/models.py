@@ -2,7 +2,8 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, EmailValidator, RegexValidator
 from datetime import date, datetime, timedelta
-from django.contrib.auth.models import User  # Django's built-in User model
+from django.contrib.auth.models import User 
+from django.conf import settings
 
 
 def validate_future_date(value):
@@ -11,7 +12,7 @@ def validate_future_date(value):
     or on the current day.
     """
     today = date.today()
-    tomorrow = today + timedelta(days=1)  # Calculate tomorrow's date
+    tomorrow = today + timedelta(days=1) 
     if value < tomorrow:
         raise ValidationError(
             "Reservation date cannot be in the past or on the current day."
@@ -25,18 +26,19 @@ class Reservation(models.Model):
 
     date = models.DateField(
         validators=[validate_future_date]
-    )  # Date of the reservation
-    time = models.TimeField()  # Time of the reservation
+    ) 
+    time = models.TimeField() 
     num_people = models.IntegerField(
         validators=[MinValueValidator(1)]
-    )  # Number of people (must be at least 1)
+    ) 
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField(validators=[EmailValidator()])
     phone = models.CharField(
         max_length=20, validators=[RegexValidator(r"^\+?\d{9,15}$")]
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+
 
     def clean(self):
         """
