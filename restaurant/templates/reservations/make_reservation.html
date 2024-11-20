@@ -7,4 +7,14 @@
     {{ form.as_p }}
     <button type="submit">Reserve</button>
   </form>
+
+  <script>
+    $(function() {
+      $('#id_date').datepicker({
+        format: 'yyyy-mm-dd',
+        startDate: '+1d',
+        autoclose: true
+      });
+    });
+  </script>
 {% endblock %}
