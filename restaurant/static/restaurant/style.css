@@ -1,0 +1,23 @@
+.form-control[type="date"]::-webkit-calendar-picker-indicator {
+    color: gray; 
+  }
+  
+  .form-control[type="date"]::-webkit-inner-spin-button {
+    display: none; 
+  }
+  
+  .form-control[type="date"]::-webkit-calendar-picker-indicator:hover {
+    cursor: pointer;
+  }
+  
+  input[type="date"]::-webkit-calendar-picker-indicator { 
+    opacity: 0.5; 
+  }
+  
+  input[type="date"]:invalid {  
+    color: red !important; 
+  }
+  
+  input[type="date"]:valid { 
+    color: green !important; 
+  }

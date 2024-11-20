@@ -1,20 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>My Reservations</h2>
-
-  {% if reservations %}
-  <ul>
-    {% for reservation in reservations %}
-      <li>
-        {{ reservation.name }} - {{ reservation.date }} {{ reservation.time }} - {{ reservation.num_people }} people
-        <a href="{% url 'edit_reservation' reservation.id %}">Edit</a>
-        <a href="{% url 'delete_reservation' reservation.id %}">Delete</a>
-      </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-    <p>You have no reservations.</p> 
-  {% endif %}
-
+  <h2>Make a Reservation</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" id="tomorrow" value="{% now 'Y-m-d' %}" /> 
+    <script>
+      var tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      document.getElementById("id_date").min = tomorrow.toISOString().split('T')[0];
+    </script>
+    <button type="submit">Reserve</button>
+  </form>
 {% endblock %}
