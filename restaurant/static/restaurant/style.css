@@ -76,6 +76,7 @@ body {
 
 .carousel-caption {
   background: rgba(0, 0, 0, 0.3); /* Add a semi-transparent black background to the caption */
+ 
 }
 
 .carousel-caption h5, 
@@ -121,4 +122,13 @@ nav.navbar .navbar-brand img {
 
 .spaced-paragraph {
   margin-top: 20px;
+}
+
+
+#imageSlider .carousel-item:nth-child(2) .carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
