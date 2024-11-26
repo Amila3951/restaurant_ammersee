@@ -83,3 +83,9 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   font-weight: 600;
 }
+
+@media (max-width: 768px) {
+  #imageSlider .carousel-item img {
+    height: 300px; 
+  }
+}
