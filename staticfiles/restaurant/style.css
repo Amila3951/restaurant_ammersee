@@ -1,0 +1,134 @@
+.form-control[type="date"]::-webkit-calendar-picker-indicator {
+  color: gray; /* Set the color of the date picker icon to gray */
+}
+
+.form-control[type="date"]::-webkit-inner-spin-button {
+  display: none; /* Hide the spin button in the date picker */
+}
+
+.form-control[type="date"]::-webkit-calendar-picker-indicator:hover {
+  cursor: pointer; /* Change the cursor to a pointer on hover */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator { 
+  opacity: 0.5; /* Set the opacity of the date picker icon */
+}
+
+input[type="date"]:invalid { 
+  color: red !important; /* Set the color of invalid date input to red */
+}
+
+input[type="date"]:valid { 
+  color: green !important; /* Set the color of valid date input to green */
+}
+
+* {
+  margin: 0; /* Remove default margin from all elements */
+}
+
+html,
+body {
+  height: 100%; 
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex; 
+  flex-direction: column; 
+}
+
+
+.navbar { 
+  z-index: 10; /* Ensure navbar is on top of other elements */
+}
+
+#imageSlider .carousel-inner {
+  width: 100vw; 
+  position: relative; /* Position the carousel relative to its normal position */
+  left: 50%; 
+  right: 50%; 
+  margin-left: -50vw; 
+  margin-right: -50vw; 
+  top: -56px;
+}
+
+#imageSlider .carousel-item img {
+  width: 100%; 
+  height: calc(100vh - 56px); 
+  object-fit: cover; /* Cover the entire container with the image */
+  object-position: 50% 20%; /* Position the image 20% from the top */
+}
+
+
+#imageSlider .carousel-item:first-child img { 
+  object-position: 50% 50%; /* Center the first image */
+}
+
+#imageSlider .carousel-item:nth-child(3) img {
+  object-position: 50% 30%; /* Position the third image 30% from the top */
+}
+
+.img-fluid { 
+  max-width: 100%; /* Set the maximum width of the image to 100% */
+  height: auto; 
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.3); /* Add a semi-transparent black background to the caption */
+ 
+}
+
+.carousel-caption h5, 
+.carousel-caption p {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add a text shadow to the caption */
+  font-weight: 600; /* Set font weight to bold */
+}
+
+@media (max-width: 768px) {
+  #imageSlider .carousel-item img {
+    height: 300px;  /* Set the height of the image to 300px on smaller screens */
+  }
+}
+
+
+nav.navbar .navbar-brand img { 
+  max-height: 50px;
+  width: auto; 
+  object-fit: contain;
+}
+
+.slide-options {
+  margin-top: 20px; 
+}
+
+.slide-options a {
+  margin-right: 10px; 
+}
+
+
+#imageSlider .carousel-item:first-child .carousel-caption {
+  top: 10%; 
+  bottom: auto; 
+}
+
+.menu-button {
+  background-color: black;
+}
+
+.slide-options a:hover {
+  filter: brightness(0.5); /* Decrease the brightness of the buttons*/
+}
+
+.spaced-paragraph {
+  margin-top: 20px;
+}
+
+
+#imageSlider .carousel-item:nth-child(2) .carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
