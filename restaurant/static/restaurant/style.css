@@ -1,23 +1,85 @@
 .form-control[type="date"]::-webkit-calendar-picker-indicator {
-    color: gray; 
-  }
-  
-  .form-control[type="date"]::-webkit-inner-spin-button {
-    display: none; 
-  }
-  
-  .form-control[type="date"]::-webkit-calendar-picker-indicator:hover {
-    cursor: pointer;
-  }
-  
-  input[type="date"]::-webkit-calendar-picker-indicator { 
-    opacity: 0.5; 
-  }
-  
-  input[type="date"]:invalid {  
-    color: red !important; 
-  }
-  
-  input[type="date"]:valid { 
-    color: green !important; 
-  }
+  color: gray; 
+}
+
+.form-control[type="date"]::-webkit-inner-spin-button {
+  display: none; 
+}
+
+.form-control[type="date"]::-webkit-calendar-picker-indicator:hover {
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator { 
+  opacity: 0.5; 
+}
+
+input[type="date"]:invalid {  
+  color: red !important; 
+}
+
+input[type="date"]:valid { 
+  color: green !important; 
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.navbar { 
+  z-index: 10; 
+}
+
+#imageSlider .carousel-inner {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  top: -56px;
+}
+
+#imageSlider .carousel-item img {
+  width: 100%;
+  height: calc(100vh - 56px); 
+  object-fit: cover; 
+  object-position: 50% 20%; 
+}
+
+
+#imageSlider .carousel-item:first-child img { 
+  object-position: 50% 50%; 
+}
+
+#imageSlider .carousel-item:nth-child(3) img {
+  object-position: 50% 30%;
+}
+
+.img-fluid { 
+  max-width: 100%;
+  height: auto;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.carousel-caption h5, 
+.carousel-caption p {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+}
