@@ -7,7 +7,7 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="{% static 'restaurant/images/cover2.png' %}" class="d-block w-100" alt="Cover 2"> 
-      <div class="carousel-caption d-none d-md-block">
+      <div class="carousel-caption">
         <h3>Welcome to Restaurant Ammersee</h3>
         <p class="spaced-paragraph">Discover culinary delights with a beautiful view of the lake.</p>
         <div class="slide-options">
@@ -18,9 +18,9 @@
     </div>
     <div class="carousel-item">
       <img src="{% static 'restaurant/images/cover4.png' %}" class="d-block w-100" alt="Cover 4"> 
-      <div class="carousel-caption d-none d-md-block" style="text-align: center; width: 100%;"> 
-        <h5 style="font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 500; white-space: nowrap;">Experience the heart of German cuisine.</h5>
-        <p class="spaced-paragraph" style="font-family: 'Playfair Display', serif; font-size: 1.5rem;">Authentic flavors, crafted with passion and heritage.</p> 
+      <div class="carousel-caption" style="text-align: center; width: 100%;"> 
+        <h5 style="font-family: 'Playfair Display', serif; font-weight: 500; white-space: nowrap;">Experience the heart of German cuisine.</h5>
+        <p class="spaced-paragraph" style="font-family: 'Playfair Display', serif;">Authentic flavors, crafted with passion and heritage.</p> 
         <div class="slide-options" style="margin-top: 50px;"> <a href="{% url 'restaurant:menu' %}" class="btn btn-primary" style="background-color: black; border-color: beige;">Our Menu</a> 
           <a href="{% url 'restaurant:make_reservation' %}" class="btn btn-secondary" style="background-color: beige; color: black;" >Book a table</a>
         </div>
@@ -28,15 +28,15 @@
     </div>
     <div class="carousel-item">
       <img src="{% static 'restaurant/images/cover5.png' %}" class="d-block w-100" alt="Cover 5">
-      <div class="carousel-caption d-none d-md-block"> 
-        <h5 style="font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 500; white-space: nowrap;">Experience a symphony of flavors. Make your reservation today.</h5> 
-        <div class="slide-options"> 
+      <div class="carousel-caption"> 
+        <h5 style="font-family: 'Playfair Display', serif; font-weight: 500; white-space: nowrap;">Escape the ordinary and indulge in a refined dining experience. <br></h5> 
+        <p class="spaced-paragraph" style="font-family: 'Playfair Display', serif; font-weight: 500; white-space: nowrap;"> Reserve your table. </p> 
+        <div class="slide-options" style="margin-top: 50px;"> 
           <a href="{% url 'restaurant:menu' %}" class="btn btn-primary" style="background-color: black; border-color: beige;">Our Menu</a> 
           <a href="{% url 'restaurant:make_reservation' %}" class="btn btn-secondary" style="background-color: beige; color: black;">Book a table</a>
         </div>
       </div>
     </div>
-  </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#imageSlider" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
