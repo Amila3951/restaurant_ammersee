@@ -87,6 +87,11 @@ nav.navbar .navbar-brand img {
   object-position: 50% 50%;
 }
 
+.carousel-control-prev, 
+.carousel-control-next {
+  display: none; 
+}
+
 .carousel-caption {
   background: rgba(0, 0, 0, 0.3);
   position: absolute;
