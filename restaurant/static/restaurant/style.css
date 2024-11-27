@@ -7,6 +7,7 @@ body {
   height: 100%;
   margin: 0;
   font-family: 'Playfair Display', serif;
+  display: flex;
 }
 
 body {
@@ -135,6 +136,21 @@ nav.navbar .navbar-brand img {
 #about {
   padding: 80px 0;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px
+}
+
+h2 {
+  text-align: center; 
+  margin-bottom: 20px; 
+  font-size: 2.5em;  
+}
+
+p {
+  text-align: center;   
+  line-height: 1.6;    
+  margin-bottom: 15px; 
 }
 
 #menu {
