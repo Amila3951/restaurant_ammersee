@@ -4,7 +4,7 @@
 {% block content %}
 
 <div id="hero">
-  <div id="imageSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+  <div id="imageSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="{% static 'restaurant/images/cover2.png' %}" class="d-block w-100" alt="Cover 2">
@@ -61,17 +61,24 @@
   </div>
 
   <div id="about">
-    <h2>Our Story</h2>
-    <p>about..</p>
-  </div>
-
-  <div id="menu">
-    <h2>Our Menu:</h2>
-    <ul>
-      {% for dish in dishes %}
-      <li>{{ dish.name }} - {{ dish.description }} ({{ dish.price }} €)</li>
-      {% endfor %}
-    </ul>
+    <div class="container">
+      <div class="row justify-content-center"> <div class="col-md-6">
+          <h2>Our Story</h2>
+          <p> The year is 1953. A young couple, newly married and brimming with dreams, open the doors to a quaint little
+            restaurant on the shores of the Ammersee. They pour their hearts and souls into their venture, using
+            cherished family recipes passed down through generations to create a menu that is both comforting and
+            unique. Word of their delicious food and warm hospitality spreads, and soon, the restaurant becomes a
+            beloved local institution.</p>
+          <p> Our menu is a tribute to both tradition and the bounty of our region. Savor classic German dishes, crafted
+            with fresh, local ingredients, and discover new favorites that showcase our chef's creativity. Complement
+            your meal with a selection from our thoughtfully curated wine list, featuring both local and international
+            gems.</p>
+          <p> More than just a restaurant, we offer a warm and inviting haven where you can celebrate life's milestones,
+            enjoy an intimate dinner, or simply unwind with loved ones. Come experience the charm, the breathtaking
+            views, and the enduring passion for good food and hospitality that have defined us for over 70 years.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div id="testimonials">
