@@ -1,45 +1,17 @@
-html,
-body {
-  
+html, body {
   width: 100%;
   margin: 0;
   font-family: 'Playfair Display', serif;
   display: flex;
+  flex-direction: column; 
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
+h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
 
 .spaced-paragraph {
   margin-top: 20px;
-}
-
-.form-control[type="date"]::-webkit-calendar-picker-indicator {
-  color: gray;
-}
-
-.form-control[type="date"]::-webkit-inner-spin-button {
-  display: none;
-}
-
-.form-control[type="date"]::-webkit-calendar-picker-indicator:hover {
-  cursor: pointer;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0.5;
 }
 
 .navbar {
@@ -61,7 +33,7 @@ nav.navbar .navbar-brand img {
   position: relative;
   width: 100%;
   overflow: hidden;
-  margin-top: -50px;
+  margin-top: -50px; 
 }
 
 #hero img {
@@ -85,7 +57,7 @@ nav.navbar .navbar-brand img {
   bottom: auto;
 }
 
-.carousel-caption h3,
+.carousel-caption h3, 
 .carousel-caption p {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   font-weight: 600;
@@ -98,14 +70,26 @@ nav.navbar .navbar-brand img {
   font-size: 1.5rem;
 }
 
-.slide-options {
-  margin-top: 20px;
+#hero .slide-options {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center; 
+  width: 100%;
+  z-index: 10;
 }
 
 .slide-options a {
   margin-right: 10px;
   display: inline-block;
   margin-bottom: 10px;
+}
+
+.btn {
+  font-size: 1.2rem;
+  padding: 15px 30px;
 }
 
 .btn:hover {
@@ -115,6 +99,11 @@ nav.navbar .navbar-brand img {
 #about {
   padding: 80px 0;
   text-align: center;
+}
+
+#about p {
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 
 .content-wrapper {
@@ -141,7 +130,6 @@ footer a {
   color: inherit;
   display: inline-block;
   margin-right: 20px;
-  font-size: 18px;
 }
 
 footer .h3 {
@@ -151,7 +139,16 @@ footer .h3 {
 
 @media (max-width: 768px) {
   #hero img {
-    height: 300px;
+    height: 300px; 
+  }
+
+  #hero .slide-options {
+    bottom: 20px;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 15px 30px;
   }
 
   .carousel-caption {
@@ -162,7 +159,7 @@ footer .h3 {
     background-color: transparent;
   }
 
-  .carousel-caption h3,
+  .carousel-caption h3, 
   .carousel-caption p {
     display: none;
   }
@@ -172,7 +169,7 @@ footer .h3 {
   }
 
   #about {
-    padding: 20px 0;
+    padding: 20px;
   }
 
   #about h2 {
@@ -183,7 +180,7 @@ footer .h3 {
     font-size: 16px;
   }
 
-  footer {  
+  footer {
     font-size: 16px;
   }
 
