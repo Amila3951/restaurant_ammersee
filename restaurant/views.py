@@ -14,7 +14,8 @@ def home(request):
 
 def menu(request):
     dishes = Dish.objects.all()
-    return render(request, "reservations/menu.html", {"dishes": dishes})
+    context = {'dishes': dishes}
+    return render(request, 'reservations/menu.html', context)
 
 
 def make_reservation(request):

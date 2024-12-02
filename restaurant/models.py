@@ -49,14 +49,19 @@ class Reservation(models.Model):
         return f"Reservation for {self.num_people} on {self.date} at {self.time}"
 
 
-class Dish(models.Model):
-    """
-    Model representing a dish on the menu.
-    """
+from django.db import models
 
-    name = models.CharField(max_length=200)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+class Dish(models.Model):
+    CATEGORY_CHOICES = (
+        ('appetizer', 'Appetizer'),
+        ('main', 'Main Course'),
+        ('dessert', 'Dessert'),
+        ('drink', 'Drink'),  
+    )
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
 
     def __str__(self):
         return self.name
