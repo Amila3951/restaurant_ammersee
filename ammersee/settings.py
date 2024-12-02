@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,8 @@ SECRET_KEY = 'django-insecure-75rq^+-rpe*368x)s_*z-zrsg_b9r5!mgx3+rai$%=zkqn79zy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-amila3951-restaurantamm-4eacfhp2kut.ws-eu117.gitpod.io']
+ALLOWED_HOSTS = ['8000-amila3951-restaurantamm-4eacfhp2kut.ws-eu117.gitpod.io', 
+    'localhost',]
 
 
 # Application definition
@@ -77,10 +80,7 @@ CSRF_TRUSTED_ORIGINS = ['https://*.ws-eu116.gitpod.io']
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True), 
 }
 
 
@@ -118,16 +118,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/' 
-STATICFILES_DIRS = [
-    BASE_DIR / 'restaurant' / 'static',
-]
-
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'restaurant/static',
-]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'restaurant' / 'static', 
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
