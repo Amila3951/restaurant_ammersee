@@ -1,31 +1,32 @@
 fetch('/static/menu.json')
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
   .then(menu => {
     const dishesContainer = document.getElementById('dishes-container');
     const drinksContainer = document.getElementById('drinks-container');
 
+    // Provjera postoje li spremnici
+    if (!dishesContainer || !drinksContainer) {
+      throw new Error('Dishes or drinks container not found in the HTML!');
+    }
+
     menu.forEach(category => {
+      const categoryElement = document.createElement('div');
       const categoryHeading = document.createElement('h3');
       categoryHeading.textContent = category.category;
-
       const itemsList = document.createElement('ul');
 
       category.items.forEach(item => {
         const itemElement = document.createElement('li');
-
-        const itemName = document.createElement('h4');
-        itemName.textContent = item.name;
-
-        const itemDescription = document.createElement('p');
-        itemDescription.textContent = item.description || '';
-
-        const itemPrice = document.createElement('p');
-        itemPrice.textContent = `${item.price} €`;
-
-        itemElement.appendChild(itemName);
-        itemElement.appendChild(itemDescription);
-        itemElement.appendChild(itemPrice);
-
+        itemElement.innerHTML = `
+          <h4>${item.name}</h4>
+          ${item.description ? `<p>${item.description}</p>` : ''}
+          <p>${item.price} €</p>
+        `;
         itemsList.appendChild(itemElement);
       });
 
@@ -41,9 +42,13 @@ fetch('/static/menu.json')
   })
   .catch(error => {
     console.error('Error loading menu:', error);
-
     const errorMessage = document.createElement('p');
-    errorMessage.textContent = 'An error occurred while loading the menu.';
+    errorMessage.textContent = `Error loading menu: ${error.message}`;
     errorMessage.style.color = 'red';
-    document.getElementById('menu-container').appendChild(errorMessage);
+    const menuContainer = document.getElementById('menu-container'); 
+    if (menuContainer) {
+      menuContainer.appendChild(errorMessage);
+    } else {
+      console.error('Menu container not found for error message!');
+    }
   });
