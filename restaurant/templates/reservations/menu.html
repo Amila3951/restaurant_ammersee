@@ -4,39 +4,10 @@
   <h2>Our Menu</h2>
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
-        <h3>Appetizers</h3>
-        <ul>
-          {% for dish in dishes %}
-            {% if dish.category == 'appetizer' %}
-              <li>{{ dish.name }} - {{ dish.description }} ({{ dish.price }} €)</li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-
-        <h3>Main Courses</h3>
-        <ul>
-          {% for dish in dishes %}
-            {% if dish.category == 'main' %}
-              <li>{{ dish.name }} - {{ dish.description }} ({{ dish.price }} €)</li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-
-        <h3>Desserts</h3>
-        <ul>
-          {% for dish in dishes %}
-            {% if dish.category == 'dessert' %}
-              <li>{{ dish.name }} - {{ dish.description }} ({{ dish.price }} €)</li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <h3>Drinks</h3>
-        <ul>
-          </ul>
-      </div>
+      <div class="col-md-6" id="dishes-container"></div>
+      <div class="col-md-6" id="drinks-container"></div>
     </div>
   </div>
+
+  <script src="script.js"></script> 
 {% endblock %}
