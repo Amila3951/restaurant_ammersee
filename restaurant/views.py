@@ -4,6 +4,7 @@ from .forms import ReservationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 
@@ -79,11 +80,13 @@ def register(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()  
             username = form.cleaned_data.get("username")
             messages.success(request, f"Account created for {username}!")
             print(f"User {username} created successfully!")
-            return redirect("restaurant:login")
+           
+            login(request, user) 
+            return redirect("restaurant:home") 
         else:
             print(form.errors)
     else:

@@ -4,6 +4,12 @@ html, body {
   font-family: 'Playfair Display', serif;
   display: flex;
   flex-direction: column; 
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  flex: 1;
+  margin-top: 100px;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -113,6 +119,7 @@ footer {
   font-size: 18px;
   padding: 40px 0;
   line-height: 2;
+  margin-top: auto;
 }
 
 footer .social-icon {
@@ -161,22 +168,25 @@ footer .h3 {
   align-items: center;
 } */
 
+
 .category-item { 
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: space-around;
+  align-items: center;  
   width: 100%;
   margin-bottom: 20px;
 }
 
-.category-item { 
-  display: flex;
-  flex-direction: row; 
-  justify-content: space-around;
-  width: 100%;
-  margin-bottom: 20px;
+.category-item > h3 {  
+  width: 100%;         
+  text-align: center; 
 }
+
+.menu-column {
+  width: 40%;
+  display: flex;
+  flex-direction: column; 
+  box-sizing: border-box;
+}
+
 
 .menu-item {
   margin-bottom: 20px;
@@ -187,9 +197,7 @@ footer .h3 {
   text-align: center;
 }
 
-.category-item > div {
-  width: 45%;
-}
+
 
 @media (max-width: 768px) {
   #hero img {
