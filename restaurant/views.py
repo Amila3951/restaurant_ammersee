@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.contrib.auth.views import LoginView 
 
 
 def home(request):
@@ -35,6 +36,10 @@ def make_reservation(request):
 
 def reservation_confirmation(request):
     return render(request, "reservations/reservation_confirmation.html")
+
+
+class MyLoginView(LoginView):
+    template_name = 'account/login.html'
 
 
 @login_required
@@ -91,4 +96,4 @@ def register(request):
             print(form.errors)
     else:
         form = UserCreationForm()
-    return render(request, "registration/register.html", {"form": form})
+    return render(request, 'account/signup.html', {'form': form})
