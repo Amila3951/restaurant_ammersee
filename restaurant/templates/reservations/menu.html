@@ -2,13 +2,17 @@
 {% load static %}
 
 {% block content %}
-  <h2>Our Menu</h2>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6" id="dishes-container"></div>
-      <div class="col-md-6" id="drinks-container"></div>
+  <div id="menu-container"> 
+    <h2>Our Menu</h2>
+    <p>Our menu features the finest German specialties, crafted with fresh, locally-sourced ingredients.</p>
+    
+    <a href="{% url 'restaurant:make_reservation' %}" class="btn btn-secondary" style="background-color: beige; color: black;">Book a table</a>
+
+    <div class="row"> 
+      <div class="col-md-12" id="dishes-container"></div> 
+      <div class="col-md-12" id="drinks-container"></div> 
     </div>
-  </div>
+  </div> 
 
   <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

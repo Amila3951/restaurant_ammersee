@@ -9,34 +9,48 @@ fetch('/static/menu.json')
     const dishesContainer = document.getElementById('dishes-container');
     const drinksContainer = document.getElementById('drinks-container');
 
-    // Provjera postoje li spremnici
     if (!dishesContainer || !drinksContainer) {
       throw new Error('Dishes or drinks container not found in the HTML!');
     }
 
     menu.forEach(category => {
       const categoryElement = document.createElement('div');
+      categoryElement.classList.add('category-item');
+
       const categoryHeading = document.createElement('h3');
       categoryHeading.textContent = category.category;
-      const itemsList = document.createElement('ul');
 
-      category.items.forEach(item => {
-        const itemElement = document.createElement('li');
+      categoryElement.appendChild(categoryHeading); 
+
+      const itemsPerColumn = 3;
+      let columnIndex = 0;
+      let currentColumn = document.createElement('div');
+      currentColumn.classList.add('menu-column');
+      categoryElement.appendChild(currentColumn);
+
+      category.items.forEach((item, index) => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'menu-item';
         itemElement.innerHTML = `
           <h4>${item.name}</h4>
           ${item.description ? `<p>${item.description}</p>` : ''}
           <p>${item.price} €</p>
         `;
-        itemsList.appendChild(itemElement);
+
+        currentColumn.appendChild(itemElement);
+
+        if ((index + 1) % itemsPerColumn === 0 && index < category.items.length - 1) {
+          columnIndex++;
+          currentColumn = document.createElement('div');
+          currentColumn.classList.add('menu-column');
+          categoryElement.appendChild(currentColumn);
+        }
       });
 
-      categoryElement.appendChild(categoryHeading);
-      categoryElement.appendChild(itemsList);
-
-      if (category.category === "Drinks") {
-        drinksContainer.appendChild(categoryElement);
-      } else {
+      if (category.category === "Appetizers" || category.category === "Main Courses" || category.category === "Desserts") {
         dishesContainer.appendChild(categoryElement);
+      } else if (category.category === "Drinks") {
+        drinksContainer.appendChild(categoryElement);
       }
     });
   })
@@ -45,7 +59,7 @@ fetch('/static/menu.json')
     const errorMessage = document.createElement('p');
     errorMessage.textContent = `Error loading menu: ${error.message}`;
     errorMessage.style.color = 'red';
-    const menuContainer = document.getElementById('menu-container'); 
+    const menuContainer = document.getElementById('menu-container');
     if (menuContainer) {
       menuContainer.appendChild(errorMessage);
     } else {
