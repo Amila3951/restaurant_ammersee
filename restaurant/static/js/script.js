@@ -19,12 +19,10 @@ fetch('/static/menu.json')
 
       const categoryHeading = document.createElement('h3');
       categoryHeading.textContent = category.category;
+      categoryElement.appendChild(categoryHeading);
 
-      categoryElement.appendChild(categoryHeading); 
-
-      const itemsPerColumn = 3;
-      let columnIndex = 0;
-      let currentColumn = document.createElement('div');
+      const itemsPerColumn = Math.ceil(category.items.length / 2); 
+      let currentColumn = document.createElement('div');  
       currentColumn.classList.add('menu-column');
       categoryElement.appendChild(currentColumn);
 
@@ -39,8 +37,8 @@ fetch('/static/menu.json')
 
         currentColumn.appendChild(itemElement);
 
+       
         if ((index + 1) % itemsPerColumn === 0 && index < category.items.length - 1) {
-          columnIndex++;
           currentColumn = document.createElement('div');
           currentColumn.classList.add('menu-column');
           categoryElement.appendChild(currentColumn);

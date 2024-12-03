@@ -61,7 +61,7 @@ class Dish(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    category = models.CharField(max_length=200, default="Main Courses")
 
     def __str__(self):
         return self.name
