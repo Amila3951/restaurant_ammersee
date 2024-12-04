@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url
+## import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-75rq^+-rpe*368x)s_*z-zrsg_b9r5!mgx3+rai$%=zkqn79zy
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-amila3951-restaurantamm-4eacfhp2kut.ws-eu117.gitpod.io', 
+    '8000-amila3951-restaurantamm-8a519n73b3b.ws.codeinstitute-ide.net', 
     'localhost',
 ]
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'restaurant',  # Your restaurant app
+    'restaurant',  # Restaurant app
 
     # Allauth apps
     'django.contrib.sites',
