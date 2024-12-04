@@ -113,6 +113,65 @@ nav.navbar .navbar-brand img {
 }
 
 
+.login-form, .signup-form {
+  background-color: #fff; 
+  padding: 30px 40px; 
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 660px;
+  font-size: 16px;
+  margin: auto; 
+  overflow: auto;
+}
+
+.login-form div, .signup-form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.login-form h1, .signup-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.login-form label, .signup-form label {
+  display: block;
+  margin-bottom: 5px;
+  width: auto;
+}
+
+.login-form input, .signup-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.login-form button, .signup-form button {
+  background-color: #3498db; 
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.errorlist { 
+  color: red;
+  margin-bottom: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.signup-form .errorlist {
+  font-size: 14px;
+}
+
 
 footer {
   font-family: 'Times New Roman', Times, serif;
@@ -240,6 +299,11 @@ footer .h3 {
 
   #about p {
     font-size: 16px;
+  }
+
+  .login-form, .signup-form {
+    width: 90%;
+    height: auto;
   }
 
   footer {
