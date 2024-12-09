@@ -30,11 +30,9 @@
     emailjs.send('service_ab2vrqc', 'template_oo7qvf5', templateParams) 
         .then((result) => {
             console.log(result.text);
-            alert('Email sent successfully!');
             e.target.submit(); 
         }, (error) => {
             console.log(error.text);
-            alert('Error sending email. Please try again later.');
         });
 }
   </script>
