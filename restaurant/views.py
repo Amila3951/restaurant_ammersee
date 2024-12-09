@@ -10,9 +10,14 @@ from django.contrib.auth.views import LoginView
 
 
 def home(request):
-    dishes = Dish.objects.all()
-    return render(request, "reservations/home.html", {"dishes": dishes})
-
+    if request.method == 'POST':  
+        if request.user.is_authenticated:
+            return redirect('restaurant:make_reservation')  
+        else:
+            return redirect('account_login')  
+    else: 
+        dishes = Dish.objects.all()
+        return render(request, "reservations/home.html", {"dishes": dishes})
 
 def menu(request):
     dishes = Dish.objects.all()
@@ -76,8 +81,7 @@ def delete_reservation(request, reservation_id):
         return redirect("restaurant:my_reservations")
     return render(
         request, "reservations/delete_reservation.html", {"reservation": reservation}
-          )
-        
+        )
 
 
 @ensure_csrf_cookie
@@ -89,7 +93,7 @@ def register(request):
             username = form.cleaned_data.get("username")
             messages.success(request, f"Account created for {username}!")
             print(f"User {username} created successfully!")
-            
+
             login(request, user) 
             return redirect("restaurant:home") 
         else:
