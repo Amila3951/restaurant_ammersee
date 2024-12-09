@@ -1,0 +1,319 @@
+html, body {
+  width: 100%;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  display: flex;
+  flex-direction: column; 
+  min-height: 100vh;
+  gap: 50px;
+}
+
+.content-wrapper {
+  flex: 1; 
+  margin-top: 100px; /* Provides space for the fixed navbar */
+}
+
+/* Reset default margins for headings and paragraphs */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0; 
+}
+
+.spaced-paragraph {
+  margin-top: 20px; /* Adds spacing between paragraphs */
+}
+
+/* Fixed Navbar Styling */
+.navbar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100; 
+  background-color: #f8f9fa; /* Light background color for the navbar */
+}
+
+nav.navbar .navbar-brand img {
+  max-height: 50px; 
+  width: auto; 
+  object-fit: contain; 
+}
+
+/* Hero Section Styling */
+#hero {
+  position: relative; 
+  width: 100%;
+  overflow: hidden; /* Prevents image overflow */
+  margin-top: -50px; /* Adjusts the hero section's position relative to the navbar */
+}
+
+#hero img {
+  width: 100%;
+  height: 100vh; /* Makes the image take up the full viewport height */
+  object-fit: cover; /* Ensures the image covers the entire area */
+  object-position: 50% 50%; /* Centers the image */
+}
+
+/* Carousel Caption Styling */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.3); 
+  position: absolute; 
+  left: 50%;
+  transform: translateX(-50%); 
+  width: 80%;
+  text-align: center;
+  padding: 20px;
+  z-index: 10; /* Ensures the caption is above the image */
+  line-height: 1.5; 
+  top: 200px; /* Positions the caption from the top */
+  bottom: auto; 
+}
+
+.carousel-caption h3, 
+.carousel-caption p {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+  font-weight: 600; 
+  font-size: 2rem; /* Large font size for headings */
+  line-height: 1.2; 
+  margin-bottom: 1rem; 
+}
+
+.carousel-caption p {
+  font-size: 1.5rem; 
+}
+
+/* Slide Options Styling */
+#hero .slide-options {
+  position: absolute;
+  bottom: 60px; 
+  left: 50%;
+  transform: translateX(-50%); /* Centers the options horizontally */
+  display: flex;
+  justify-content: center; 
+  width: 100%;
+  z-index: 10; 
+}
+
+.slide-options a {
+  margin-right: 10px; 
+  display: inline-block; 
+  margin-bottom: 10px; 
+}
+
+/* Button Styling */
+.btn {
+  font-size: 1.2rem; 
+  padding: 15px 30px; 
+}
+
+.btn:hover {
+  filter: brightness(0.8) contrast(1.1); /* Darkens the button and increases contrast on hover */
+}
+
+/* About Section Styling */
+#about {
+  padding: 80px 0; 
+  text-align: center; 
+}
+
+#about p {
+  margin-bottom: 20px; 
+  font-size: 20px; 
+}
+
+/* Login and Signup Form Styling */
+.login-form, .signup-form {
+  background-color: #fff;  
+  padding: 30px 40px;  
+  border-radius: 5px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  width: 660px; 
+  font-size: 16px; 
+  margin: auto; 
+  overflow: auto; 
+}
+
+.login-form div, .signup-form div {
+  display: flex;
+  flex-direction: column; 
+  margin-bottom: 15px; 
+}
+
+.login-form h1, .signup-form h1 {
+  text-align: center; 
+  margin-bottom: 20px; 
+  font-size: 25px; 
+}
+
+.login-form label, .signup-form label {
+  display: block; 
+  margin-bottom: 5px; 
+  width: auto; 
+}
+
+.login-form input, .signup-form input {
+  width: 100%; 
+  padding: 10px; 
+  margin-bottom: 15px; 
+  border: 1px solid #ddd; 
+  border-radius: 3px; 
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+.login-form button, .signup-form button {
+  background-color: #3498db; 
+  color: #fff; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 3px; 
+  cursor: pointer; 
+  width: 100%; 
+}
+
+/* Error List Styling */
+.errorlist { 
+  color: red; 
+  margin-bottom: 10px; 
+  list-style: none; /* Removes bullet points */
+  padding: 0; 
+}
+
+.signup-form .errorlist {
+  font-size: 14px; 
+}
+
+
+/* Footer Styling */
+footer {
+  font-family: 'Times New Roman', Times, serif; /* Classic serif font for the footer */
+  font-size: 18px; 
+  padding: 40px 0; 
+  line-height: 2; 
+  margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+footer .social-icon {
+  color: black; 
+  font-size: 1rem; 
+  margin: 10px; 
+}
+
+footer a {
+  text-decoration: none; 
+  color: inherit; 
+  display: inline-block; 
+  margin-right: 20px; 
+}
+
+footer .h3 {
+  margin-bottom: 15px; 
+  font-size: 25px; 
+}
+
+/* Menu Container Styling */
+#menu-container {
+  text-align: center; 
+  padding-top: 100px; 
+  display: flex;
+  flex-direction: column; 
+}
+
+#menu-container h2, #menu-container p, #menu-container a {
+  margin-bottom: 20px;  
+}
+
+#dishes-container, #drinks-container {
+  display: block; 
+  align-items: center;  
+  width: 100%; 
+}
+
+.category-item { 
+  align-items: center;   
+  width: 100%; 
+  margin-bottom: 20px; 
+}
+
+.category-item > h3 {   
+  width: 100%;   
+  text-align: center;  
+}
+
+.menu-column {
+  width: 40%; 
+  display: flex;
+  flex-direction: column;  
+  box-sizing: border-box; 
+}
+
+.menu-item {
+  margin-bottom: 20px; 
+  text-align: center; 
+}
+
+.menu-item h4, .menu-item p {
+  text-align: center; 
+}
+
+/* Media Query for Responsiveness (Tablets and Smaller) */
+@media (max-width: 768px) {
+  #hero img {
+    height: 300px; /* Reduces hero image height on smaller screens */
+  }
+
+  #hero .slide-options {
+    bottom: 20px; /* Adjusts slide options position */
+  }
+
+  .btn {
+    font-size: 1rem; 
+    padding: 15px 30px; 
+  }
+
+  .carousel-caption {
+    width: 100%; 
+    padding: 10px; 
+    margin: 0; 
+    box-sizing: border-box; 
+    background-color: transparent; /* Removes background on smaller screens */
+  }
+
+  .carousel-caption h3, 
+  .carousel-caption p {
+    display: none; /* Hides caption text on smaller screens */
+  }
+
+  .slide-options {
+    display: none; /* Hides slide options on smaller screens */
+  }
+
+  #about {
+    padding: 20px; /* Reduces padding in the about section */
+  }
+
+  #about h2 {
+    font-size: 2em; 
+  }
+
+  #about p {
+    font-size: 16px; 
+  }
+
+  .login-form, .signup-form {
+    width: 90%; /* Makes forms take up more relative width */
+    height: auto; 
+    margin-bottom: 50px;
+  }
+
+  footer {
+    font-size: 16px; /* Reduces footer font size */
+  }
+
+  footer .col-md-4 {
+    margin-bottom: 20px; /* Adds spacing between footer columns */
+  }
+
+  footer .h3 {
+    font-size: 20px; 
+    margin-bottom: 15px; 
+  }
+}

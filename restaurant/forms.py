@@ -1,6 +1,7 @@
 from django import forms
 from .models import Reservation
 from datetime import date, timedelta
+from django.contrib.auth.forms import UserCreationForm
 
 class ReservationForm(forms.ModelForm):
     class Meta:
@@ -10,7 +11,7 @@ class ReservationForm(forms.ModelForm):
             'date': forms.DateInput(
                 attrs={
                     'type': 'date',
-                    'class': 'datepicker',
+                    'class': 'datepicker', 
                     'placeholder': 'Select a date'
                 },
                 format='%Y-%m-%d'
@@ -24,3 +25,10 @@ class ReservationForm(forms.ModelForm):
         if date < tomorrow:
             raise forms.ValidationError("Reservation date cannot be in the past or on the current day.")
         return date
+
+
+class CustomUserCreationForm(UserCreationForm):
+    email = forms.EmailField(required=True) 
+
+    class Meta(UserCreationForm.Meta):
+        fields = UserCreationForm.Meta.fields + ('email',)
