@@ -27,6 +27,9 @@
           <a class="nav-link {% if request.path == '/my_reservations/' %}active{% endif %}"
             href="{% url 'restaurant:my_reservations' %}">My reservations</a>
         </li>
+        <li class="nav-item"> 
+          <a class="nav-link" href="{% url 'account_logout' %}" onclick="location.reload();">Log out</a> 
+        </li>
         {% else %}
         <li class="nav-item">
           <a class="nav-link {% if request.path == '/account/signup/' %}active{% endif %}"
