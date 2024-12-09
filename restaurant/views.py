@@ -85,11 +85,11 @@ def register(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()  
+            user = form.save()
             username = form.cleaned_data.get("username")
             messages.success(request, f"Account created for {username}!")
             print(f"User {username} created successfully!")
-           
+            
             login(request, user) 
             return redirect("restaurant:home") 
         else:

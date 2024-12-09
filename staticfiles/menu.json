@@ -1,0 +1,131 @@
+[{
+        "category": "Appetizers",
+        "items": [{
+                "name": "Beef Tartar",
+                "description": "With capers, onions, and quail egg",
+                "price": 32
+            },
+            {
+                "name": "Fried Goose Liver",
+                "description": "With caramelized apples and brioche toast",
+                "price": 38
+            },
+            {
+                "name": "Asparagus Salad",
+                "description": "With truffle vinaigrette",
+                "price": 28
+            },
+            {
+                "name": "Smoked Salmon",
+                "description": "With horseradish crème fraîche on black bread toast",
+                "price": 26
+            },
+            {
+                "name": "Venison Carpaccio",
+                "description": "With cranberries and parmesan",
+                "price": 34
+            },
+            {
+                "name": "Fried Goat Cheese Pralines",
+                "description": "With honey-mustard dressing",
+                "price": 24
+            }
+        ]
+    },
+    {
+        "category": "Main Courses",
+        "items": [{
+                "name": "Wiener Schnitzel",
+                "description": "Breaded veal cutlet with potato salad and cranberries",
+                "price": 42
+            },
+            {
+                "name": "Roasted Venison Back",
+                "description": "With bread dumplings, game sauce and roasted chestnuts",
+                "price": 58
+            },
+            {
+                "name": "Pike-perch Fillet",
+                "description": "With potato-herb crust, celery puree and white wine sauce",
+                "price": 48
+            },
+            {
+                "name": "Roast Pork",
+                "description": "With dumplings and red cabbage",
+                "price": 36
+            },
+            {
+                "name": "Beef Fillet",
+                "description": "With porcini mushrooms and potato gratin",
+                "price": 62
+            },
+            {
+                "name": "Königsberg Meatballs",
+                "description": "With caper sauce and boiled potatoes",
+                "price": 38
+            }
+        ]
+    },
+    {
+        "category": "Desserts",
+        "items": [{
+                "name": "Apple Strudel",
+                "description": "With vanilla sauce",
+                "price": 18
+            },
+            {
+                "name": "Black Forest Cherry Cake",
+                "description": "",
+                "price": 22
+            },
+            {
+                "name": "Cheese Plate",
+                "description": "With grapes and figs",
+                "price": 24
+            },
+            {
+                "name": "Chocolate Mousse",
+                "description": "With raspberry sauce",
+                "price": 16
+            },
+            {
+                "name": "Crème brûlée",
+                "description": "With caramelized almonds",
+                "price": 18
+            },
+            {
+                "name": "Baked Apple Rings",
+                "description": "With cinnamon and sugar",
+                "price": 14
+            }
+        ]
+    },
+    {
+        "category": "Drinks",
+        "items": [{
+                "name": "Riesling \"Scharzhofberger\" Egon Müller, Mosel (0.75l)",
+                "price": 850
+            },
+            {
+                "name": "Gewürztraminer \"Vendange Tardive\" Domaine Zind-Humbrecht, Alsace (0.75l)",
+                "price": 380
+            },
+            {
+                "name": "Chardonnay \"Montrachet\" Domaine de la Romanée-Conti, Bourgogne (0.75l)",
+                "price": 6500
+            },
+            {
+                "name": "Spätburgunder \"Grosse Gewächs\" Bernhard Huber, Baden (0.75l)",
+                "price": 280
+            },
+            {
+                "name": "Pinot Noir \"Clos de Vougeot\" Domaine de la Romanée-Conti, Bourgogne (0.75l)",
+                "price": 8000
+            },
+            {
+                "name": "Cabernet Sauvignon \"Reserve\" Opus One, Napa Valley (0.75l)",
+                "price": 550
+            }
+        ]
+    }
+]

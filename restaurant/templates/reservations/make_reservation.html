@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Make a Reservation</h2>
-  <form method="post">
+{% load static %} <div class="container"> 
+  <form method="post" class="form"> 
+    <h1>Make a Reservation</h1> 
     {% csrf_token %}
     {{ form.as_p }}
     <input type="hidden" id="tomorrow" value="{% now 'Y-m-d' %}" /> 
@@ -13,4 +14,6 @@
     </script>
     <button type="submit">Reserve</button>
   </form>
+</div>
+  <script src="{% static 'js/reservation.js' %}"></script> 
 {% endblock %}
