@@ -153,3 +153,6 @@ AUTHENTICATION_BACKENDS = [
 
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-amila3951-restaurantamm-8a519n73b3b.ws.codeinstitute-ide.net']
+
+
+RESTAURANT_CAPACITY = 200

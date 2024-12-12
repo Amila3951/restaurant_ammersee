@@ -4,7 +4,6 @@ from django.core.validators import MinValueValidator, EmailValidator, RegexValid
 from datetime import date, datetime, timedelta
 from django.conf import settings
 
-
 def validate_future_date(value):
     """
     Custom validator to ensure that the reservation date is not in the past
@@ -16,7 +15,6 @@ def validate_future_date(value):
         raise ValidationError(
             "Reservation date cannot be in the past or on the current day."
         )
-
 
 class Reservation(models.Model):
     """
@@ -34,7 +32,6 @@ class Reservation(models.Model):
     date = models.DateField(validators=[validate_future_date]) 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
-
     def clean(self):
         """
         Additional validation to check if the reservation time is within
@@ -48,10 +45,10 @@ class Reservation(models.Model):
     def __str__(self):
         return f"Reservation for {self.num_people} on {self.date} at {self.time}"
 
-
-from django.db import models
-
 class Dish(models.Model):
+    """
+    Model representing a dish on the menu.
+    """
     CATEGORY_CHOICES = (
         ('appetizer', 'Appetizer'),
         ('main', 'Main Course'),
