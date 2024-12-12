@@ -32,6 +32,9 @@ class Reservation(models.Model):
     date = models.DateField(validators=[validate_future_date]) 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
+    def __str__(self):
+        return f"Reservation for {self.num_people} by {self.name} on {self.date} at {self.time}" 
+
     def clean(self):
         """
         Additional validation to check if the reservation time is within
@@ -42,8 +45,6 @@ class Reservation(models.Model):
         if not (opening_time <= self.time <= closing_time):
             raise ValidationError("Reservation time must be between 10:00 and 22:00.")
 
-    def __str__(self):
-        return f"Reservation for {self.num_people} on {self.date} at {self.time}"
 
 class Dish(models.Model):
     """

@@ -43,18 +43,15 @@ def make_reservation(request):
                 form.add_error(None, "Sorry, we don't have enough space at that time.") 
             else:
                 # If there is enough free seats, save the reservation
-                reservation = form.save(commit=False)
+                print(form.cleaned_data)
+                reservation = form.save(commit=False)  # Create the Reservation object but don't save yet
                 if request.user.is_authenticated:
                     reservation.user = request.user
-                reservation.save()
-                return redirect('restaurant:reservation_confirmation')
+                reservation.save()  # Save the reservation to the database
+                return redirect('restaurant:reservation_confirmation', reservation_id=reservation.id)
     else:
         form = ReservationForm()
     return render(request, 'reservations/make_reservation.html', {'form': form})
-
-
-def reservation_confirmation(request):
-    return render(request, "reservations/reservation_confirmation.html")
 
 
 class MyLoginView(LoginView):
@@ -115,3 +112,8 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'account/signup.html', {'form': form})
+    
+
+def reservation_confirmation(request, reservation_id): # Corrected view
+    reservation = get_object_or_404(Reservation, pk=reservation_id) 
+    return render(request, "reservations/reservation_confirmation.html", {'reservation': reservation})
