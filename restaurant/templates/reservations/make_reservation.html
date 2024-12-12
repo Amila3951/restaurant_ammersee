@@ -1,19 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% load static %} <div class="container"> 
-  <form method="post" class="form"> 
-    <h1>Make a Reservation</h1> 
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="hidden" id="tomorrow" value="{% now 'Y-m-d' %}" /> 
-    <script>
-      var tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      document.getElementById("id_date").min = tomorrow.toISOString().split('T')[0];
-    </script>
-    <button type="submit">Reserve</button>
-  </form>
+{% load static %}
+<div class="container"> 
+    <form method="post" class="form"> 
+        <h1>Make a Reservation</h1> 
+        {% csrf_token %}
+
+        <p>
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </p>
+
+        <p>
+          {{ form.email.label_tag }} <span class="optional">(optional)</span>
+          {{ form.email }} 
+      </p>
+
+        <p>
+            {{ form.phone.label_tag }}
+            {{ form.phone }}
+        </p>
+
+        <p>
+            {{ form.date.label_tag }}
+            {{ form.date }}
+        </p>
+
+        <p>
+            {{ form.time.label_tag }}
+            {{ form.time }}
+        </p>
+
+        <p>
+            {{ form.num_people.label_tag }}
+            {{ form.num_people }}
+        </p>
+
+        <input type="hidden" id="tomorrow" value="{% now 'Y-m-d' %}" /> 
+        <script>
+            var tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById("id_date").min = tomorrow.toISOString().split('T')[0];
+        </script>
+        <button type="submit">Reserve</button>
+    </form>
 </div>
-  <script src="{% static 'js/reservation.js' %}"></script> 
+<script src="{% static 'js/reservation.js' %}"></script> 
 {% endblock %}

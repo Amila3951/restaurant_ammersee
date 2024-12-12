@@ -16,7 +16,9 @@ class ReservationForm(forms.ModelForm):
                 },
                 format='%Y-%m-%d'
             ),
+            'time': forms.TimeInput(attrs={'type': 'time'}),  # Dodajte ovu liniju
         }
+
 
     def clean_date(self):
         date = self.cleaned_data['date']

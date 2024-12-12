@@ -169,6 +169,11 @@ nav.navbar .navbar-brand img {
   width: 100%; 
 }
 
+.optional {
+  font-size: smaller;
+  color: gray;
+}
+
 /* Error List Styling */
 .errorlist { 
   color: red; 
