@@ -24,8 +24,8 @@ class Reservation(models.Model):
     num_people = models.IntegerField(
         validators=[MinValueValidator(1)]
     ) 
-    name = models.CharField(max_length=200, default='Unknown')
-    email = models.EmailField(validators=[EmailValidator()])
+    name = models.CharField(max_length=200)
+    email = models.EmailField(validators=[EmailValidator()], blank=True, null=True)
     phone = models.CharField(
         max_length=20, validators=[RegexValidator(r"^\+?\d{9,15}$")]
     )
