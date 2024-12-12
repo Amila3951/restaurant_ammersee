@@ -7,7 +7,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.contrib.auth.views import LoginView 
-
+from django.db.models import Sum
+from django.conf import settings
 
 def home(request):
     if request.method == 'POST':  
@@ -29,11 +30,24 @@ def make_reservation(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
-            reservation = form.save(commit=False)
-            if request.user.is_authenticated:
-                reservation.user = request.user
-            reservation.save()
-            return redirect('restaurant:reservation_confirmation')
+            date = form.cleaned_data['date']
+            time = form.cleaned_data['time']
+            num_people = form.cleaned_data['num_people']
+
+            # Check availability
+            reservations_at_that_time = Reservation.objects.filter(date=date, time=time)
+            total_people_at_that_time = reservations_at_that_time.aggregate(Sum('num_people'))['num_people__sum'] or 0
+
+            if total_people_at_that_time + num_people > settings.RESTAURANT_CAPACITY:
+                # If there is not enough space, display an error message
+                form.add_error(None, "Sorry, we don't have enough space at that time.") 
+            else:
+                # If there is enough free seats, save the reservation
+                reservation = form.save(commit=False)
+                if request.user.is_authenticated:
+                    reservation.user = request.user
+                reservation.save()
+                return redirect('restaurant:reservation_confirmation')
     else:
         form = ReservationForm()
     return render(request, 'reservations/make_reservation.html', {'form': form})
