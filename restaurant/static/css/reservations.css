@@ -1,5 +1,5 @@
 .content-wrapper {
-  background-image:url("{% static 'images/cover.png' %}"); 
+  background-image: url("images/cover.png"); 
   background-size: cover;
   background-repeat: no-repeat;
 } 
@@ -15,7 +15,7 @@
 }
 
 #reservation-form h1 {
-  font-size: 24px;
+  font-size: 30px;
   margin: 20px 0 50px 0;
 }
 
@@ -49,6 +49,36 @@
   margin-top: 30px;
 }
 
+.reservation-confirmation {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
+  font-family: Arial, sans-serif;
+  padding: 50px;
+  margin: 50px auto; 
+  width: 50%; 
+  border: 1px solid #ccc; 
+  color: black;
+}
+
+.reservation-confirmation h1 {
+  font-size: 30px;
+  margin-bottom: 1rem; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.reservation-confirmation h2 {
+  font-size: 25px;
+  margin-bottom: 1rem; 
+  margin-top: 2rem; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.reservation-confirmation p {
+  margin-bottom: 5px;
+}
+
 @media (max-width: 768px) {
   #reservation-form {
     width: 90%;
@@ -61,4 +91,9 @@
   #reservation-form label {
     text-align: left;
   }
+  
+  .reservation-confirmation {
+    width: 90%;
+    }
+  
 }
