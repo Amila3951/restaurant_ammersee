@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}  
+{% load static %}
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/reservations.css' %}">
@@ -14,5 +14,28 @@
     <p>Date: {{ reservation.date }}</p>
     <p>Time: {{ reservation.time }}</p>
     <p>Number of Guests: {{ reservation.num_people }}</p>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init("JtEjZpi5gTulnaLfS"); 
+    })();
+
+    var templateParams = {
+        to_name: "{{ reservation.name }}",
+        to_email: "{{ reservation.email }}",
+        reservation_date: "{{ reservation.date }}",
+        reservation_time: "{{ reservation.time }}",
+        reservation_guests: "{{ reservation.num_people }}",
+    };
+
+    emailjs.send('service_ab2vrqc', 'template_ksxlldn', templateParams)  
+    .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+        console.log('FAILED...', error);
+    });
+    </script>
 </div>
 {% endblock %}
