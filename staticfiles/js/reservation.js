@@ -1,6 +1,6 @@
 import emailjs from '@emailjs/browser';
 
-emailjs.init("YOUR_PUBLIC_KEY");
+emailjs.init("YJtEjZpi5gTulnaLfS");
 emailjs.send("service_ab2vrqc", "template_oo7qvf5", templateParams)
 
   .then(function (response) {

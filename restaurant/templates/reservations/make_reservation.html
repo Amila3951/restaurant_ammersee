@@ -2,9 +2,11 @@
 
 {% block content %}
 {% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+<link rel="stylesheet" href="{% static 'css/reservations.css' %}">
 <div class="container"> 
-    <form method="post" class="form"> 
-        <h1>Make a Reservation</h1> 
+    <form method="post" class="form" id="reservation-form">  
+        <h1>Reserve Your Table</h1> 
         {% csrf_token %}
 
         <p>
@@ -13,9 +15,9 @@
         </p>
 
         <p>
-          {{ form.email.label_tag }} <span class="optional">(optional)</span>
-          {{ form.email }} 
-      </p>
+            {{ form.email.label_tag }}
+            {{ form.email }} 
+          </p>
 
         <p>
             {{ form.phone.label_tag }}
@@ -44,7 +46,7 @@
             document.getElementById("id_date").min = tomorrow.toISOString().split('T')[0];
         </script>
         <button type="submit">Reserve</button>
-    </form>
+    </form> 
 </div>
-<script src="{% static 'js/reservation.js' %}"></script> 
+<script type="module" src="{% static 'js/reservation.js' %}"></script>
 {% endblock %}

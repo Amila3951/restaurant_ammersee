@@ -259,6 +259,9 @@ footer .h3 {
   text-align: center; 
 }
 
+
+  
+
 /* Media Query for Responsiveness (Tablets and Smaller) */
 @media (max-width: 768px) {
   #hero img {

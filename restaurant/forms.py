@@ -16,7 +16,8 @@ class ReservationForm(forms.ModelForm):
                 },
                 format='%Y-%m-%d'
             ),
-            'time': forms.TimeInput(attrs={'type': 'time'}),  # Dodajte ovu liniju
+            'time': forms.TimeInput(attrs={'type': 'time'}), 
+            'email': forms.EmailInput(attrs={'placeholder': 'Email (optional)'}),
         }
 
 
