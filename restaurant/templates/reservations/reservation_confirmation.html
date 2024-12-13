@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}  
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/reservations.css' %}">
+<div class="reservation-confirmation"> 
     <h1>Reservation Confirmed!</h1>
     <p>Thank you for your reservation. We look forward to seeing you soon.</p>
 
@@ -11,4 +14,5 @@
     <p>Date: {{ reservation.date }}</p>
     <p>Time: {{ reservation.time }}</p>
     <p>Number of Guests: {{ reservation.num_people }}</p>
+</div>
 {% endblock %}
