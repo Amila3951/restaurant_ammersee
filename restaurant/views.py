@@ -10,6 +10,7 @@ from django.contrib.auth.views import LoginView
 from django.db.models import Sum
 from django.conf import settings
 
+
 def home(request):
     if request.method == 'POST':  
         if request.user.is_authenticated:
@@ -42,18 +43,20 @@ def make_reservation(request):
                 # If there is not enough space, display an error message
                 form.add_error(None, "Sorry, we don't have enough space at that time.") 
             else:
-                # If there is enough free seats, save the reservation
-                print(form.cleaned_data)
+                # If there is enough space, save the reservation
+                print(form.cleaned_data)  # This can be removed or replaced with logging
+
                 reservation = form.save(commit=False)  # Create the Reservation object but don't save yet
                 if request.user.is_authenticated:
-                    reservation.user = request.user
+                    reservation.user = request.user  # Associate the reservation with the logged-in user
                 reservation.save()  # Save the reservation to the database
-                return redirect('restaurant:reservation_confirmation', reservation_id=reservation.id)
+
+            return redirect('restaurant:reservation_confirmation', reservation_id=reservation.id)
     else:
         form = ReservationForm()
     return render(request, 'reservations/make_reservation.html', {'form': form})
 
-
+        
 class MyLoginView(LoginView):
     template_name = 'account/login.html'
 
@@ -114,6 +117,6 @@ def register(request):
     return render(request, 'account/signup.html', {'form': form})
     
 
-def reservation_confirmation(request, reservation_id): # Corrected view
+def reservation_confirmation(request, reservation_id):
     reservation = get_object_or_404(Reservation, pk=reservation_id) 
     return render(request, "reservations/reservation_confirmation.html", {'reservation': reservation})
