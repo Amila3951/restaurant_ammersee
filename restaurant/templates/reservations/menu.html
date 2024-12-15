@@ -2,17 +2,17 @@
 {% load static %}
 
 {% block content %}
-  <div id="menu-container"> 
+  <div id="menu-container">  {# Container for the menu content #}
     <h2>Our Menu</h2>
     <p>Our menu features the finest German specialties, crafted with fresh, locally-sourced ingredients.</p>
     
-    <a href="{% url 'restaurant:make_reservation' %}" class="btn btn-secondary" style="background-color: beige; color: black;">Book a table</a>
+    <a href="{% url 'restaurant:make_reservation' %}" class="btn btn-secondary" style="background-color: beige; color: black;">Book a table</a>  {# Link to the reservation page #}
 
-    <div class="row"> 
-      <div class="col-md-12" id="dishes-container"></div> 
-      <div class="col-md-12" id="drinks-container"></div> 
+    <div class="row">  {# Create a row with two columns #}
+      <div class="col-md-12" id="dishes-container"></div>  {# Container for dishes (populated by JavaScript) #}
+      <div class="col-md-12" id="drinks-container"></div>  {# Container for drinks (populated by JavaScript) #}
     </div>
   </div> 
 
-  <script src="{% static 'js/script.js' %}"></script>
+  <script src="{% static 'js/script.js' %}"></script>  {# Link to the JavaScript file that populates the menu #}
 {% endblock %}

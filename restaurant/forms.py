@@ -4,11 +4,14 @@ from datetime import date, timedelta
 from django.contrib.auth.forms import UserCreationForm
 
 class ReservationForm(forms.ModelForm):
+    """
+    Form for creating and editing reservations.
+    """
     class Meta:
-        model = Reservation
-        fields = ['name', 'email', 'phone', 'date', 'time', 'num_people']
-        widgets = {
-            'date': forms.DateInput(
+        model = Reservation  # Use the Reservation model
+        fields = ['name', 'email', 'phone', 'date', 'time', 'num_people'] 
+        widgets = {  # Customize the widgets for some fields
+            'date': forms.DateInput(  # Use a date picker for the date field
                 attrs={
                     'type': 'date',
                     'class': 'datepicker', 
@@ -16,12 +19,14 @@ class ReservationForm(forms.ModelForm):
                 },
                 format='%Y-%m-%d'
             ),
-            'time': forms.TimeInput(attrs={'type': 'time'}), 
-            'email': forms.EmailInput(attrs={}),
+            'time': forms.TimeInput(attrs={'type': 'time'}),  # Use a time picker for the time field
+            'email': forms.EmailInput(attrs={}),  # Use a default email input
         }
 
-
     def clean_date(self):
+        """
+        Custom validation for the date field to ensure it's not in the past.
+        """
         date = self.cleaned_data['date']
         today = date.today()
         tomorrow = today + timedelta(days=1)
@@ -31,7 +36,10 @@ class ReservationForm(forms.ModelForm):
 
 
 class CustomUserCreationForm(UserCreationForm):
-    email = forms.EmailField(required=True) 
+    """
+    Custom user creation form to include the email field.
+    """
+    email = forms.EmailField(required=True)  # Add email field and make it required
 
     class Meta(UserCreationForm.Meta):
-        fields = UserCreationForm.Meta.fields + ('email',)
+        fields = UserCreationForm.Meta.fields + ('email',)  # Add email to the list of fields

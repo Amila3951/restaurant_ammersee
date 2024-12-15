@@ -3,28 +3,28 @@
 
 {% block content %}
 
-<div id="hero">
-  <img src="{% static 'images/cover5.png' %}" class="d-block w-100" alt="Cover 2"> 
+<div id="hero">  {# Hero section container #}
+  <img src="{% static 'images/cover5.png' %}" class="d-block w-100" alt="Cover 2">  {# Hero image with Bootstrap classes #}
   <div class="container">
-    <div class="slide-options">
-      <a href="{% url 'restaurant:menu' %}" class="btn btn-primary"
+    <div class="slide-options">  {# Container for call-to-action buttons #}
+      <a href="{% url 'restaurant:menu' %}" class="btn btn-primary"  {# Link to the menu page #}
         style="background-color: black; border-color: beige;">Our Menu</a>
-      <form method="post" action="{% url 'restaurant:home' %}"> 
-        {% csrf_token %}
+      <form method="post" action="{% url 'restaurant:home' %}">  {# Form for booking a table #}
+        {% csrf_token %}  {# Django template tag for security purposes #}
         <button type="submit" class="btn btn-secondary" style="background-color: beige; color: black;">Book a table</button>
       </form>
     </div>
-    <div class="carousel-caption">
+    <div class="carousel-caption">  {# Caption overlay on the hero image #}
       <h3>Welcome to Restaurant Ammersee</h3>
       <p class="spaced-paragraph">Discover culinary delights with a beautiful view of the lake.</p>
     </div>
   </div>
 </div>
 
-<div id="about" class="py-7">
+<div id="about" class="py-7">  {# About section container #}
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
+    <div class="row justify-content-center">  {# Center the content horizontally #}
+      <div class="col-md-8">  {# Use a Bootstrap grid column #}
         <h2 class="mb-4">Our Story</h2>
         <p> The year is 1953. A young couple, newly married and brimming with dreams, open the doors to a quaint
           little
@@ -46,10 +46,10 @@
   </div>
 </div>
 
-<div id="testimonials">
+<div id="testimonials">  {# Testimonials section (currently empty) #}
 </div>
 
-<div id="contact">
+<div id="contact">  {# Contact section (currently empty) #}
 </div>
 
 {% endblock %}

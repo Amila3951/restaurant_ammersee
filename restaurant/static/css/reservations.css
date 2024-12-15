@@ -1,15 +1,23 @@
+/* -------------------- */
+/*  General Styles     */
+/* -------------------- */
+
 .content-wrapper {
   background-image: url("images/cover.png"); 
   background-size: cover;
   background-repeat: no-repeat;
 } 
 
+/* -------------------- */
+/*  Reservation Form   */
+/* -------------------- */
+
 #reservation-form {
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 20px;
   width: 60%;
-  margin: 50px auto;
+  margin: 50px auto;  /* Center the form horizontally */
   font-family: Arial, sans-serif;
   text-align: center;
 }
@@ -21,7 +29,7 @@
 
 #reservation-form p {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 2fr;  /* Create a two-column grid for labels and inputs */
   gap: 5px;
   align-items: center;
   margin-bottom: 10px;
@@ -49,6 +57,10 @@
   margin-top: 30px;
 }
 
+/* -------------------- */
+/*  Reservation Confirmation  */
+/* -------------------- */
+
 .reservation-confirmation {
   display: flex;
   flex-direction: column; 
@@ -56,7 +68,7 @@
   text-align: center; 
   font-family: Arial, sans-serif;
   padding: 50px;
-  margin: 50px auto; 
+  margin: 50px auto;  /* Center the confirmation message */
   width: 50%; 
   border: 1px solid #ccc; 
   color: black;
@@ -65,13 +77,13 @@
 .reservation-confirmation h1 {
   font-size: 30px;
   margin-bottom: 1rem; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Add a subtle text shadow */
 }
 
 .reservation-confirmation h2 {
   font-size: 25px;
   margin-bottom: 1rem; 
-  margin-top: 2rem; 
+  margin-top: 2rem;  /* Add extra spacing above the heading */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -79,13 +91,17 @@
   margin-bottom: 5px;
 }
 
+/* -------------------- */
+/*  Media Queries      */
+/* -------------------- */
+
 @media (max-width: 768px) {
   #reservation-form {
-    width: 90%;
+    width: 90%;  /* Make the form responsive on smaller screens */
   }
 
   #reservation-form p {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;  /* Stack labels and inputs vertically */
   }
 
   #reservation-form label {
@@ -93,7 +109,7 @@
   }
   
   .reservation-confirmation {
-    width: 90%;
-    }
+    width: 90%;  /* Make the confirmation message responsive */
+  }
   
 }
