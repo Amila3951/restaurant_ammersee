@@ -3,35 +3,51 @@
 {% block title %}My Reservations{% endblock %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/reservations.css' %}">
+<div class="container"> 
+  <h1 class="text-center my-4">My Reservations</h1> 
 
-<h1>My Reservations</h1>
-
-<table class="table"> 
-  <thead>
-    <tr>
-      <th scope="col">Name</th> 
-      <th scope="col">Email</th> 
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
-      <th scope="col">Guests</th> 
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for reservation in reservations %}
+  <table class="table"> 
+    <thead>
       <tr>
-        <td>{{ reservation.name }}</td> 
-        <td>{{ reservation.email }}</td> 
-        <td>{{ reservation.date }}</td>
-        <td>{{ reservation.time }}</td>
-        <td>{{ reservation.num_people }}</td> 
-        <td>
-          <a href="{% url 'reservations:edit_reservation' reservation.id %}" class="btn btn-primary btn-sm">Edit</a>
-          <a href="{% url 'reservations:delete_reservation' reservation.id %}" class="btn btn-danger btn-sm">Delete</a>
-        </td>
+        <th scope="col">Name</th>  
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Guests</th> 
+        <th scope="col">Actions</th>
       </tr>
-    {% endfor %}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {% for reservation in reservations %} 
+        <tr>
+          <td>{{ reservation.name }}</td>  
+          <td>{{ reservation.date }}</td>
+          <td>{{ reservation.time }}</td>
+          <td>{{ reservation.num_people}}</td> 
+          <td>
+            <a href="{% url 'reservations:edit_reservation' reservation.id %}" class="btn btn-edit btn-sm">Edit</a>
+            <a href="{% url 'reservations:delete_reservation' reservation.id %}" class="btn btn-delete btn-sm">Delete</a>
+          </td>
+        </tr>
+      {% endfor %} 
+    </tbody>
+  </table>
+
+  <div class="reservation-list">  
+    {% for reservation in reservations %} 
+      <div class="reservation-item">
+        <div> Name: {{ reservation.name }}</div> 
+        <div> Date: {{ reservation.date }}</div>
+        <div> Time: {{ reservation.time }}</div>
+        <div> Guests: {{ reservation.num_people }}</div> 
+        <div>
+          <a href="{% url 'reservations:edit_reservation' reservation.id %}" class="btn btn-edit btn-sm">Edit</a>
+          <a href="{% url 'reservations:delete_reservation' reservation.id %}" class="btn btn-delete btn-sm">Delete</a>
+        </div>
+      </div>
+    {% endfor %} 
+  </div>
+</div>
 
 {% endblock %}
