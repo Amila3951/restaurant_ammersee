@@ -180,6 +180,36 @@
 }
 
 /* -------------------- */
+/*  Delete Reservation     */
+/* -------------------- */
+
+/* ... other styles ... */
+
+#deleteModal .modal-content {
+  font-family: Arial, sans-serif;
+  top: 100px !important; 
+  text-align: center; 
+}
+
+#deleteModal .modal-title {  
+  text-align: center; 
+  width: 100%; 
+}
+
+#deleteModal .modal-body {
+  text-align: center; 
+}
+
+#deleteModal .reservation-details p { 
+  text-align: center; 
+}
+
+#deleteModal .modal-footer {
+  display: flex;
+  justify-content: center; 
+}
+
+/* -------------------- */
 /*  Media Queries      */
 /* -------------------- */
 
