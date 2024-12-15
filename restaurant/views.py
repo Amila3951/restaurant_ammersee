@@ -84,46 +84,50 @@ def my_reservations(request):
     View for displaying a user's reservations.
     Requires user to be logged in.
     """
-    reservations = Reservation.objects.filter(user=request.user)  # Retrieve reservations for the logged-in user
-    context = {'reservations': reservations}
-    return render(request, 'reservations/my_reservations.html', context)  # Render the my reservations page with the reservations
+    reservations = Reservation.objects.filter(user=request.user).order_by('date', 'time')  # Fetch reservations for the logged-in user and order them
+    context = {'reservations': reservations}  # Create a context dictionary to pass to the template
+    return render(request, 'reservations/my_reservations.html', context)  # Render the template with the context
 
 
-@login_required  # Requires user to be logged in
+@login_required
 def edit_reservation(request, reservation_id):
     """
     View for editing a reservation.
     Requires user to be logged in and the reservation to belong to the user.
     """
-    reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)  # Retrieve the reservation or return 404
-    if request.method == "POST":
-        form = ReservationForm(request.POST, instance=reservation)  # Populate the form with existing reservation data
-        if form.is_valid():
+    # Retrieve the reservation object, ensuring it exists and belongs to the logged-in user.
+    reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
+    
+    if request.method == "POST":  
+        form = ReservationForm(request.POST, instance=reservation)  
+        if form.is_valid():  # Validate the form data
             form.save()  # Save the updated reservation
             messages.success(request, "Reservation successfully updated!")  # Display success message
-            return redirect("restaurant:my_reservations")  # Redirect to my reservations page
-    else:
-        form = ReservationForm(instance=reservation)  # Create a form with existing reservation data
+            return redirect("restaurant:my_reservations")  # Redirect to user's reservations page
+    else:  
+        form = ReservationForm(instance=reservation)  # Populate form with existing reservation data
     return render(
         request,
         "reservations/edit_reservation.html",
-        {"form": form, "reservation": reservation},  # Render the edit reservation page with the form and reservation
+        {"form": form, "reservation": reservation},  # Pass form and reservation to the template
     )
 
 
-@login_required  # Requires user to be logged in
+@login_required
 def delete_reservation(request, reservation_id):
     """
     View for deleting a reservation.
     Requires user to be logged in and the reservation to belong to the user.
     """
-    reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)  # Retrieve the reservation or return 404
-    if request.method == "POST":
+    # Retrieve the reservation object, ensuring it exists and belongs to the logged-in user.
+    reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
+    
+    if request.method == "POST":  # Check if the request is a POST (confirmation of deletion)
         reservation.delete()  # Delete the reservation
         messages.success(request, "Reservation successfully deleted!")  # Display success message
-        return redirect("restaurant:my_reservations")  # Redirect to my reservations page
+        return redirect("restaurant:my_reservations")  # Redirect to user's reservations page
     return render(
-        request, "reservations/delete_reservation.html", {"reservation": reservation}  # Render the delete confirmation page with the reservation
+        request, "reservations/delete_reservation.html", {"reservation": reservation}  # Pass reservation to the template for confirmation
     )
 
 
@@ -138,7 +142,7 @@ def register(request):
             user = form.save()  # Save the new user
             username = form.cleaned_data.get("username")
             messages.success(request, f"Account created for {username}!")  # Display success message
-            print(f"User {username} created successfully!")  # Print success message to the console
+            
 
             login(request, user)  # Log in the new user
             return redirect("restaurant:home")  # Redirect to the home page
