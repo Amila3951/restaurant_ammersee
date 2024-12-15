@@ -4,32 +4,54 @@ html, body {
   font-family: 'Playfair Display', serif;
   display: flex;
   flex-direction: column; 
-  min-height: 100vh;
+  min-height: 100vh;  /* Ensure the body takes up at least the full viewport height */
   gap: 50px;
 }
 
+/* -------------------- */
+/*  General Styles     */
+/* -------------------- */
+
 .content-wrapper {
-  flex: 1; 
-  margin-top: 100px; /* Provides space for the fixed navbar */
+  flex: 1;  /* Allow the content area to expand and fill available space */
+  margin-top: 100px;  /* Provides space for the fixed navbar */
 }
 
-/* Reset default margins for headings and paragraphs */
 h1, h2, h3, h4, h5, h6, p {
-  margin: 0; 
+  margin: 0;  /* Reset default margins for headings and paragraphs */
 }
 
 .spaced-paragraph {
-  margin-top: 20px; /* Adds spacing between paragraphs */
+  margin-top: 20px; 
 }
 
-/* Fixed Navbar Styling */
+.btn {
+  font-size: 1.2rem; 
+  padding: 15px 30px; 
+}
+
+.btn:hover {
+  filter: brightness(0.8) contrast(1.1); 
+}
+
+.errorlist { 
+  color: red; 
+  margin-bottom: 10px; 
+  list-style: none; 
+  padding: 0; 
+}
+
+/* -------------------- */
+/*  Navigation         */
+/* -------------------- */
+
 .navbar {
-  position: fixed; 
+  position: fixed;  /* Fix the navbar to the top of the viewport */
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100; 
-  background-color: #f8f9fa; /* Light background color for the navbar */
+  z-index: 100;  /* Ensure the navbar is on top of other elements */
+  background-color: #f8f9fa; 
 }
 
 nav.navbar .navbar-brand img {
@@ -38,59 +60,33 @@ nav.navbar .navbar-brand img {
   object-fit: contain; 
 }
 
-/* Hero Section Styling */
+/* -------------------- */
+/*  Hero Section       */
+/* -------------------- */
+
 #hero {
   position: relative; 
   width: 100%;
-  overflow: hidden; /* Prevents image overflow */
-  margin-top: -50px; /* Adjusts the hero section's position relative to the navbar */
+  overflow: hidden;  /* Prevent the image from overflowing its container */
+  margin-top: -50px;  /* Adjust position relative to the fixed navbar */
 }
 
 #hero img {
   width: 100%;
-  height: 100vh; /* Makes the image take up the full viewport height */
-  object-fit: cover; /* Ensures the image covers the entire area */
-  object-position: 50% 50%; /* Centers the image */
+  height: 100vh;  /* Make the image cover the full viewport height */
+  object-fit: cover;  /* Ensure the image covers the entire area */
+  object-position: 50% 50%;  /* Center the image */
 }
 
-/* Carousel Caption Styling */
-.carousel-caption {
-  background: rgba(0, 0, 0, 0.3); 
-  position: absolute; 
-  left: 50%;
-  transform: translateX(-50%); 
-  width: 80%;
-  text-align: center;
-  padding: 20px;
-  z-index: 10; /* Ensures the caption is above the image */
-  line-height: 1.5; 
-  top: 200px; /* Positions the caption from the top */
-  bottom: auto; 
-}
-
-.carousel-caption h3, 
-.carousel-caption p {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-  font-weight: 600; 
-  font-size: 2rem; /* Large font size for headings */
-  line-height: 1.2; 
-  margin-bottom: 1rem; 
-}
-
-.carousel-caption p {
-  font-size: 1.5rem; 
-}
-
-/* Slide Options Styling */
 #hero .slide-options {
   position: absolute;
   bottom: 60px; 
   left: 50%;
-  transform: translateX(-50%); /* Centers the options horizontally */
+  transform: translateX(-50%); 
   display: flex;
   justify-content: center; 
   width: 100%;
-  z-index: 10; 
+  z-index: 10;  /* Ensure the slide options are above the hero image */
 }
 
 .slide-options a {
@@ -99,17 +95,41 @@ nav.navbar .navbar-brand img {
   margin-bottom: 10px; 
 }
 
-/* Button Styling */
-.btn {
-  font-size: 1.2rem; 
-  padding: 15px 30px; 
+/* -------------------- */
+/*  Carousel Caption   */
+/* -------------------- */
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.3);  /* Semi-transparent background for better readability */
+  position: absolute; 
+  left: 50%;
+  transform: translateX(-50%); 
+  width: 80%;
+  text-align: center;
+  padding: 20px;
+  z-index: 10; 
+  line-height: 1.5; 
+  top: 200px; 
+  bottom: auto; 
 }
 
-.btn:hover {
-  filter: brightness(0.8) contrast(1.1); /* Darkens the button and increases contrast on hover */
+.carousel-caption h3, 
+.carousel-caption p {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Add a subtle text shadow */
+  font-weight: 600; 
+  font-size: 2rem; 
+  line-height: 1.2; 
+  margin-bottom: 1rem; 
 }
 
-/* About Section Styling */
+.carousel-caption p {
+  font-size: 1.5rem; 
+}
+
+/* -------------------- */
+/*  About Section      */
+/* -------------------- */
+
 #about {
   padding: 80px 0; 
   text-align: center; 
@@ -120,15 +140,18 @@ nav.navbar .navbar-brand img {
   font-size: 20px; 
 }
 
-/* Login and Signup Form Styling */
+/* -------------------- */
+/*  Forms              */
+/* -------------------- */
+
 .login-form, .signup-form {
   background-color: #fff;  
   padding: 30px 40px;  
   border-radius: 5px; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* Add a subtle shadow effect */
   width: 660px; 
   font-size: 16px; 
-  margin: auto; 
+  margin: auto;  /* Center the forms horizontally */
   overflow: auto; 
 }
 
@@ -156,7 +179,7 @@ nav.navbar .navbar-brand img {
   margin-bottom: 15px; 
   border: 1px solid #ddd; 
   border-radius: 3px; 
-  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+  box-sizing: border-box; 
 }
 
 .login-form button, .signup-form button {
@@ -174,26 +197,20 @@ nav.navbar .navbar-brand img {
   color: gray;
 }
 
-/* Error List Styling */
-.errorlist { 
-  color: red; 
-  margin-bottom: 10px; 
-  list-style: none; /* Removes bullet points */
-  padding: 0; 
-}
-
 .signup-form .errorlist {
   font-size: 14px; 
 }
 
+/* -------------------- */
+/*  Footer             */
+/* -------------------- */
 
-/* Footer Styling */
 footer {
-  font-family: 'Times New Roman', Times, serif; /* Classic serif font for the footer */
+  font-family: 'Times New Roman', Times, serif; 
   font-size: 18px; 
   padding: 40px 0; 
   line-height: 2; 
-  margin-top: auto; /* Pushes the footer to the bottom */
+  margin-top: auto;  /* Push the footer to the bottom of the page */
 }
 
 footer .social-icon {
@@ -214,7 +231,10 @@ footer .h3 {
   font-size: 25px; 
 }
 
-/* Menu Container Styling */
+/* -------------------- */
+/*  Menu               */
+/* -------------------- */
+
 #menu-container {
   text-align: center; 
   padding-top: 100px; 
@@ -233,13 +253,13 @@ footer .h3 {
 }
 
 .category-item { 
-  align-items: center;   
+  align-items: center;  
   width: 100%; 
   margin-bottom: 20px; 
 }
 
-.category-item > h3 {   
-  width: 100%;   
+.category-item > h3 {  
+  width: 100%;  
   text-align: center;  
 }
 
@@ -259,17 +279,17 @@ footer .h3 {
   text-align: center; 
 }
 
+/* -------------------- */
+/*  Media Queries      */
+/* -------------------- */
 
-  
-
-/* Media Query for Responsiveness (Tablets and Smaller) */
 @media (max-width: 768px) {
   #hero img {
-    height: 300px; /* Reduces hero image height on smaller screens */
+    height: 300px; 
   }
 
   #hero .slide-options {
-    bottom: 20px; /* Adjusts slide options position */
+    bottom: 20px; 
   }
 
   .btn {
@@ -282,20 +302,20 @@ footer .h3 {
     padding: 10px; 
     margin: 0; 
     box-sizing: border-box; 
-    background-color: transparent; /* Removes background on smaller screens */
+    background-color: transparent; 
   }
 
   .carousel-caption h3, 
   .carousel-caption p {
-    display: none; /* Hides caption text on smaller screens */
+    display: none; 
   }
 
   .slide-options {
-    display: none; /* Hides slide options on smaller screens */
+    display: none; 
   }
 
   #about {
-    padding: 20px; /* Reduces padding in the about section */
+    padding: 20px; 
   }
 
   #about h2 {
@@ -307,17 +327,17 @@ footer .h3 {
   }
 
   .login-form, .signup-form {
-    width: 90%; /* Makes forms take up more relative width */
+    width: 90%; 
     height: auto; 
     margin-bottom: 50px;
   }
 
   footer {
-    font-size: 16px; /* Reduces footer font size */
+    font-size: 16px; 
   }
 
   footer .col-md-4 {
-    margin-bottom: 20px; /* Adds spacing between footer columns */
+    margin-bottom: 20px; 
   }
 
   footer .h3 {

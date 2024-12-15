@@ -2,13 +2,13 @@
 
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/reservations.css' %}">
+<link rel="stylesheet" href="{% static 'css/reservations.css' %}">  {# Link to the reservations CSS file #}
 <div class="container"> 
-    <form method="post" class="form" id="reservation-form">  
+    <form method="post" class="form" id="reservation-form">   {# Reservation form #}
         <h1>Reserve Your Table</h1> 
-        {% csrf_token %}
+        {% csrf_token %}  
 
-        {% if form.non_field_errors %} 
+        {% if form.non_field_errors %}  {# Display non-field errors (e.g., validation errors) #}
             <ul class="errorlist">
                 {% for error in form.non_field_errors %}
                     <li>{{ error }}</li>
@@ -16,44 +16,44 @@
             </ul>
         {% endif %}
 
-        <p>
+        <p>  {# Form field for name #}
             {{ form.name.label_tag }}
             {{ form.name }}
         </p>
 
-        <p>
+        <p>  {# Form field for email #}
             {{ form.email.label_tag }}
             {{ form.email }} 
         </p>
 
-        <p>
+        <p>  {# Form field for phone #}
             {{ form.phone.label_tag }}
             {{ form.phone }}
         </p>
 
-        <p>
+        <p>  {# Form field for date #}
             {{ form.date.label_tag }}
             {{ form.date }}
         </p>
 
-        <p>
+        <p>  {# Form field for time #}
             {{ form.time.label_tag }}
             {{ form.time }}
         </p>
 
-        <p>
+        <p>  {# Form field for number of people #}
             {{ form.num_people.label_tag }}
             {{ form.num_people }}
         </p>
 
-        <input type="hidden" id="tomorrow" value="{% now 'Y-m-d' %}" /> 
-        <script>
+        <input type="hidden" id="tomorrow" value="{% now 'Y-m-d' %}" />  {# Hidden input for tomorrow's date #}
+        <script>  // JavaScript to set the minimum date for the date input 
             var tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
             document.getElementById("id_date").min = tomorrow.toISOString().split('T')[0];
         </script>
-        <button type="submit">Reserve</button>
+        <button type="submit">Reserve</button>  {# Submit button #}
     </form> 
 </div>
-<script type="module" src="{% static 'js/reservation.js' %}"></script>
+<script type="module" src="{% static 'js/reservation.js' %}"></script>  {# Link to the reservations JavaScript file #}
 {% endblock %}

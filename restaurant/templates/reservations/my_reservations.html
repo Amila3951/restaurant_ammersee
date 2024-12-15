@@ -2,15 +2,15 @@
 
 {% block content %}
   <h2>Make a Reservation</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="hidden" id="tomorrow" value="{% now 'Y-m-d' %}" /> 
-    <script>
+  <form method="post">  {# Form for submitting a reservation #}
+    {% csrf_token %} 
+    {{ form.as_p }}  {# Render the form fields as paragraphs #}
+    <input type="hidden" id="tomorrow" value="{% now 'Y-m-d' %}" />  
+    <script>  // JavaScript to set the minimum date for the date input 
       var tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      document.getElementById("id_date").min = tomorrow.toISOString().split('T')[0];
+      tomorrow.setDate(tomorrow.getDate() + 1);  // Calculate tomorrow's date
+      document.getElementById("id_date").min = tomorrow.toISOString().split('T')[0];  // Set the min attribute of the date input
     </script>
-    <button type="submit">Reserve</button>
+    <button type="submit">Reserve</button>  {# Submit button #}
   </form>
 {% endblock %}

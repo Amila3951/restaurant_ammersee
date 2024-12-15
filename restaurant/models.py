@@ -22,15 +22,17 @@ class Reservation(models.Model):
     """ 
     time = models.TimeField() 
     num_people = models.IntegerField(
-        validators=[MinValueValidator(1)]
+        validators=[MinValueValidator(1)]  # Ensure the number of people is at least 1
     ) 
     name = models.CharField(max_length=200)
-    email = models.EmailField(validators=[EmailValidator()], blank=True, null=True)
+    email = models.EmailField(validators=[EmailValidator()], blank=True, null=True)  # Allow blank email
     phone = models.CharField(
-        max_length=20, validators=[RegexValidator(r"^\+?\d{9,15}$")]
+        max_length=20, validators=[RegexValidator(r"^\+?\d{9,15}$")]  # Validate phone number format
     )
-    date = models.DateField(validators=[validate_future_date]) 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    date = models.DateField(validators=[validate_future_date])  # Use the custom validator
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True  # Link to the User model
+    )
 
     def __str__(self):
         return f"Reservation for {self.num_people} by {self.name} on {self.date} at {self.time}" 
