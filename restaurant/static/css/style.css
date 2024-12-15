@@ -3,8 +3,8 @@ html, body {
   margin: 0;
   font-family: 'Playfair Display', serif;
   display: flex;
-  flex-direction: column; 
-  min-height: 100vh;  /* Ensure the body takes up at least the full viewport height */
+  flex-direction: column;
+  min-height: 100vh; 
   gap: 50px;
 }
 
@@ -13,10 +13,9 @@ html, body {
 /* -------------------- */
 
 .content-wrapper {
-  flex: 1;  /* Allow the content area to expand and fill available space */
+  flex: 1; 
   margin-top: 0; 
 }
-
 
 .spaced-paragraph {
   margin-top: 20px; 
@@ -43,11 +42,11 @@ html, body {
 /* -------------------- */
 
 .navbar {
-  position: fixed;  /* Fix the navbar to the top of the viewport */
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;  /* Ensure the navbar is on top of other elements */
+  z-index: 100;  
   background-color: #f8f9fa; 
 }
 
@@ -57,6 +56,7 @@ nav.navbar .navbar-brand img {
   object-fit: contain; 
 }
 
+
 /* -------------------- */
 /*  Hero Section       */
 /* -------------------- */
@@ -64,40 +64,26 @@ nav.navbar .navbar-brand img {
 #hero {
   position: relative; 
   width: 100%;
-  overflow: hidden;  /* Prevent the image from overflowing its container */
-  margin-top: -50px;  /* Adjust position relative to the fixed navbar */
+  overflow: hidden; 
+  margin-top: -50px;  
 }
 
 #hero img {
   width: 100%;
-  height: 100vh;  /* Make the image cover the full viewport height */
-  object-fit: cover;  /* Ensure the image covers the entire area */
-  object-position: 50% 50%;  /* Center the image */
+  height: 100vh;  
+  object-fit: cover;  
+  object-position: 50% 50%;  
 }
 
-#hero .slide-options {
-  position: absolute;
-  bottom: 60px; 
-  left: 50%;
-  transform: translateX(-50%); 
-  display: flex;
-  justify-content: center; 
-  width: 100%;
-  z-index: 10;  /* Ensure the slide options are above the hero image */
-}
+/* Removed slide options styles */
 
-.slide-options a {
-  margin-right: 10px; 
-  display: inline-block; 
-  margin-bottom: 10px; 
-}
 
 /* -------------------- */
 /*  Carousel Caption   */
 /* -------------------- */
 
 .carousel-caption {
-  background: rgba(0, 0, 0, 0.3);  /* Semi-transparent background for better readability */
+  background: rgba(0, 0, 0, 0.3);  
   position: absolute; 
   left: 50%;
   transform: translateX(-50%); 
@@ -112,7 +98,7 @@ nav.navbar .navbar-brand img {
 
 .carousel-caption h3, 
 .carousel-caption p {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Add a subtle text shadow */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  
   font-weight: 600; 
   font-size: 2rem; 
   line-height: 1.2; 
@@ -124,7 +110,7 @@ nav.navbar .navbar-brand img {
 }
 
 /* -------------------- */
-/*  About Section      */
+/*  About Section       */
 /* -------------------- */
 
 #about {
@@ -138,17 +124,17 @@ nav.navbar .navbar-brand img {
 }
 
 /* -------------------- */
-/*  Forms              */
+/*  Forms               */
 /* -------------------- */
 
 .login-form, .signup-form {
-  background-color: #fff;  
-  padding: 30px 40px;  
+  background-color: #fff;   
+  padding: 30px 40px;   
   border-radius: 5px; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* Add a subtle shadow effect */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 660px; 
   font-size: 16px; 
-  margin: auto;  /* Center the forms horizontally */
+  margin: auto; 
   overflow: auto; 
 }
 
@@ -199,7 +185,7 @@ nav.navbar .navbar-brand img {
 }
 
 /* -------------------- */
-/*  Footer             */
+/*  Footer               */
 /* -------------------- */
 
 footer {
@@ -228,7 +214,7 @@ footer .h3 {
 }
 
 /* -------------------- */
-/*  Menu               */
+/*  Menu                 */
 /* -------------------- */
 
 #menu-container {
@@ -239,30 +225,30 @@ footer .h3 {
 }
 
 #menu-container h2, #menu-container p, #menu-container a {
-  margin-bottom: 20px;  
+  margin-bottom: 20px;   
 }
 
 #dishes-container, #drinks-container {
   display: block; 
-  align-items: center;  
+  align-items: center;   
   width: 100%; 
 }
 
 .category-item { 
-  align-items: center;  
+  align-items: center;   
   width: 100%; 
   margin-bottom: 20px; 
 }
 
-.category-item > h3 {  
-  width: 100%;  
-  text-align: center;  
+.category-item > h3 {   
+  width: 100%;   
+  text-align: center;   
 }
 
 .menu-column {
   width: 40%; 
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;   
   box-sizing: border-box; 
 }
 
@@ -276,7 +262,7 @@ footer .h3 {
 }
 
 /* -------------------- */
-/*  Media Queries      */
+/*  Media Queries       */
 /* -------------------- */
 
 @media (max-width: 768px) {
@@ -284,9 +270,7 @@ footer .h3 {
     height: 300px; 
   }
 
-  #hero .slide-options {
-    bottom: 20px; 
-  }
+  /* Removed slide options styles */ 
 
   .btn {
     font-size: 1rem; 
@@ -306,9 +290,7 @@ footer .h3 {
     display: none; 
   }
 
-  .slide-options {
-    display: none; 
-  }
+  /* Removed slide options styles */
 
   #about {
     padding: 20px; 
@@ -329,14 +311,14 @@ footer .h3 {
   }
 
   footer {
-    font-size: 16px;
+    font-size: 16px; 
     display: flex;
     flex-direction: column;
     align-items: center; 
   }
 
   footer a {
-    margin-bottom: 10px;
+    margin-bottom: 10px; 
   }
 
   footer .col-md-4 {

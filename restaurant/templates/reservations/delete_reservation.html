@@ -6,7 +6,8 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/reservations.css' %}"> 
 
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false"> 
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">  {# These attributes prevent the modal from being closed by clicking outside of it or pressing the Escape key. #} 
+  <div id="modalContainer" class="modal-dialog">  
   <div id="modalContainer" class="modal-dialog"> 
     <div class="modal-content">
       <div class="modal-header">
