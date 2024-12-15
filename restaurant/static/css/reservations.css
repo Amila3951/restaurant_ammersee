@@ -2,6 +2,7 @@
 /*  General Styles     */
 /* -------------------- */
 
+
 .content-wrapper {
   background-image: url("images/cover.png"); 
   background-size: cover;
@@ -91,9 +92,56 @@
   margin-bottom: 5px;
 }
 
+.container .text-center.my-4 {
+  margin-bottom: 100px;
+}
+
+.container h1 {
+  margin-bottom: 100px;
+}
+
+.btn-edit {
+  background-color: transparent;
+  color: blue;
+  border: none;
+}
+
+.btn-delete {
+  background-color: transparent;
+  color: red;
+  border: none;
+}
+
+.table {
+  font-family: Arial, sans-serif;
+}
+
+.table td {  
+  vertical-align: middle; 
+  text-align: center;
+}
+
+.table th { 
+  vertical-align: middle; 
+  text-align: center;    
+}
+
+.table td, 
+.table th {
+  border: 1px solid #dee2e6; 
+}
+
+
+
 /* -------------------- */
 /*  Media Queries      */
 /* -------------------- */
+
+@media (min-width: 768px) {
+  .reservation-list {
+    display: none; 
+  }
+}
 
 @media (max-width: 768px) {
   #reservation-form {
@@ -112,4 +160,25 @@
     width: 90%;  /* Make the confirmation message responsive */
   }
   
+  .table {
+    display: none;
+  }
+
+  .reservation-list {
+    display: block; 
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  .reservation-item {
+    border-bottom: 1px solid #dee2e6;
+    padding: 10px 0;
+  }
+
+  .reservation-item div {
+    margin-bottom: 5px;
+  }
 }
+
+
+

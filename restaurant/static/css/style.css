@@ -14,12 +14,9 @@ html, body {
 
 .content-wrapper {
   flex: 1;  /* Allow the content area to expand and fill available space */
-  margin-top: 100px;  /* Provides space for the fixed navbar */
+  margin-top: 0; 
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;  /* Reset default margins for headings and paragraphs */
-}
 
 .spaced-paragraph {
   margin-top: 20px; 
