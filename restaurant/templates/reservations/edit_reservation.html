@@ -3,15 +3,27 @@
 {% block title %}Edit Reservation{% endblock %} 
 
 {% block content %}
-  <h1>Edit Reservation</h1>
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/reservations.css' %}"> 
 
-  <p>Restaurant: {{ reservation.restaurant.name }}</p>
-  <p>Date: {{ reservation.date }}</p>
-  <p>Time: {{ reservation.time }}</p>
+<div class="form-container"> 
+  <h1>Edit Reservation</h1>
 
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.name.label_tag }}
+    {{ form.name }}
+    {{ form.email.label_tag }}
+    {{ form.email }}
+    {{ form.phone.label_tag }}
+    {{ form.phone }}
+    {{ form.date.label_tag }}
+    {{ form.date }}
+    {{ form.time.label_tag }}
+    {{ form.time }}
+    {{ form.num_people.label_tag }}
+    {{ form.num_people }}
     <button type="submit">Save Changes</button>
   </form>
+</div>
 {% endblock %}

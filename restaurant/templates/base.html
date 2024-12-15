@@ -1,18 +1,13 @@
 <!DOCTYPE html>
-
 <html lang="en">
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">  {# Link to the main CSS file #}
-{% include 'includes/header.html' %}  {# Include the header template #}
-
-<body>
-  {% include 'includes/navbar.html' %}  {# Include the navbar template #}
-
-  <div class="content-wrapper">  {# Main content container #}
-    {% block content %}{% endblock %}  {# Content block for child templates #}
-  </div>
-
-  {% include 'includes/footer.html' %}  {# Include the footer template #}
-</body>
-
+  {% load static %}
+  {% include 'includes/header.html' %} 
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <body>
+    {% include 'includes/navbar.html' %}
+    <div class="content-wrapper">
+      {% block content %}{% endblock %}
+    </div>
+    {% include 'includes/footer.html' %}
+  </body>
 </html>
