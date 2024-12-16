@@ -134,7 +134,7 @@ def delete_reservation(request, reservation_id):
     )
 
 
-@ensure_csrf_cookie  # Ensure CSRF cookie is set
+@ensure_csrf_cookie  
 def register(request):
     """
     View for user registration.
@@ -161,7 +161,7 @@ def reservation_confirmation(request, reservation_id):
     View for displaying the reservation confirmation page.
     """
     reservation = get_object_or_404(Reservation, pk=reservation_id)  # Retrieve the reservation or return 404
-    return render(request, "reservations/reservation_confirmation.html", {'reservation': reservation})  # Render the confirmation page with the reservation
+    return render(request, "reservations/reservation_confirmation.html", {'reservation': reservation})
 
 
 
@@ -172,25 +172,38 @@ def admin_reservations(request):
     context = {'reservations': reservations}
     return render(request, 'reservations/admin_reservations.html', context)
 
-@login_required  
+@login_required
 @user_passes_test(lambda u: u.is_superuser)
-class AddReservationView(CreateView):
-    model = Reservation
-    form_class = ReservationForm
-    template_name = 'reservations/add_reservation.html'
-    success_url = reverse_lazy('restaurant:admin_reservations') 
+def add_reservation(request):
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            reservation = form.save()
+            return redirect('restaurant:reservation_confirmation', reservation_id=reservation.id)
+    else:
+        form = ReservationForm()
+        reservation = None  
 
-@login_required 
-@user_passes_test(lambda u: u.is_superuser) 
-class DeleteReservationView(DeleteView):
-    model = Reservation
-    template_name = 'reservations/admin_delete_reservation.html' 
-    success_url = reverse_lazy('restaurant:admin_reservations')
+    return render(request, 'reservations/add_reservation.html', {'form': form, 'reservation': reservation})  # Pass 'reservation' to the template
 
-@login_required  
+@login_required
 @user_passes_test(lambda u: u.is_superuser)
-class EditReservationView(UpdateView):
-    model = Reservation
-    form_class = ReservationForm
-    template_name = 'reservations/admin_edit_reservation.html'
-    success_url = reverse_lazy('restaurant:admin_reservations')
+def delete_reservation(request, pk):
+    reservation = get_object_or_404(Reservation, pk=pk)
+    if request.method == 'POST':
+        reservation.delete()
+        return redirect('restaurant:admin_reservations')
+    return render(request, 'reservations/admin_delete_reservation.html', {'reservation': reservation})
+
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
+def edit_reservation(request, pk):
+    reservation = get_object_or_404(Reservation, pk=pk)
+    if request.method == 'POST':
+        form = ReservationForm(request.POST, instance=reservation)
+        if form.is_valid():
+            form.save()
+            return redirect('restaurant:admin_reservations')
+    else:
+        form = ReservationForm(instance=reservation)
+    return render(request, 'reservations/admin_edit_reservation.html', {'form': form, 'reservation': reservation})
