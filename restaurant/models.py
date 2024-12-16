@@ -33,6 +33,7 @@ class Reservation(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True  # Link to the User model
     )
+    
 
     def __str__(self):
         return f"Reservation for {self.num_people} by {self.name} on {self.date} at {self.time}" 
