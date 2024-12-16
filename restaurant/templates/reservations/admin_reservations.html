@@ -3,6 +3,10 @@
 {% block content %}
 <h1>All Reservations</h1>
 
+{% if user.is_superuser %}
+<a href="{% url 'restaurant:add_reservation' %}">Add Reservation</a> <br>
+{% endif %}
+
 <table class="table">
   <thead>
     <tr>
@@ -12,6 +16,9 @@
       <th scope="col">Date</th>
       <th scope="col">Time</th>
       <th scope="col">Guests</th>
+      {% if user.is_superuser %}
+      <th scope="col">Actions</th>
+      {% endif %}
     </tr>
   </thead>
   <tbody>
@@ -23,6 +30,12 @@
       <td>{{ reservation.date }}</td>
       <td>{{ reservation.time }}</td>
       <td>{{ reservation.num_people }}</td>
+      {% if user.is_superuser %}
+      <td>
+        <a href="{% url 'restaurant:admin_edit_reservation' reservation.pk %}">Edit</a> 
+        <a href="{% url 'restaurant:admin_delete_reservation' reservation.pk %}">Delete</a> 
+      </td>
+      {% endif %}
     </tr>
     {% endfor %}
   </tbody>
