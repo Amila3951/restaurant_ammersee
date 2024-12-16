@@ -11,6 +11,8 @@ from django.db.models import Sum
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 def home(request):
     """
@@ -161,9 +163,34 @@ def reservation_confirmation(request, reservation_id):
     reservation = get_object_or_404(Reservation, pk=reservation_id)  # Retrieve the reservation or return 404
     return render(request, "reservations/reservation_confirmation.html", {'reservation': reservation})  # Render the confirmation page with the reservation
 
+
+
 @login_required
 @user_passes_test(lambda u: u.is_superuser) 
 def admin_reservations(request):
     reservations = Reservation.objects.all()
     context = {'reservations': reservations}
     return render(request, 'reservations/admin_reservations.html', context)
+
+@login_required  
+@user_passes_test(lambda u: u.is_superuser)
+class AddReservationView(CreateView):
+    model = Reservation
+    form_class = ReservationForm
+    template_name = 'reservations/add_reservation.html'
+    success_url = reverse_lazy('restaurant:admin_reservations') 
+
+@login_required 
+@user_passes_test(lambda u: u.is_superuser) 
+class DeleteReservationView(DeleteView):
+    model = Reservation
+    template_name = 'reservations/admin_delete_reservation.html' 
+    success_url = reverse_lazy('restaurant:admin_reservations')
+
+@login_required  
+@user_passes_test(lambda u: u.is_superuser)
+class EditReservationView(UpdateView):
+    model = Reservation
+    form_class = ReservationForm
+    template_name = 'reservations/admin_edit_reservation.html'
+    success_url = reverse_lazy('restaurant:admin_reservations')
