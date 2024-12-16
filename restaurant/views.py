@@ -199,23 +199,29 @@ def register(request):
     View for user registration.
     """
     if request.method == "POST":
-        form = UserCreationForm(request.POST)  # Create a user creation form
+        form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()  # Save the new user
+            user = form.save()
             username = form.cleaned_data.get("username")
-            messages.success(
-                request, f"Account created for {username}!"
-            )  # Display success message
+            messages.success(request, f"Account created for {username}!")
 
-            login(request, user)  # Log in the new user
-            return redirect("restaurant:home")  # Redirect to the home page
+            # Call the sendEmail function after successful registration
+            javascript_code = f"""
+                <script>
+                    // Pass form data to the sendEmail function
+                    const formData = {{ form.cleaned_data|json_script:"form-data" }}; 
+                    sendEmail(formData);
+                </script>
+            """
+            
+            login(request, user)
+            return HttpResponse(javascript_code)  # Return the JavaScript code
+
         else:
-            print(form.errors)  # Print form errors to the console
+            print(form.errors)
     else:
-        form = UserCreationForm()  # Create an empty user creation form
-    return render(
-        request, "account/signup.html", {"form": form}
-    )  # Render the signup page with the form
+        form = UserCreationForm()
+    return render(request, "account/signup.html", {"form": form})
 
 
 def reservation_confirmation(request, reservation_id):
