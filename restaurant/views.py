@@ -10,6 +10,7 @@ from django.contrib.auth.views import LoginView
 from django.db.models import Sum
 from django.conf import settings
 from django.core.exceptions import ValidationError
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 def home(request):
     """
@@ -159,3 +160,10 @@ def reservation_confirmation(request, reservation_id):
     """
     reservation = get_object_or_404(Reservation, pk=reservation_id)  # Retrieve the reservation or return 404
     return render(request, "reservations/reservation_confirmation.html", {'reservation': reservation})  # Render the confirmation page with the reservation
+
+@login_required
+@user_passes_test(lambda u: u.is_superuser) 
+def admin_reservations(request):
+    reservations = Reservation.objects.all()
+    context = {'reservations': reservations}
+    return render(request, 'reservations/admin_reservations.html', context)
