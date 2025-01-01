@@ -34,7 +34,7 @@ DEBUG = os.environ.get('DEBUG') == 'True'
     'localhost',
 ]"""
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = ['https://restaurant-am-ammersee-a040553fc4e4.herokuapp.com', 'localhost']
 
 # Application definition
 

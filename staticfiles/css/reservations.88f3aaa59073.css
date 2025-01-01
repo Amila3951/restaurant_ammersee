@@ -1,0 +1,248 @@
+.content-wrapper { 
+  background-image: url("../images/cover.4c81e8291444.png"); 
+  background-size: cover;
+  background-repeat: no-repeat;
+} 
+
+/* -------------------- */
+/*  Reservation Form   */
+/* -------------------- */
+
+#reservation-form { 
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 60%;
+  margin: 50px auto; 
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#reservation-form h1 { 
+  font-size: 30px;
+  margin: 20px 0 50px 0;
+}
+
+#reservation-form p { 
+  display: grid;
+  grid-template-columns: 1fr 2fr;  
+  gap: 5px;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+#reservation-form label { 
+  text-align: center;
+}
+
+#reservation-form input,
+#reservation-form select { 
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+#reservation-form button { 
+  background-color: beige;
+  color: #000000;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* -------------------- */
+/*  Reservation Confirmation  */
+/* -------------------- */
+
+.reservation-confirmation { 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
+  font-family: Arial, sans-serif;
+  padding: 50px;
+  margin: 50px auto; 
+  width: 50%; 
+  border: 1px solid #ccc; 
+  color: black;
+}
+
+.reservation-confirmation h1 { 
+  font-size: 30px;
+  margin-bottom: 1rem; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  
+}
+
+.reservation-confirmation h2 { 
+  font-size: 25px;
+  margin-bottom: 1rem; 
+  margin-top: 2rem;  
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.reservation-confirmation p { 
+  margin-bottom: 5px;
+}
+
+/* -------------------- */
+/*  My Reservations     */
+/* -------------------- */
+
+.container .text-center.my-4 {  
+  margin-bottom: 100px; 
+} 
+
+.btn-edit {  
+  background-color: transparent;
+  color: blue;
+  border: none;
+}
+
+.btn-delete {  
+  background-color: transparent;
+  color: red;
+  border: none;
+}
+
+.table {  
+  font-family: Arial, sans-serif;
+}
+
+.table td {  
+  vertical-align: middle; 
+  text-align: center;
+}
+
+.table th {  
+  vertical-align: middle; 
+  text-align: center;    
+}
+
+.table td, 
+.table th {  
+  border: 1px solid #dee2e6; 
+}
+
+/* -------------------- */
+/*  Edit Reservation    */
+/* -------------------- */
+
+.form-container {
+  width: 30%; 
+  margin: 50px auto; 
+  border: 1px solid #ccc;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-container input,
+.form-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.form-container button {
+  background-color: beige;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.errorlist {
+  color: red;
+  list-style: none;
+  padding: 0;
+}
+
+/* -------------------- */
+/*  Delete Reservation  */
+/* -------------------- */
+
+#deleteModal .modal-content {
+  font-family: Arial, sans-serif; 
+  top: 100px !important;  
+  text-align: center;  
+}
+
+#deleteModal .modal-title {    
+  text-align: center;  
+  width: 100%;  
+}
+
+#deleteModal .modal-body {
+  text-align: center;   
+}
+
+#deleteModal .reservation-details p { 
+  text-align: center;   
+}
+
+#deleteModal .modal-footer {
+  display: flex;  
+  justify-content: center;  
+}
+
+/* -------------------- */
+/*  Media Queries       */
+/* -------------------- */
+
+@media (min-width: 768px) { 
+  .reservation-list { 
+    display: none; 
+  }
+}
+
+@media (max-width: 768px) { 
+  #reservation-form { 
+    width: 90%;  
+  }
+
+  #reservation-form p { 
+    grid-template-columns: 1fr;  
+  }
+
+  #reservation-form label { 
+    text-align: left;
+  }
+  
+  .reservation-confirmation { 
+    width: 90%; 
+  }
+  
+  .table { 
+    display: none;
+  }
+
+  .reservation-list { 
+    display: block; 
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  .reservation-item { 
+    border-bottom: 1px solid #dee2e6;
+    padding: 10px 0;
+  }
+
+  .reservation-item div { 
+    margin-bottom: 5px;
+  }
+}
