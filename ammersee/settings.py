@@ -29,12 +29,11 @@ DEBUG = False
 
 DEBUG = os.environ.get('DEBUG') == 'True'
 
-"""ALLOWED_HOSTS = [
+ALLOWED_HOSTS = [
     '8000-amila3951-restaurantamm-8a519n73b3b.ws.codeinstitute-ide.net', 
-    'localhost',
-]"""
+    '.herokuapp.com',
+]
 
-ALLOWED_HOSTS = ['https://restaurant-am-ammersee-a040553fc4e4.herokuapp.com', 'localhost']
 
 # Application definition
 

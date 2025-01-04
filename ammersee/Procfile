@@ -1,1 +1,1 @@
-web: gunicorn ammersee.wsgi:application
+web: gunicorn ammersee.wsgi
