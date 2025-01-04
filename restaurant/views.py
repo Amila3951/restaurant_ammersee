@@ -16,6 +16,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 
 
+
 def home(request):
     """
     View for the home page.
