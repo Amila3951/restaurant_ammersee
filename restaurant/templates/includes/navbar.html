@@ -14,19 +14,19 @@
           <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if '/menu/' in request.path %}active{% endif %}" href="{% url 'restaurant:menu' %}">Menu</a>
+          <a class="nav-link {% if '/menu/' in request.path %}active{% endif %}" href="{% url 'restaurant_app:menu' %}">Menu</a>
         </li>
         {% if user.is_authenticated %}
           {% if user.is_superuser %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'restaurant:admin_reservations' %}">Reservations</a>
+              <a class="nav-link" href="{% url 'restaurant_app:admin_reservations' %}">Reservations</a>
             </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link {% if 'make_reservation' in request.path %}active{% endif %}" href="{% url 'restaurant:make_reservation' %}">Reserve a table</a>
+              <a class="nav-link {% if 'make_reservation' in request.path %}active{% endif %}" href="{% url 'restaurant_app:make_reservation' %}">Reserve a table</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {% if 'my_reservations' in request.path %}active{% endif %}" href="{% url 'restaurant:my_reservations' %}">My reservations</a>
+              <a class="nav-link {% if 'my_reservations' in request.path %}active{% endif %}" href="{% url 'restaurant_app:my_reservations' %}">My reservations</a>
             </li>
           {% endif %}
           <li class="nav-item">

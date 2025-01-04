@@ -6,7 +6,7 @@ from .views import MyLoginView
 
 
 
-app_name = "restaurant"
+app_name = "restaurant_app"
 
 
 urlpatterns = [

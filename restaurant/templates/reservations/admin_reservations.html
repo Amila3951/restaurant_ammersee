@@ -4,7 +4,7 @@
 <h1>All Reservations</h1>
 
 {% if user.is_superuser %}
-<a href="{% url 'restaurant:add_reservation' %}">Add Reservation</a> <br>
+<a href="{% url 'restaurant_app:add_reservation' %}">Add Reservation</a> <br>
 {% endif %}
 
 <table class="table">
@@ -32,8 +32,8 @@
       <td>{{ reservation.num_people }}</td>
       {% if user.is_superuser %}
       <td>
-        <a href="{% url 'restaurant:admin_edit_reservation' reservation.pk %}">Edit</a> 
-        <a href="{% url 'restaurant:admin_delete_reservation' reservation.pk %}">Delete</a> 
+        <a href="{% url 'restaurant_app:admin_edit_reservation' reservation.pk %}">Edit</a> 
+        <a href="{% url 'restaurant_app:admin_delete_reservation' reservation.pk %}">Delete</a> 
       </td>
       {% endif %}
     </tr>

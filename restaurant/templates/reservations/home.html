@@ -7,9 +7,9 @@
   <img src="{% static 'images/cover5.png' %}" class="d-block w-100" alt="Cover 2">  {# Hero image with Bootstrap classes #}
   <div class="container">
     <div class="slide-options">  {# Container for call-to-action buttons #}
-      <a href="{% url 'restaurant:menu' %}" class="btn btn-primary"  {# Link to the menu page #}
+      <a href="{% url 'restaurant_app:menu' %}" class="btn btn-primary"  {# Link to the menu page #}
         style="background-color: black; border-color: beige;">Our Menu</a>
-        <form method="post" action="{% url 'restaurant:make_reservation' %}">  
+        <form method="post" action="{% url 'restaurant_app:make_reservation' %}">  
           {% csrf_token %}
           <button type="submit" class="btn btn-secondary" style="background-color: beige; color: black;">Book a table</button>
         </form>
