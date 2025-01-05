@@ -20,7 +20,7 @@ class Reservation(models.Model):
     """
     Model representing a table reservation.
     """ 
-    time = models.TimeField() 
+    time = models.TimeField(blank=False, null=False)
     num_people = models.IntegerField(
         validators=[MinValueValidator(1)]  # Ensure the number of people is at least 1
     ) 
@@ -45,7 +45,8 @@ class Reservation(models.Model):
         """
         opening_time = datetime.strptime("10:00", "%H:%M").time()  # Opening time
         closing_time = datetime.strptime("22:00", "%H:%M").time()  # Closing time
-        if not (opening_time <= self.time <= closing_time):
+
+        if self.time < opening_time or self.time > closing_time:
             raise ValidationError("Reservation time must be between 10:00 and 22:00.")
 
 

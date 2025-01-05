@@ -6,7 +6,7 @@ from .views import MyLoginView
 
 
 
-app_name = "restaurant_app"
+app_name = "restaurant"
 
 
 urlpatterns = [
@@ -38,6 +38,6 @@ urlpatterns = [
 
     path("admin/reservations/", views.admin_reservations, name="admin_reservations"),
     path("admin/reservations/add/", views.add_reservation, name="add_reservation"),
-    path("admin/reservations/<int:pk>/edit/", views.edit_reservation, name="admin_edit_reservation"),
-    path("admin/reservations/<int:pk>/delete/", views.delete_reservation, name="admin_delete_reservation"),
+    path("admin/reservations/<int:pk>/edit/", views.admin_edit_reservation, name="admin_edit_reservation"),
+    path("admin/reservations/<int:pk>/delete/", views.admin_delete_reservation, name="admin_delete_reservation"),
 ]

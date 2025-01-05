@@ -3,53 +3,32 @@
 
 {% block content %}
 
-<div id="hero">  {# Hero section container #}
-  <img src="{% static 'images/cover5.png' %}" class="d-block w-100" alt="Cover 2">  {# Hero image with Bootstrap classes #}
+<div id="hero"> 
+  <img src="{% static 'images/cover5.png' %}" class="d-block w-100" alt="Cover 2">  
   <div class="container">
-    <div class="slide-options">  {# Container for call-to-action buttons #}
-      <a href="{% url 'restaurant_app:menu' %}" class="btn btn-primary"  {# Link to the menu page #}
-        style="background-color: black; border-color: beige;">Our Menu</a>
-        <form method="post" action="{% url 'restaurant_app:make_reservation' %}">  
-          {% csrf_token %}
-          <button type="submit" class="btn btn-secondary" style="background-color: beige; color: black;">Book a table</button>
-        </form>
+    <div class="slide-options">  
+      <a href="{% url 'restaurant:menu' %}" class="btn btn-primary"   
+         style="background-color: black; border-color: beige;">Our Menu</a>
+      <form method="post" action="{% url 'restaurant:make_reservation' %}">  
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+    <a href="{% url 'restaurant:make_reservation' %}" class="btn btn-secondary" style="background-color: beige; color: black;">Book a table</a>
+    {% else %}
+    <a href="{% url 'account_login' %}" class="btn btn-secondary" style="background-color: beige; color: black;">Book a table</a> 
+    {% endif %}
+      </form>
     </div>
-    <div class="carousel-caption">  {# Caption overlay on the hero image #}
+    <div class="carousel-caption">  
       <h3>Welcome to Restaurant Ammersee</h3>
       <p class="spaced-paragraph">Discover culinary delights with a beautiful view of the lake.</p>
     </div>
   </div>
 </div>
 
-<div id="about" class="py-7">  {# About section container #}
-  <div class="container">
-    <div class="row justify-content-center">  {# Center the content horizontally #}
-      <div class="col-md-8">  {# Use a Bootstrap grid column #}
-        <h2 class="mb-4">Our Story</h2>
-        <p> The year is 1953. A young couple, newly married and brimming with dreams, open the doors to a quaint
-          little
-          restaurant on the shores of the Ammersee. They pour their hearts and souls into their venture, using
-          cherished family recipes passed down through generations to create a menu that is both comforting and
-          unique. Word of their delicious food and warm hospitality spreads, and soon, the restaurant becomes a
-          beloved local institution.<br> </p>
-        <p> Our menu is a tribute to both tradition and the bounty of our region. Savor classic German dishes,
-          crafted
-          with fresh, local ingredients, and discover new favorites that showcase our chef's creativity. Complement
-          your meal with a selection from our thoughtfully curated wine list, featuring both local and international
-          gems. <br> </p>
-        <p> More than just a restaurant, we offer a warm and inviting haven where you can celebrate life's
-          milestones,
-          enjoy an intimate dinner, or simply unwind with loved ones. Come experience the charm, the breathtaking
-          views, and the enduring passion for good food and hospitality that have defined us for over 70 years.</p>
-      </div>
-    </div>
-  </div>
 </div>
 
-<div id="testimonials">  {# Testimonials section (currently empty) #}
-</div>
+<div id="testimonials">  </div>
 
-<div id="contact">  {# Contact section (currently empty) #}
-</div>
+<div id="contact">  </div>
 
 {% endblock %}

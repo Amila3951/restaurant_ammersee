@@ -15,13 +15,20 @@ class ReservationForm(forms.ModelForm):
                 attrs={
                     'type': 'date',
                     'class': 'datepicker', 
-                    'placeholder': 'Select a date'
+                    'placeholder': 'Select a date',
+                    'autocomplete': 'off' 
                 },
+
                 format='%Y-%m-%d'
             ),
-            'time': forms.TimeInput(attrs={'type': 'time'}),  # Use a time picker for the time field
-            'email': forms.EmailInput(attrs={}),  # Use a default email input
+
+            'time': forms.TimeInput(attrs={'type': 'time', 'autocomplete': 'off', 'required': True}), 
+            'email': forms.EmailInput(attrs={'autocomplete': 'email'}),  
+            'name': forms.TextInput(attrs={'autocomplete': 'name'}),  
+            'phone': forms.TextInput(attrs={'autocomplete': 'tel'}),  
+            'num_people': forms.NumberInput(attrs={'autocomplete': 'off'}),  
         }
+
 
     def clean_date(self):
         """

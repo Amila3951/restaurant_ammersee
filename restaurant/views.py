@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.http import HttpResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.contrib.auth.views import LoginView
 from django.db.models import Sum
@@ -206,7 +207,6 @@ def register(request):
             messages.success(request, f"Account created for {username}!")
 
             # Call the sendEmail function after successful registration
-
             javascript_code = f"""
                 <script>
                     // Pass form data to the sendEmail function
@@ -214,9 +214,10 @@ def register(request):
                     sendEmail(formData);
                 </script>
             """
-
+            
             login(request, user)
             return HttpResponse(javascript_code)  # Return the JavaScript code
+
         else:
             print(form.errors)
     else:
@@ -271,7 +272,7 @@ def add_reservation(request):
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
-def delete_reservation(request, pk):
+def admin_delete_reservation(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
     if request.method == "POST":
         reservation.delete()
@@ -285,7 +286,7 @@ def delete_reservation(request, pk):
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
-def edit_reservation(request, pk):
+def admin_edit_reservation(request, pk):
     reservation = get_object_or_404(Reservation, pk=pk)
     if request.method == "POST":
         form = ReservationForm(request.POST, instance=reservation)
