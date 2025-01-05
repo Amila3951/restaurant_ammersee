@@ -28,8 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-amila3951-restaurantamm-8a519n73b3b.ws.codeinstitute-ide.net', 
-    'localhost',
-    '.herokuapp.com',
+    'restaurant-ammersee-436b83e7ebb7.herokuapp.com'
 ]
 
 # Application definition
