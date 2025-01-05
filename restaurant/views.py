@@ -16,7 +16,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 
 
-
 def home(request):
     """
     View for the home page.
@@ -207,6 +206,7 @@ def register(request):
             messages.success(request, f"Account created for {username}!")
 
             # Call the sendEmail function after successful registration
+
             javascript_code = f"""
                 <script>
                     // Pass form data to the sendEmail function
@@ -214,10 +214,9 @@ def register(request):
                     sendEmail(formData);
                 </script>
             """
-            
+
             login(request, user)
             return HttpResponse(javascript_code)  # Return the JavaScript code
-
         else:
             print(form.errors)
     else:
