@@ -7,7 +7,53 @@ body {
   flex-direction: column;
   min-height: 100vh;
   gap: 50px;
+  margin-bottom: 0;
 }
+
+.content-wrapper {
+  flex: 1; 
+  margin-top: 0; 
+}
+
+.spaced-paragraph {
+  margin-top: 20px; 
+}
+
+.btn {
+  font-size: 1.2rem; 
+  padding: 15px 30px; 
+}
+
+.btn:hover {
+  filter: brightness(0.8) contrast(1.1); 
+}
+
+.errorlist { 
+  color: red; 
+  margin-bottom: 10px; 
+  list-style: none; 
+  padding: 0; 
+}
+
+/* -------------------- */
+/*  Navigation         */
+/* -------------------- */
+
+.navbar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;  
+  background-color: #f8f9fa; 
+}
+
+nav.navbar .navbar-brand img {
+  max-height: 50px; 
+  width: auto; 
+  object-fit: contain; 
+}
+
 
 
 /* -------------------- */
@@ -24,6 +70,7 @@ body {
   font-size: 16px;
   margin: auto;
   overflow: auto;
+  margin-top: 100px;
 }
 
 .login-form div,
