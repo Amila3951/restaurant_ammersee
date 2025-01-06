@@ -2,17 +2,164 @@
 {% load static %}
 
 {% block content %}
-  <div id="menu-container">  {# Container for the menu content #}
-    <h2>Our Menu</h2>
-    <p>Our menu features the finest German specialties, crafted with fresh, locally-sourced ingredients.</p>
-    
-    <a href="{% url 'restaurant:make_reservation' %}" class="btn btn-secondary" style="background-color: beige; color: black;">Book a table</a>  {# Link to the reservation page #}
+<link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+<div id="menu-container">
+  <h2>Our Menu</h2>
+  <p>Our menu features the finest German specialties, crafted with fresh, locally-sourced ingredients.</p>
 
-    <div class="row">  {# Create a row with two columns #}
-      <div class="col-md-12" id="dishes-container"></div>  {# Container for dishes (populated by JavaScript) #}
-      <div class="col-md-12" id="drinks-container"></div>  {# Container for drinks (populated by JavaScript) #}
+  <a href="{% url 'restaurant:make_reservation' %}" class="btn btn-secondary" style="background-color: beige; color: black;">Book a table</a> 
+
+  <div class="category-item">
+    <h3 class="category-heading">Appetizers</h3> <hr class="category-separator">
+    <div class="row"> 
+      <div class="col-md-6 menu-column"> 
+        <div class="menu-item">
+          <h4>Beef Tartar</h4>
+          <p>With capers, onions, and quail egg</p>
+          <p>32 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Fried Goose Liver</h4>
+          <p>With caramelized apples and brioche toast</p>
+          <p>38 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Asparagus Salad</h4>
+          <p>With truffle vinaigrette</p>
+          <p>28 €</p>
+        </div>
+      </div>
+      <div class="col-md-6 menu-column">
+        <div class="menu-item">
+          <h4>Smoked Salmon</h4>
+          <p>With horseradish crème fraîche on black bread toast</p>
+          <p>26 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Venison Carpaccio</h4>
+          <p>With cranberries and parmesan</p>
+          <p>34 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Fried Goat Cheese Pralines</h4>
+          <p>With honey-mustard dressing</p>
+          <p>24 €</p>
+        </div>
+      </div>
     </div>
-  </div> 
+  </div>
 
-  <script src="{% static 'js/script.js' %}"></script>  {# Link to the JavaScript file that populates the menu #}
+  <div class="category-item">
+    <h3 class="category-heading">Main Courses</h3> <hr class="category-separator">
+    <div class="row"> 
+      <div class="col-md-6 menu-column">
+        <div class="menu-item">
+          <h4>Wiener Schnitzel</h4>
+          <p>Breaded veal cutlet with potato salad and cranberries</p>
+          <p>42 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Roasted Venison Back</h4>
+          <p>With bread dumplings, game sauce and roasted chestnuts</p>
+          <p>58 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Pike-perch Fillet</h4>
+          <p>With potato-herb crust, celery puree and white wine sauce</p>
+          <p>48 €</p>
+        </div>
+      </div>
+      <div class="col-md-6 menu-column">
+        <div class="menu-item">
+          <h4>Roast Pork</h4>
+          <p>With dumplings and red cabbage</p>
+          <p>36 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Beef Fillet</h4>
+          <p>With porcini mushrooms and potato gratin</p>
+          <p>62 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Königsberg Meatballs</h4>
+          <p>With caper sauce and boiled potatoes</p>
+          <p>38 €</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-item">
+    <h3 class="category-heading">Desserts</h3> <hr class="category-separator">
+    <div class="row"> 
+      <div class="col-md-6 menu-column">
+        <div class="menu-item">
+          <h4>Apple Strudel</h4>
+          <p>With vanilla sauce</p>
+          <p>18 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Black Forest Cherry Cake</h4>
+          <p>22 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Cheese Plate</h4>
+          <p>With grapes and figs</p>
+          <p>24 €</p>
+        </div>
+      </div>
+      <div class="col-md-6 menu-column">
+        <div class="menu-item">
+          <h4>Chocolate Mousse</h4>
+          <p>With raspberry sauce</p>
+          <p>16 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Crème brûlée</h4>
+          <p>With caramelized almonds</p>
+          <p>18 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Baked Apple Rings</h4>
+          <p>With cinnamon and sugar</p>
+          <p>14 €</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-item">
+    <h3 class="category-heading">Drinks</h3> <hr class="category-separator">
+    <div class="row"> 
+      <div class="col-md-6 menu-column">
+        <div class="menu-item">
+          <h4>Riesling "Scharzhofberger" Egon Müller, Mosel (0.75l)</h4>
+          <p>850 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Gewürztraminer "Vendange Tardive" Domaine Zind-Humbrecht, Alsace (0.75l)</h4>
+          <p>380 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Chardonnay "Montrachet" Domaine de la Romanée-Conti, Bourgogne (0.75l)</h4>
+          <p>6500 €</p>
+        </div>
+      </div>
+      <div class="col-md-6 menu-column">
+        <div class="menu-item">
+          <h4>Spätburgunder "Grosse Gewächs" Bernhard Huber, Baden (0.75l)</h4>
+          <p>280 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Pinot Noir "Clos de Vougeot" Domaine de la Romanée-Conti, Bourgogne (0.75l)</h4>
+          <p>8000 €</p>
+        </div>
+        <div class="menu-item">
+          <h4>Cabernet Sauvignon "Reserve" Opus One, Napa Valley (0.75l)</h4>
+          <p>550 €</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
 {% endblock %}

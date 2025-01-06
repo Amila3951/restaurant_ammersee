@@ -13,7 +13,7 @@ html, body {
 /* -------------------- */
 
 .hero-image {
-  background-image: url("/static/images/cover5.png");
+  background-image: url("/static/images/cover5.bbebd46693bb.png");
   background-size: cover;
   background-position: center;
   min-height: 100vh; /* Hero image takes at least full viewport height */
