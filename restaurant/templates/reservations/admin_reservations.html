@@ -1,45 +1,83 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>All Reservations</h1>
+{% load static %}
 
-{% if user.is_superuser %}
-<a href="{% url 'restaurant:add_reservation' %}">Add Reservation</a> <br>
-{% endif %}
+<style>
+  .reservations-container {
+    margin-top: 100px;
+    text-align: center;
+  }
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
-      <th scope="col">Guests</th>
-      {% if user.is_superuser %}
-      <th scope="col">Actions</th>
-      {% endif %}
-    </tr>
-  </thead>
-  <tbody>
-    {% for reservation in reservations %}
-    <tr>
-      <td>{{ reservation.name }}</td>
-      <td>{{ reservation.email }}</td>
-      <td>{{ reservation.phone }}</td>
-      <td>{{ reservation.date }}</td>
-      <td>{{ reservation.time }}</td>
-      <td>{{ reservation.num_people }}</td>
-      {% if user.is_superuser %}
-      <td>
-        <a href="{% url 'restaurant:admin_edit_reservation' reservation.pk %}">Edit</a> 
-        <a href="{% url 'restaurant:admin_delete_reservation' reservation.pk %}">Delete</a> 
-      </td>
-      {% endif %}
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+  .reservations-container h1 {
+    margin-bottom: 20px;
+  }
+
+  .reservations-container a {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: beige;
+    color: black;
+    text-decoration: none;
+    border: 1px solid black;
+  }
+
+  .table td a {
+    margin-right: 10px;
+    background: none;
+  }
+
+  .table td a:first-child {
+    color: blue;
+  }
+
+  .table td a:last-child {
+    color: red;
+  }
+</style>
+
+<div class="reservations-container">
+  <h1>All Reservations</h1>
+
+  {% if user.is_superuser %}
+  <a href="{% url 'restaurant:add_reservation' %}">Add Reservation</a> <br>
+  {% endif %}
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Guests</th>
+        {% if user.is_superuser %}
+        <th scope="col">Actions</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for reservation in reservations %}
+      <tr>
+        <td>{{ reservation.name }}</td>
+        <td>{{ reservation.email }}</td>
+        <td>{{ reservation.phone }}</td>
+        <td>{{ reservation.date }}</td>
+        <td>{{ reservation.time }}</td>
+        <td>{{ reservation.num_people }}</td>
+        {% if user.is_superuser %}
+        <td>
+          <a href="{% url 'restaurant:admin_edit_reservation' reservation.pk %}">Edit</a>
+          <a href="{% url 'restaurant:admin_delete_reservation' reservation.pk %}">Delete</a>
+        </td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
 
 {% block footer %}{% endblock %}
