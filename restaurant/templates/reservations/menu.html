@@ -15,15 +15,15 @@
   .menu-content {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
-    color: beige; 
+    color: beige;
     margin-top: 10px;
   }
 
   #menu-container h2 {
-    margin-top: 5px; 
+    margin-top: 5px;
     font-weight: bold;
-    font-size: 36px; 
-    color: rgb(212, 212, 135); 
+    font-size: 36px;
+    color: rgb(212, 212, 135);
   }
 
   #menu-container p {
@@ -41,7 +41,7 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 10px;
-    color: rgb(212, 212, 135); 
+    color: rgb(212, 212, 135);
   }
 
   .category-separator {
@@ -61,17 +61,17 @@
     text-align: center;
   }
 
-  .menu-item h4, 
+  .menu-item h4,
   .menu-item p {
     font-family: 'Times New Roman', Times, serif;
     font-size: 25px;
   }
 
-  .col-md-6 {   
+  .col-md-6 {
     width: 100%;
   }
 
-  .category-item {  
+  .category-item {
     margin-top: 50px;
   }
 </style>
@@ -81,7 +81,12 @@
     <h2>Our Menu</h2>
     <p>Our menu features the finest German specialties, crafted with fresh, locally-sourced ingredients.</p>
 
-    <a href="{% url 'restaurant:make_reservation' %}" class="btn btn-secondary" style="background-color: beige; color: black;">Book a table</a>
+    {% if user.is_authenticated %}
+    <a href="{% url 'restaurant:make_reservation' %}" class="btn btn-secondary"
+      style="background-color: beige; color: black;">Book a table</a>
+    {% else %}
+    <a href="{% url 'account_login' %}" class="btn btn-secondary">Book a table</a>
+    {% endif %}
 
     <div class="category-item">
       <h3 class="category-heading">Appetizers</h3>
@@ -110,7 +115,7 @@
     <div class="category-item">
       <h3 class="category-heading">Main Courses</h3>
       <hr class="category-separator">
-      <div class="row"> 
+      <div class="row">
         <div class="col-md-6 menu-column">
           <div class="menu-item">
             <h4>Wiener Schnitzel</h4>
@@ -134,7 +139,7 @@
     <div class="category-item">
       <h3 class="category-heading">Desserts</h3>
       <hr class="category-separator">
-      <div class="row"> 
+      <div class="row">
         <div class="col-md-6 menu-column">
           <div class="menu-item">
             <h4>Apple Strudel</h4>
@@ -157,7 +162,7 @@
     <div class="category-item">
       <h3 class="category-heading">Drinks</h3>
       <hr class="category-separator">
-      <div class="row"> 
+      <div class="row">
         <div class="col-md-6 menu-column">
           <div class="menu-item">
             <h4>Riesling "Scharzhofberger" Egon Müller, Mosel (0.75l)</h4>
