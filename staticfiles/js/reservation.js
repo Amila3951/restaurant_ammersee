@@ -1,11 +1,11 @@
 import emailjs from '@emailjs/browser';
 
-emailjs.init("YJtEjZpi5gTulnaLfS");
-emailjs.send("service_ab2vrqc", "template_oo7qvf5", templateParams)
+emailjs.init("JtEjZpi5gTulnaLfS");
+emailjs.send("service_ab2vrqc", "template_ksxlldn", templateParams)
 
   .then(function (response) {
 
-    console.log("Welcome email sent successfully!", response.status, response.text);
+    console.log("Reservation email sent successfully!", response.status, response.text);
   }, function (error) {
     console.log("There was an error sending the email:", error);
    });

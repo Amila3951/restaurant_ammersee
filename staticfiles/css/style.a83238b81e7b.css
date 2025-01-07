@@ -53,7 +53,7 @@ nav.navbar .navbar-brand img {
 /* -------------------- */
 
 .hero-image {
-  background-image: url("/static/images/cover5.png");
+  background-image: url("/static/images/cover5.bbebd46693bb.png");
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -245,7 +245,7 @@ footer .h3 {
 
 #menu-container {
   text-align: center;
-  background-image: url("/static/images/cover4.png");
+  background-image: url("/static/images/cover4.c0076f176dcf.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;

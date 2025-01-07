@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from django.http import HttpResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.contrib.auth.views import LoginView
 from django.db.models import Sum
@@ -15,6 +14,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
+
 
 
 def home(request):
@@ -206,18 +206,11 @@ def register(request):
             username = form.cleaned_data.get("username")
             messages.success(request, f"Account created for {username}!")
 
-            # Call the sendEmail function after successful registration
-            javascript_code = f"""
-                <script>
-                    // Pass form data to the sendEmail function
-                    const formData = {{ form.cleaned_data|json_script:"form-data" }}; 
-                    sendEmail(formData);
-                </script>
-            """
-            
-            login(request, user)
-            return HttpResponse(javascript_code)  # Return the JavaScript code
+           
+            sendEmail(form.cleaned_data)  
 
+            login(request, user)
+            return redirect('restaurant:home') 
         else:
             print(form.errors)
     else:
