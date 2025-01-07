@@ -9,13 +9,12 @@ Note: This website is intended for educational purposes only and does not repres
 [Link to the live website of Restaurat am Ammersee](https://restaurant-ammersee-436b83e7ebb7.herokuapp.com/)
 
 ### Responsive Design
+
 Ensures a seamless user experience across various devices (desktops, tablets, and mobile phones).
 
 ![Am I responsive image](documentation/amiresponsive.png)
 
 ## Table of Contents
-
-
 
 ## Agile Methodology
 
@@ -49,6 +48,61 @@ To provide a seamless online experience for Restaurant am Ammersee, offering eas
 * Responsive website: As a user, I want the website to be responsive and work well on all my devices (desktop, tablet, mobile) so I can access it from anywhere.
 * User registration/login: As a user, I want to be able to register with my name, email address, and a secure password, and then log in to access my account.
 * Receive a confirmation email after making a reservation: As a guest, I want to receive a confirmation email after making a reservation.
-* Make a reservation for a specific date and time: As a guest, I want to be able to make a reservation for a specific date and time. 
+* Make a reservation for a specific date and time: As a guest, I want to be able to make a reservation for a specific date and time.
 * Easily find the restaurant's location and contact information: As a guest, I want to easily find the restaurant's location and contact information.
 * View the restaurant's menu: As a guest, I want to view the restaurant's menu to see what they offer.
+
+# Features
+
+## Existing Features
+
+### Header & Navigation
+
+Featured on all pages, the fully responsive header of Restaurant am Ammersee ensures seamless navigation across all devices:
+
+**Logo:**  Positioned on the left, the logo acts as a clickable link, smoothly redirecting users to the homepage.
+
+**Navigation Bar (Large Screens):** On larger screens, a user-friendly navigation bar provides clear links to key sections:
+
+* Home
+* Menu
+* Register
+* Log in
+
+**Hamburger Menu (Small Screens):**  For smaller screens, a compact hamburger menu declutters the interface. Upon activation, it expands to reveal a complete navigation list, mirroring the options available on larger screens.
+
+**Dynamic Login/User Links:** The navigation bar intelligently adapts to the user's status:
+
+**Guests:** Presented with "Register" and "Login" options.
+**Logged-in Users:** Links change to "Reserve a table", "My Reservations", and "Logout" for quick access to account management.
+
+**Admin Access:** A dedicated admin profile with the credentials "username: admin" and "password: admin123" allows the restaurant owner to access a specialized navigation bar upon login. This admin navigation includes:
+
+* Home
+* Menu
+* Reservations
+* Logout
+
+This dynamic header ensures intuitive navigation and a personalized experience for both guests and the restaurant administrator.
+
+
+### Footer
+
+The responsive footer of Restaurant am Ammersee provides valuable information and encourages user engagement across all devices. It features a clear three-column layout:
+
+* Left Column (Social Media):  Connects users to the restaurant's social media presence with icons linking to platforms like Facebook, Instagram and YouTube. These links open in new tabs.
+
+* Center Column (Location Details):  Displays the restaurant's complete address, ensuring visitors can easily find the establishment.
+
+* Right Column (Contact and Map):  Provides essential contact information and location visualization:
+
+**Contact Details:**
+* Telephone: Clickable phone number that initiates a call on mobile devices or displays the number for dialing on desktops.
+* Email: Clickable email address that opens the user's default email client, pre-populated with the restaurant's address.
+* Interactive Map: An embedded map allows users to visually locate the restaurant, explore the surrounding area, and obtain directions.
+
+**Copyright Notice:** A concise copyright statement is positioned at the bottom of the footer.
+
+**Visual Cues:** All links throughout the footer are styled with a pointer cursor to provide clear visual feedback to users.
+
+This structured footer ensures users can easily connect with Restaurant am Ammersee, find its location, and access relevant contact information through their preferred channels, enhancing communication and fostering a positive user experience.
