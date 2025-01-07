@@ -1,46 +1,48 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="{% url 'home' %}" aria-label="Go to homepage">
-      <img src="{% static 'images/logo.png' %}" alt="Restaurant Ammersee Logo">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" 
+     style="position: fixed; top: 0; left: 0; width: 100%; z-index: 100;">  
+     <div class="container">
+    <a class="navbar-brand" href="{% url 'home' %}" aria-label="Go to homepage" style="margin-right: auto; display: flex; align-items: center;"> 
+      <img src="{% static 'images/logo.png' %}" alt="Restaurant Ammersee Logo" 
+           style="max-height: 50px; width: auto; object-fit: contain;">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <nav class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> 
+      <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
+          <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'home' %}" style="font-size: 1.2rem; margin-left: 2rem; margin-right: 2rem;">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if '/menu/' in request.path %}active{% endif %}" href="{% url 'restaurant:menu' %}">Menu</a>
+          <a class="nav-link {% if '/menu/' in request.path %}active{% endif %}" href="{% url 'restaurant:menu' %}" style="font-size: 1.2rem; margin-left: 2rem; margin-right: 2rem;">Menu</a>
         </li>
         {% if user.is_authenticated %}
           {% if user.is_superuser %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'restaurant:admin_reservations' %}">Reservations</a>
+              <a class="nav-link" href="{% url 'restaurant:admin_reservations' %}" style="font-size: 1.2rem; margin-left: 2rem; margin-right: 2rem;">Reservations</a>
             </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link {% if 'make_reservation' in request.path %}active{% endif %}" href="{% url 'restaurant:make_reservation' %}">Reserve a table</a>
+              <a class="nav-link {% if 'make_reservation' in request.path %}active{% endif %}" href="{% url 'restaurant:make_reservation' %}" style="font-size: 1.2rem; margin-left: 2rem; margin-right: 2rem;">Reserve a table</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {% if 'my_reservations' in request.path %}active{% endif %}" href="{% url 'restaurant:my_reservations' %}">My reservations</a>
+              <a class="nav-link {% if 'my_reservations' in request.path %}active{% endif %}" href="{% url 'restaurant:my_reservations' %}" style="font-size: 1.2rem; margin-left: 2rem; margin-right: 2rem;">My reservations</a>
             </li>
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_logout' %}" onclick="location.reload();">Log out</a>
+            <a class="nav-link" href="{% url 'account_logout' %}" onclick="location.reload();" style="font-size: 1.2rem; margin-left: 2rem; margin-right: 2rem;">Log out</a>
           </li>
         {% else %}
           <li class="nav-item">
-            <a class="nav-link {% if 'signup' in request.path %}active{% endif %}" href="{% url 'account_signup' %}">Register</a>
+            <a class="nav-link {% if 'signup' in request.path %}active{% endif %}" href="{% url 'account_signup' %}" style="font-size: 1.2rem; margin-left: 2rem; margin-right: 2rem;">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if 'login' in request.path %}active{% endif %}" href="{% url 'account_login' %}">Log in</a>
+            <a class="nav-link {% if 'login' in request.path %}active{% endif %}" href="{% url 'account_login' %}" style="font-size: 1.2rem; margin-left: 2rem; margin-right: 2rem;">Log in</a>
           </li>
         {% endif %}
       </ul>
-    </nav>
+    </div>
   </div>
 </nav>
