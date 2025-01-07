@@ -131,7 +131,7 @@ nav.navbar .navbar-brand img {
 
 .content-wrapper {
   flex: 1;
-  margin-top: 0;
+  margin-top: 70px;
 }
 
 .spaced-paragraph {
@@ -152,8 +152,11 @@ nav.navbar .navbar-brand img {
   font-size: 16px;
   margin: auto;
   overflow: auto;
-  margin-top: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
+
+
 
 .login-form div,
 .signup-form div {

@@ -7,4 +7,5 @@ urlpatterns = [
     path('restaurant/', include('restaurant.urls', namespace='restaurant')),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('my_reservations/', include('restaurant.urls', namespace='reservations')),
 ]

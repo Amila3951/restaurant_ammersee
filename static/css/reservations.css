@@ -60,9 +60,9 @@
    padding: 50px;
    margin: 50px auto;
    width: 50%;
-   border: 1px solid #ccc;
-   color: white;
-   background-color: rgba(0, 0, 0, 0.7);
+   border: 1px solid gold;
+   color: black;
+   background-color: rgb(245, 245, 233);
  }
 
  .reservation-confirmation h1 {
