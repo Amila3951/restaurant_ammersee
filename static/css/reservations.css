@@ -55,7 +55,7 @@
 }
 
 #reservation-form h2 {
-  margin: 10px;
+  margin-bottom: 20px;
 }
 
 #reservation-form p {
@@ -235,19 +235,19 @@
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 20px;
-  width: 40%;
+  width: 60%;
   margin: 50px auto;
   font-family: Arial, sans-serif;
   text-align: center;
 }
 
 #reservation-form h2 {
-  margin: 20px;
+  margin: 30px;
 }
 
 #reservation-form p {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 0.5fr 2fr;
   gap: 5px;
   align-items: center;
   margin-bottom: 10px;
@@ -256,6 +256,7 @@
 
 #reservation-form label {
   text-align: center;
+  font-weight: bold;
 }
 
 #reservation-form input,
@@ -285,18 +286,18 @@
   border: 1px solid #ccc;
   padding: 10px;
   width: 40%;
-  margin: 50px auto;
+  
   font-family: Arial, sans-serif;
   text-align: center;
 }
 
 #edit-reservation-form h2 {
-  margin: 20px;
+  margin: 30px;
 }
 
 #edit-reservation-form form {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 0.5fr 2fr;
   gap: 10px;
   align-items: center;
   justify-content: start; 
@@ -305,7 +306,7 @@
 
 #edit-reservation-form label {
   grid-column: 1;
-  text-align: right;
+  text-align: center;
   font-weight: bold;
 }
 

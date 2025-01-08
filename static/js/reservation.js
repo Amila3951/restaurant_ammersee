@@ -1,11 +1,23 @@
 import emailjs from '@emailjs/browser';
 
-emailjs.init("JtEjZpi5gTulnaLfS");
-emailjs.send("service_ab2vrqc", "template_ksxlldn", templateParams)
+export function sendEmail(form) {
+  event.preventDefault(); 
 
-  .then(function (response) {
+  const email = form.elements['email'].value;
+  const username = form.elements['username'].value;
 
-    console.log("Reservation email sent successfully!", response.status, response.text);
-  }, function (error) {
-    console.log("There was an error sending the email:", error);
-   });
+  const templateParams = {
+    to_email: email,
+    username: username
+  };
+
+  emailjs.send('service_ab2vrqc', 'template_oo7qvf5', templateParams)
+    .then((result) => {
+      console.log(result.text);
+     
+      form.submit(); 
+    }, (error) => {
+      console.log(error.text);
+      
+    });
+}
