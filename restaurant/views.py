@@ -16,7 +16,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 
 
-
 def home(request):
     """
     View for the home page.
@@ -206,11 +205,18 @@ def register(request):
             username = form.cleaned_data.get("username")
             messages.success(request, f"Account created for {username}!")
 
-           
-            sendEmail(form.cleaned_data)  
-
+            # Call the sendEmail function after successful registration
+            javascript_code = f"""
+                <script>
+                    // Pass form data to the sendEmail function
+                    const formData = {{ form.cleaned_data|json_script:"form-data" }}; 
+                    sendEmail(formData);
+                </script>
+            """
+            
             login(request, user)
-            return redirect('restaurant:home') 
+            return HttpResponse(javascript_code)  # Return the JavaScript code
+
         else:
             print(form.errors)
     else:
@@ -241,26 +247,23 @@ def admin_reservations(request):
 
 
 def add_reservation(request):
-    if request.method == "POST":
+    if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
-            reservation = form.save(commit=False)
+            email = form.cleaned_data["email"]
+            if User.objects.filter(email=email).exists():
+                user = User.objects.get(email=email)
+                reservation = form.save(commit=False) 
+                reservation.user = user
+                reservation.save()
 
-            user = User.objects.get(email=form.cleaned_data["email"])
-            reservation.user = user
-            reservation.save()
-
-            return redirect(
-                "restaurant:reservation_confirmation", reservation_id=reservation.id
-            )
+                return redirect('restaurant:admin_reservations')
+            else:
+               
+                form.add_error('email', 'User with this email address does not exist.')
     else:
         form = ReservationForm()
-        reservation = None
-    return render(
-        request,
-        "reservations/add_reservation.html",
-        {"form": form, "reservation": reservation},
-    )
+    return render(request, 'reservations/add_reservation.html', {'form': form})
 
 
 @login_required

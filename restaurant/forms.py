@@ -2,6 +2,7 @@ from django import forms
 from .models import Reservation
 from datetime import date, timedelta
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
 
 class ReservationForm(forms.ModelForm):
     """
@@ -15,20 +16,13 @@ class ReservationForm(forms.ModelForm):
                 attrs={
                     'type': 'date',
                     'class': 'datepicker', 
-                    'placeholder': 'Select a date',
-                    'autocomplete': 'off' 
+                    'placeholder': 'Select a date'
                 },
-
                 format='%Y-%m-%d'
             ),
-
-            'time': forms.TimeInput(attrs={'type': 'time', 'autocomplete': 'off', 'required': True}), 
-            'email': forms.EmailInput(attrs={'autocomplete': 'email'}),  
-            'name': forms.TextInput(attrs={'autocomplete': 'name'}),  
-            'phone': forms.TextInput(attrs={'autocomplete': 'tel'}),  
-            'num_people': forms.NumberInput(attrs={'autocomplete': 'off'}),  
+            'time': forms.TimeInput(attrs={'type': 'time'}),  # Use a time picker for the time field
+            'email': forms.EmailInput(attrs={}),  # Use a default email input
         }
-
 
     def clean_date(self):
         """
@@ -49,4 +43,5 @@ class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)  # Add email field and make it required
 
     class Meta(UserCreationForm.Meta):
+        model = get_user_model()  # Explicitly get the User model
         fields = UserCreationForm.Meta.fields + ('email',)  # Add email to the list of fields

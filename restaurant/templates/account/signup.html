@@ -1,36 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-  <form method="post" action="{% url 'account_signup' %}" class="signup-form"> 
-    <h1>Sign Up</h1> 
-    {% csrf_token %} 
-    {{ form.as_p }}  
+<form method="post" action="{% url 'account_signup' %}" class="signup-form" onsubmit="sendEmail(this);">
+  <h1>Sign Up</h1>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Sign Up</button>
+  <p>Already have an account? <a href="{% url 'account_login' %}">Log in</a></p>
 
-    <button type="submit">Sign Up</button> 
-    <p>Already have an account? <a href="{% url 'account_login' %}">Log in</a></p> 
-  </form>
+</form>
 
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script> 
-  <script type="text/javascript">
-    (function(){
-      emailjs.init({
-        publicKey: "JtEjZpi5gTulnaLfS",  
-      });
-    })();
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="module">
+  import { sendEmail } from "{% static 'js/email.js' %}";
 
-    // Function to send the email (this will be called from the view)
-    function sendEmail(formData) { 
-      const templateParams = {
-        to_email: formData.email,  
-        username: formData.username  
-      };
+  (function () {
+    emailjs.init({
+      publicKey: "JtEjZpi5gTulnaLfS",
+    });
+  })();
 
-      emailjs.send('service_ab2vrqc', 'template_oo7qvf5', templateParams)  
-        .then((result) => {
-          console.log(result.text);
-        }, (error) => {
-          console.log(error.text);
-        });
-    }
-  </script>
+</script>
 {% endblock %}
