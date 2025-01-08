@@ -1,16 +1,55 @@
 {% extends 'base.html' %}
 
+{% block title %}Edit Reservation{% endblock %}
+
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/reservations.css' %}">
 
 <div id="edit-reservation-form">
-    <h1>Edit Reservation</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save Changes</button>
-      </form>
-</div>
+  <h2>Edit Reservation</h2>
 
+  <form method="post">
+    {% csrf_token %}
+
+    {% if form.errors %}
+    <ul class="errorlist">
+      {% for field, errors in form.errors.items %}
+      {% for error in errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {{ form.name.label_tag }}
+    {{ form.name }}
+    {{ form.email.label_tag }}
+    {{ form.email }}
+    {{ form.phone.label_tag }}
+    {{ form.phone }}
+    {{ form.date.label_tag }}
+    <input type="date" name="date" class="form-control" id="{{ form.date.id_for_label }}"
+      value="{{ form.date.value|date:'Y-m-d' }}">
+    {{ form.time.label_tag }}
+    {{ form.time }}
+    {{ form.num_people.label_tag }}
+    {{ form.num_people }}
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <script>
+    // Get the current date
+    var today = new Date();
+    // Set the minimum date to tomorrow
+    var tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    // Format the date in YYYY-MM-DD format
+    var minDate = tomorrow.toISOString().split('T')[0];
+
+    // Set the min attribute of the date field
+    document.getElementById("{{ form.date.id_for_label }}").min = minDate;
+  </script>
+</div>
 {% endblock %}

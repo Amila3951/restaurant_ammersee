@@ -88,7 +88,6 @@
   margin-top: 30px;
 }
 
-
 /* -------------------- */
 /*  Edit Reservation    */
 /* -------------------- */
@@ -186,6 +185,148 @@
   }
 }
 
+/* -------------------- */
+/*  General Styles     */
+/* -------------------- */
+
+.btn-edit {
+  background-color: transparent;
+  color: blue;
+  border: none;
+}
+
+.btn-delete {
+  background-color: transparent;
+  color: red;
+  border: none;
+}
+
+.table {
+  font-family: Arial, sans-serif;
+}
+
+.table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table th {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table td,
+.table th {
+  border: 1px solid #dee2e6;
+}
+
+.errorlist {
+  color: red;
+  list-style: none;
+  padding: 0;
+}
+
+
+/* -------------------- */
+/*  Reservation Form   */
+/* -------------------- */
+
+#reservation-form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 40%;
+  margin: 50px auto;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#reservation-form h2 {
+  margin: 20px;
+}
+
+#reservation-form p {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5px;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+#reservation-form label {
+  text-align: center;
+}
+
+#reservation-form input,
+#reservation-form select {
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+#reservation-form button {
+  background-color: beige;
+  color: #000000;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 30px;
+}
+
+
+/* -------------------- */
+/*  Edit Reservation    */
+/* -------------------- */
+
+#edit-reservation-form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 40%;
+  margin: 50px auto;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#edit-reservation-form h2 {
+  margin: 20px;
+}
+
+#edit-reservation-form form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  align-items: center;
+  justify-content: start; 
+  text-align: left;
+}
+
+#edit-reservation-form label {
+  grid-column: 1;
+  text-align: right;
+  font-weight: bold;
+}
+
+#edit-reservation-form input,
+#edit-reservation-form select {
+  grid-column: 2;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+#edit-reservation-form button {
+  grid-column: 1 / span 2;
+  background-color: beige;
+  color: #000000;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+}
 
 /* -------------------- */
 /*  Reservation Confirmation */
