@@ -1,4 +1,4 @@
-import { sendEmail } from './email.mjs';
+import { sendEmail } from './email.js';
 
 jest.mock('@emailjs/browser', () => ({
   send: jest.fn(() => Promise.resolve({ text: 'Success' }))
