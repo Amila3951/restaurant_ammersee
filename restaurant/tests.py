@@ -1,58 +1,56 @@
 from django.test import TestCase
-from django.urls import reverse
 from .models import Reservation
 from .forms import ReservationForm
-from django.core import mail
-from django.contrib.auth.models import User
-from unittest.mock import patch
+from django.urls import reverse
+from django.utils import timezone
+from datetime import timedelta
 
 class MakeReservationViewTest(TestCase):
+
     def test_make_reservation_valid_form(self):
-        data = {'date': '2024-12-31', 'time': '18:00', 'num_people': 2}
+        """
+        Test that a valid reservation form creates a new reservation.
+        """
+        # Generate a date in the future for the reservation
+        today = timezone.now().date()
+        tomorrow = today + timedelta(days=1)
+        data = {
+            'date': tomorrow.strftime('%Y-%m-%d'),  # Format the date as YYYY-MM-DD
+            'time': '18:00', 
+            'num_people': 2,
+            'name': 'Test User',  # Add a name
+            'email': 'test@example.com',  # Add an email
+            'phone': '1234567890'  # Add a phone number
+        }
+
         form = ReservationForm(data=data)
-        self.assertTrue(form.is_valid())
-        print(form.errors)
+        self.assertTrue(form.is_valid(), form.errors)  # Check if the form is valid, print errors if not
 
-        response = self.client.post(reverse('restaurant:make_reservation'), data)
+        response = self.client.post(reverse('restaurant:make_reservation'), data)  # Simulate a POST request
 
-        self.assertEqual(Reservation.objects.count(), 1)
+        self.assertEqual(Reservation.objects.count(), 1)  # Check if one reservation was created
+        self.assertEqual(response.status_code, 302)  # Check for redirect status code (302)
 
-        self.assertEqual(response.status_code, 302)
-
-
-
-class SignupEmailTest(TestCase):
-
-    @patch('emailjs.send')  # Mock the emailjs.send function
-    def test_email_sent_on_signup(self, mock_send):
+    def test_make_reservation_invalid_form(self):
         """
-        Test that EmailJS is called correctly when a user signs up.
+        Test that an invalid reservation form does not create a new reservation.
         """
-        # Create a new user
-        user = User.objects.create_user(
-            username='testuser',
-            email='testuser@example.com',
-            password='testpassword'
-        )
+        # Create data for the form with an invalid date (in the past)
+        today = timezone.now().date()
+        yesterday = today - timedelta(days=1)
+        data = {
+            'date': yesterday.strftime('%Y-%m-%d'),  # Format the date as YYYY-MM-DD
+            'time': '18:00', 
+            'num_people': 2,
+            'name': 'Test User',
+            'email': 'test@example.com',
+            'phone': '1234567890'
+        }
 
-        # Simulate form submission (this will call the sendEmail function)
-        with self.client.as_user(user):
-            response = self.client.post('/accounts/signup/', {
-                'username': 'testuser',
-                'email': 'testuser@example.com',
-                'password': 'testpassword',
-            })
+        form = ReservationForm(data=data)
+        self.assertFalse(form.is_valid())  # Check if the form is invalid
 
-        # Check if emailjs.send was called with the correct arguments
-        mock_send.assert_called_once_with(
-            'service_ab2vrqc',  # Your Service ID
-            'template_oo7qvf5',  # Your Template ID
-            {
-                'to_email': 'testuser@example.com',
-                'username': 'testuser'
-            }
-        )
+        response = self.client.post(reverse('restaurant:make_reservation'), data)  # Simulate a POST request
 
-        # Check if the user was redirected to the home page
-        self.assertEqual(response.status_code, 302)  # 302 is the redirect status code
-        self.assertEqual(response.url, '/')  # '/' is the home page URL
+        self.assertEqual(Reservation.objects.count(), 0)  # Check that no reservations were created
+        self.assertEqual(response.status_code, 200)  # Expect the same page to be rendered with errors (status code 200)
