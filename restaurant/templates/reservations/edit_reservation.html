@@ -6,7 +6,7 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/reservations.css' %}">
 
-<div class="form-container">
+<div id="edit-reservation-form">
   <h1>Edit Reservation</h1>
 
   <form method="post">
@@ -29,7 +29,8 @@
     {{ form.phone.label_tag }}
     {{ form.phone }}
     {{ form.date.label_tag }}
-    <input type="date" name="date" class="form-control" id="{{ form.date.id_for_label }}" value="{{ form.date.value|date:'Y-m-d' }}"> 
+    <input type="date" name="date" class="form-control" id="{{ form.date.id_for_label }}"
+      value="{{ form.date.value|date:'Y-m-d' }}">
     {{ form.time.label_tag }}
     {{ form.time }}
     {{ form.num_people.label_tag }}

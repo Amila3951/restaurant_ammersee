@@ -54,7 +54,7 @@
   text-align: center;
 }
 
-#reservation-form h2 { 
+#reservation-form h2 {
   margin: 20px 0 50px 0;
 }
 
@@ -100,42 +100,43 @@
   width: 40%;
   margin: 50px auto;
   font-family: Arial, sans-serif;
-  text-align: center;
+  text-align: center; 
 }
 
 #edit-reservation-form h1 {
-  font-size: 30px;
-  margin: 20px;
+  margin: 20px 0 50px 0;
 }
 
-#edit-reservation-form p {
+#edit-reservation-form form {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 5px;
+  gap: 10px;
   align-items: center;
-  margin-bottom: 10px;
-  justify-content: center;
 }
 
 #edit-reservation-form label {
-  text-align: center;
+  grid-column: 1;
+  text-align: right;
+  font-weight: bold;
 }
 
 #edit-reservation-form input,
 #edit-reservation-form select {
+  grid-column: 2;
   box-sizing: border-box;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
 }
 
 #edit-reservation-form button {
+  grid-column: 1 / span 2;
   background-color: beige;
   color: #000000;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 
@@ -265,15 +266,19 @@
 /* -------------------- */
 
 @media (max-width: 768px) {
-  #reservation-form, #edit-reservation-form {
+
+  #reservation-form,
+  #edit-reservation-form {
     width: 90%;
   }
 
-  #reservation-form p, #edit-reservation-form p {
+  #reservation-form p,
+  #edit-reservation-form p {
     grid-template-columns: 1fr;
   }
 
-  #reservation-form label, #edit-reservation-form label {
+  #reservation-form label,
+  #edit-reservation-form label {
     text-align: left;
   }
 

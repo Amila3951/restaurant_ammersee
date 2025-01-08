@@ -2,40 +2,40 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/reservations.css' %}">  
-<div class="reservation-confirmation">  {# Container for the reservation confirmation message #}
+<link rel="stylesheet" href="{% static 'css/reservations.css' %}">
+<div class="reservation-confirmation"> {# Container for the reservation confirmation message #}
     <h1>Reservation Confirmed!</h1>
     <p>Thank you for your reservation. We look forward to seeing you soon.</p>
 
     <h2>Reservation Details:</h2>
-    <p>Name: {{ reservation.name }}</p> 
-    <p>Email: {{ reservation.email }}</p>  
-    <p>Phone: {{ reservation.phone }}</p>  
-    <p>Date: {{ reservation.date }}</p>  
-    <p>Time: {{ reservation.time }}</p>  
-    <p>Number of Guests: {{ reservation.num_people }}</p>  
+    <p>Name: {{ reservation.name }}</p>
+    <p>Email: {{ reservation.email }}</p>
+    <p>Phone: {{ reservation.phone }}</p>
+    <p>Date: {{ reservation.date }}</p>
+    <p>Time: {{ reservation.time }}</p>
+    <p>Number of Guests: {{ reservation.num_people }}</p>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">  // Include the EmailJS library 
     </script>
     <script type="text/javascript">
-    (function(){
-        emailjs.init("JtEjZpi5gTulnaLfS");  // Initialize EmailJS with your public key
-    })();
+        (function () {
+            emailjs.init("JtEjZpi5gTulnaLfS");
+        })();
 
-    var templateParams = {  // Create an object with the reservation details for the email template
-        to_name: "{{ reservation.name }}",
-        to_email: "{{ reservation.email }}",
-        reservation_date: "{{ reservation.date }}",
-        reservation_time: "{{ reservation.time }}",
-        reservation_guests: "{{ reservation.num_people }}",
-    };
+        var templateParams = {  // Create an object with the reservation details for the email template
+            to_name: "{{ reservation.name }}",
+            to_email: "{{ reservation.email }}",
+            reservation_date: "{{ reservation.date }}",
+            reservation_time: "{{ reservation.time }}",
+            reservation_guests: "{{ reservation.num_people }}",
+        };
 
-    emailjs.send('service_ab2vrqc', 'template_ksxlldn', templateParams)  // Send the email using EmailJS
-    .then(function(response) {
-        console.log('SUCCESS!', response.status, response.text);  // Log success message to the console
-    }, function(error) {
-        console.log('FAILED...', error);  // Log error message to the console
-    });
+        emailjs.send('service_ab2vrqc', 'template_ksxlldn', templateParams)  // Send the email using EmailJS
+            .then(function (response) {
+                console.log('SUCCESS!', response.status, response.text);  // Log success message to the console
+            }, function (error) {
+                console.log('FAILED...', error);  // Log error message to the console
+            });
     </script>
 </div>
 {% endblock %}
