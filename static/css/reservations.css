@@ -55,7 +55,7 @@
 }
 
 #reservation-form h2 {
-  margin: 20px 0 50px 0;
+  margin: 10px;
 }
 
 #reservation-form p {
@@ -100,7 +100,7 @@
   width: 40%;
   margin: 50px auto;
   font-family: Arial, sans-serif;
-  text-align: center; 
+  text-align: center;
 }
 
 #edit-reservation-form h1 {
@@ -165,7 +165,7 @@
 
 @media (min-width: 768px) {
   .table {
-    display: table; 
+    display: table;
   }
 
   .table td a {
@@ -173,8 +173,8 @@
     background: none;
   }
 
-  .reservation-list { 
-    display: none; 
+  .reservation-list {
+    display: none;
   }
 
   .table td a:first-child {
@@ -228,7 +228,7 @@
 /* -------------------- */
 
 .container .text-center.my-4 {
-  margin-bottom: 100px; 
+  margin-bottom: 100px;
 }
 
 
@@ -238,13 +238,13 @@
 
 #deleteModal .modal-content {
   font-family: Arial, sans-serif;
-  top: 100px !important; 
+  top: 100px !important;
   text-align: center;
 }
 
 #deleteModal .modal-title {
   text-align: center;
-  width: 100%; 
+  width: 100%;
 }
 
 #deleteModal .modal-body {
@@ -319,7 +319,7 @@
   }
 
   .reservation-list {
-    margin-top: 0; 
+    margin-top: 0;
   }
 
   .reservation-item {
