@@ -1,278 +1,346 @@
- /* -------------------- */
- /*  Reservation Form   */
- /* -------------------- */
+/* -------------------- */
+/*  General Styles     */
+/* -------------------- */
 
- #reservation-form {
-   background-color: #fff;
-   border: 1px solid #ccc;
-   padding: 20px;
-   width: 60%;
-   margin: 50px auto;
-   font-family: Arial, sans-serif;
-   text-align: center;
- }
+.btn-edit {
+  background-color: transparent;
+  color: blue;
+  border: none;
+}
 
- #reservation-form h1 {
-   font-size: 30px;
-   margin: 20px 0 50px 0;
- }
+.btn-delete {
+  background-color: transparent;
+  color: red;
+  border: none;
+}
 
- #reservation-form p {
-   display: grid;
-   grid-template-columns: 1fr 2fr;
-   gap: 5px;
-   align-items: center;
-   margin-bottom: 10px;
-   justify-content: center;
- }
+.table {
+  font-family: Arial, sans-serif;
+}
 
- #reservation-form label {
-   text-align: center;
- }
+.table td {
+  vertical-align: middle;
+  text-align: center;
+}
 
- #reservation-form input,
- #reservation-form select {
-   box-sizing: border-box;
-   padding: 10px;
-   border: 1px solid #ccc;
- }
+.table th {
+  vertical-align: middle;
+  text-align: center;
+}
 
- #reservation-form button {
-   background-color: beige;
-   color: #000000;
-   padding: 10px 20px;
-   border: none;
-   cursor: pointer;
-   width: 100%;
-   margin-top: 30px;
- }
+.table td,
+.table th {
+  border: 1px solid #dee2e6;
+}
 
- /* -------------------- */
- /*  Reservation Confirmation  */
- /* -------------------- */
+.errorlist {
+  color: red;
+  list-style: none;
+  padding: 0;
+}
 
- .reservation-confirmation {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   text-align: center;
-   font-family: Arial, sans-serif;
-   padding: 50px;
-   margin: 50px auto;
-   width: 50%;
-   border: 1px solid gold;
-   color: black;
-   background-color: rgb(245, 245, 233);
- }
 
- .reservation-confirmation h1 {
-   font-size: 30px;
-   margin-bottom: 1rem;
-   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
- }
+/* -------------------- */
+/*  Reservation Form   */
+/* -------------------- */
 
- .reservation-confirmation h2 {
-   font-size: 25px;
-   margin-bottom: 1rem;
-   margin-top: 2rem;
-   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
- }
+#reservation-form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 60%;
+  margin: 50px auto;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
 
- .reservation-confirmation p {
-   margin-bottom: 5px;
- }
+#reservation-form h2 { 
+  margin: 20px 0 50px 0;
+}
 
- /* -------------------- */
- /*  My Reservations     */
- /* -------------------- */
+#reservation-form p {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5px;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
+}
 
- .container .text-center.my-4 {
-   margin-bottom: 100px;
- }
+#reservation-form label {
+  text-align: center;
+}
 
- .btn-edit {
-   background-color: transparent;
-   color: blue;
-   border: none;
- }
+#reservation-form input,
+#reservation-form select {
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
 
- .btn-delete {
-   background-color: transparent;
-   color: red;
-   border: none;
- }
+#reservation-form button {
+  background-color: beige;
+  color: #000000;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 30px;
+}
 
- .table {
-   font-family: Arial, sans-serif;
- }
 
- .table td {
-   vertical-align: middle;
-   text-align: center;
- }
+/* -------------------- */
+/*  Edit Reservation    */
+/* -------------------- */
 
- .table th {
-   vertical-align: middle;
-   text-align: center;
- }
+#edit-reservation-form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 40%;
+  margin: 50px auto;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
 
- .table td,
- .table th {
-   border: 1px solid #dee2e6;
- }
+#edit-reservation-form h1 {
+  font-size: 30px;
+  margin: 20px;
+}
 
- /* -------------------- */
- /*  Edit Reservation    */
- /* -------------------- */
+#edit-reservation-form p {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5px;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
+}
 
- .form-container {
-   width: 30%;
-   margin: 50px auto;
-   border: 1px solid #ccc;
-   padding: 20px;
-   font-family: Arial, sans-serif;
- }
+#edit-reservation-form label {
+  text-align: center;
+}
 
- .form-container h1 {
-   text-align: center;
-   margin-bottom: 20px;
- }
+#edit-reservation-form input,
+#edit-reservation-form select {
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
 
- .form-container label {
-   display: block;
-   margin-bottom: 5px;
- }
+#edit-reservation-form button {
+  background-color: beige;
+  color: #000000;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 30px;
+}
 
- .form-container input,
- .form-container select {
-   width: 100%;
-   padding: 10px;
-   margin-bottom: 15px;
-   border: 1px solid #ccc;
-   box-sizing: border-box;
- }
 
- .form-container button {
-   background-color: beige;
-   color: black;
-   padding: 10px 20px;
-   border: none;
-   cursor: pointer;
-   width: 100%;
- }
+/* -------------------- */
+/*  Admin Reservations  */
+/* -------------------- */
 
- .errorlist {
-   color: red;
-   list-style: none;
-   padding: 0;
- }
+.reservations-container {
+  margin-top: 100px;
+  text-align: center;
+}
 
- /* -------------------- */
- /*  Delete Reservation  */
- /* -------------------- */
+.reservations-container h1 {
+  margin-bottom: 20px;
+}
 
- #deleteModal .modal-content {
-   font-family: Arial, sans-serif;
-   top: 100px !important;
-   text-align: center;
- }
+.reservations-container a {
+  display: inline-block;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  background-color: beige;
+  color: black;
+  text-decoration: none;
+  border: 1px solid black;
+}
 
- #deleteModal .modal-title {
-   text-align: center;
-   width: 100%;
- }
+@media (min-width: 768px) {
+  .table {
+    display: table; 
+  }
 
- #deleteModal .modal-body {
-   text-align: center;
- }
+  .table td a {
+    margin-right: 10px;
+    background: none;
+  }
 
- #deleteModal .reservation-details p {
-   text-align: center;
- }
+  .reservation-list { 
+    display: none; 
+  }
 
- #deleteModal .modal-footer {
-   display: flex;
-   justify-content: center;
- }
+  .table td a:first-child {
+    color: blue;
+  }
 
- /* ------------------------ */
- /*   Admin Reservations     */
- /* ------------------------ */
+  .table td a:last-child {
+    color: red;
+  }
+}
 
- .reservations-container {
-   margin-top: 100px;
-   text-align: center;
- }
 
- .reservations-container h1 {
-   margin-bottom: 20px;
- }
+/* -------------------- */
+/*  Reservation Confirmation */
+/* -------------------- */
 
- .reservations-container a {
-   display: inline-block;
-   margin-bottom: 20px;
-   padding: 10px 20px;
-   background-color: beige;
-   color: black;
-   text-decoration: none;
-   border: 1px solid black;
- }
+.reservation-confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 50px;
+  margin: 50px auto;
+  width: 50%;
+  border: 1px solid gold;
+  color: black;
+  background-color: rgb(245, 245, 233);
+}
 
- .table td a {
-   margin-right: 10px;
- }
+.reservation-confirmation h1 {
+  font-size: 30px;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
 
- .table td a:first-child {
-   color: blue;
- }
+.reservation-confirmation h2 {
+  font-size: 25px;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
 
- .table td a:last-child {
-   color: red;
- }
+.reservation-confirmation p {
+  margin-bottom: 5px;
+}
 
- /* -------------------- */
- /*  Media Queries       */
- /* -------------------- */
 
- @media (min-width: 768px) {
-   .reservation-list {
-     display: none;
-   }
- }
+/* -------------------- */
+/*  My Reservations     */
+/* -------------------- */
 
- @media (max-width: 768px) {
-   #reservation-form {
-     width: 90%;
-   }
+.container .text-center.my-4 {
+  margin-bottom: 100px; 
+}
 
-   #reservation-form p {
-     grid-template-columns: 1fr;
-   }
 
-   #reservation-form label {
-     text-align: left;
-   }
+/* -------------------- */
+/*  Delete Reservation  */
+/* -------------------- */
 
-   .reservation-confirmation {
-     width: 90%;
-   }
+#deleteModal .modal-content {
+  font-family: Arial, sans-serif;
+  top: 100px !important; 
+  text-align: center;
+}
 
-   .table {
-     display: none;
-   }
+#deleteModal .modal-title {
+  text-align: center;
+  width: 100%; 
+}
 
-   .reservation-list {
-     display: block;
-     font-family: Arial, sans-serif;
-     text-align: center;
-   }
+#deleteModal .modal-body {
+  text-align: center;
+}
 
-   .reservation-item {
-     border-bottom: 1px solid #dee2e6;
-     padding: 10px 0;
-   }
+#deleteModal .reservation-details p {
+  text-align: center;
+}
 
-   .reservation-item div {
-     margin-bottom: 5px;
-   }
- }
+#deleteModal .modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* -------------------- */
+/*  Media Queries       */
+/* -------------------- */
+
+@media (max-width: 768px) {
+  #reservation-form, #edit-reservation-form {
+    width: 90%;
+  }
+
+  #reservation-form p, #edit-reservation-form p {
+    grid-template-columns: 1fr;
+  }
+
+  #reservation-form label, #edit-reservation-form label {
+    text-align: left;
+  }
+
+  .reservation-confirmation {
+    width: 90%;
+  }
+
+  .table {
+    display: none;
+  }
+
+  .reservation-list {
+    display: block;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  .reservation-item {
+    border-bottom: 1px solid #dee2e6;
+    padding: 10px 0;
+  }
+
+  .reservation-item div {
+    margin-bottom: 5px;
+  }
+
+  #edit-reservation-form {
+    padding: 10px;
+  }
+
+  #edit-reservation-form h1 {
+    font-size: 24px;
+  }
+
+  #edit-reservation-form input,
+  #edit-reservation-form select {
+    padding: 8px;
+  }
+
+  .reservation-list {
+    margin-top: 0; 
+  }
+
+  .reservation-item {
+    margin-bottom: 10px;
+  }
+
+  .reservation-item .actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .reservation-item .actions a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: beige;
+    color: black;
+    text-decoration: none;
+    border: 1px solid black;
+  }
+
+  .reservation-item .actions a:first-child {
+    color: blue;
+  }
+
+  .reservation-item .actions a:last-child {
+    color: red;
+  }
+}

@@ -1,61 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<style>
-  #edit-reservation-form {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 60%;
-    margin: 50px auto;
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-
-  #edit-reservation-form h1 {
-    font-size: 30px;
-    margin: 20px 0 50px 0;
-  }
-
-  #edit-reservation-form p {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 5px;
-    align-items: center;
-    margin-bottom: 10px;
-    justify-content: center;
-  }
-
-  #edit-reservation-form label {
-    text-align: center;
-  }
-
-  #edit-reservation-form input,
-  #edit-reservation-form select {
-    box-sizing: border-box;
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
-
-  #edit-reservation-form button {
-    background-color: beige;
-    color: #000000;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 30px;
-  }
-</style>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/reservations.css' %}">
 
 <div id="edit-reservation-form">
-  <h1>Edit Reservation</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }} 
-    <button type="submit">Save Changes</button>
-  </form>
+    <h1>Edit Reservation</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+      </form>
 </div>
 
 {% endblock %}
