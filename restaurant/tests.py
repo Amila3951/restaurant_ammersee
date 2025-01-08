@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils import timezone
 from datetime import timedelta
 
+
 class MakeReservationViewTest(TestCase):
 
     def test_make_reservation_valid_form(self):
@@ -54,3 +55,5 @@ class MakeReservationViewTest(TestCase):
 
         self.assertEqual(Reservation.objects.count(), 0)  # Check that no reservations were created
         self.assertEqual(response.status_code, 200)  # Expect the same page to be rendered with errors (status code 200)
+
+
