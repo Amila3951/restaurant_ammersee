@@ -2,24 +2,25 @@
 {% load static %}
 
 {% block content %}
-<form method="post" action="{% url 'account_signup' %}" class="signup-form" onsubmit="sendEmail(this);">
+<form method="post" action="{% url 'account_signup' %}" class="signup-form"> 
   <h1>Sign Up</h1>
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Sign Up</button>
   <p>Already have an account? <a href="{% url 'account_login' %}">Log in</a></p>
-
 </form>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="module">
-  import { sendEmail } from "{% static 'js/email.js' %}";
+  import { sendEmail } from './js/email.js'; 
 
-  (function () {
-    emailjs.init({
-      publicKey: "JtEjZpi5gTulnaLfS",
-    });
+  document.querySelector('.signup-form').addEventListener('submit', function(event) {
+    sendEmail(this); 
+  });
+</script>
+<script type="text/javascript">
+  (function(){
+    emailjs.init("JtEjZpi5gTulnaLfS");
   })();
-
 </script>
 {% endblock %}

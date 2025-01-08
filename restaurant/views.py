@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Reservation, Dish
-from .forms import ReservationForm
+from .forms import ReservationForm, CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.contrib.auth.views import LoginView
@@ -14,6 +13,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
+
 
 
 def home(request):
@@ -198,30 +198,16 @@ def register(request):
     """
     View for user registration.
     """
-    if request.method == "POST":
+    if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            username = form.cleaned_data.get("username")
-            messages.success(request, f"Account created for {username}!")
-
-            # Call the sendEmail function after successful registration
-            javascript_code = f"""
-                <script>
-                    // Pass form data to the sendEmail function
-                    const formData = {{ form.cleaned_data|json_script:"form-data" }}; 
-                    sendEmail(formData);
-                </script>
-            """
-            
             login(request, user)
-            return HttpResponse(javascript_code)  # Return the JavaScript code
-
-        else:
-            print(form.errors)
+            return redirect('restaurant:home')  # Redirect to home page after registration
     else:
-        form = UserCreationForm()
-    return render(request, "account/signup.html", {"form": form})
+        form = CustomUserCreationForm()
+    return render(request, 'account/signup.html', {'form': form})
+
 
 
 def reservation_confirmation(request, reservation_id):
