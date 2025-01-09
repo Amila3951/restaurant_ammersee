@@ -1,3 +1,4 @@
+import emailjs from 'emailjs-com';
 export function sendEmail(form, event) {
     event.preventDefault();
 

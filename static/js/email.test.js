@@ -1,10 +1,11 @@
+// email.test.js
 import { sendEmail } from './email.js';
+import emailjs from 'emailjs-com';
 
-jest.mock('@emailjs/browser', () => ({
+// Mock emailjs-com
+jest.mock('emailjs-com', () => ({
   send: jest.fn(() => Promise.resolve({ text: 'Success' }))
 }));
-
-const emailjs = require('@emailjs/browser');
 
 describe('sendEmail', () => {
   it('should prevent default form submission', () => {
@@ -25,7 +26,7 @@ describe('sendEmail', () => {
     expect(event.preventDefault).toHaveBeenCalled();
   });
 
-  it('should call emailjs.send with correct arguments', () => {
+  it('should call emailjs.send with correct arguments', async () => {
     const form = {
       elements: {
         email: { value: 'test@example.com' },
@@ -38,7 +39,7 @@ describe('sendEmail', () => {
       preventDefault: jest.fn()
     };
 
-    sendEmail(form, event);
+    await sendEmail(form, event);
 
     expect(emailjs.send).toHaveBeenCalledWith(
       'service_ab2vrqc',
@@ -50,7 +51,7 @@ describe('sendEmail', () => {
     );
   });
 
-  it('should submit the form after successful email sending', () => {
+  it('should submit the form after successful email sending', async () => {
     const form = {
       elements: {
         email: { value: 'test@example.com' },
@@ -63,10 +64,7 @@ describe('sendEmail', () => {
       preventDefault: jest.fn()
     };
 
-    // Simulate a successful email sending
-    emailjs.send.mockResolvedValueOnce({ text: 'Success' });
-
-    sendEmail(form, event);
+    await sendEmail(form, event);
 
     expect(form.submit).toHaveBeenCalled();
   });
