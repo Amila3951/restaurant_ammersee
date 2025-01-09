@@ -1,23 +1,23 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% load static %}
 
 {% block content %}
 
-<div class="hero-image">
+<div class="hero-image">  {# Hero section with image and text #}
   <div class="hero-text">
     <h1>Welcome to Restaurant Ammersee</h1>
-    <div class="hero-buttons">
+    <div class="hero-buttons">  {# Buttons for menu and booking #}
       <a href="{% url 'restaurant:menu' %}" class="btn btn-primary">Our Menu</a>
-      {% if user.is_authenticated %}
+      {% if user.is_authenticated %}  {# Show "Book a table" link if user is logged in #}
       <a href="{% url 'restaurant:make_reservation' %}" class="btn btn-secondary">Book a table</a>
-      {% else %}
+      {% else %}  {# Show "Book a table" link that leads to login if user is not logged in #}
       <a href="{% url 'account_login' %}" class="btn btn-secondary">Book a table</a>
       {% endif %}
     </div>
   </div>
 </div>
 
-<div class="our-story">
+<div class="our-story">  {# Section about the restaurant's story #}
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -39,15 +39,15 @@
   </div>
 </div>
 
-<div id="registration-message" style="display: none;"></div> 
+<div id="registration-message" style="display: none;"></div>  {# Hidden div for registration message #}
 
-<script>
+<script>  // JavaScript to display registration message 
   const registrationMessage = document.getElementById('registration-message');
   if ('{{ registration_successful }}' === 'True') {
-    registrationMessage.textContent = 'registration_successful';
+    registrationMessage.textContent = 'registration_successful'; 
   }
 </script>
 
-<script type="module" src="{% static 'js/email.js' %}" defer></script> 
+<script type="module" src="{% static 'js/email.js' %}" defer></script>
 
 {% endblock %}

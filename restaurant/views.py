@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Reservation, Dish
+from .models import Reservation
 from .forms import ReservationForm, CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -10,42 +10,27 @@ from django.db.models import Sum
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-
 
 
 def home(request):
     """
     View for the home page.
-    Handles redirecting users based on authentication status and displays a list of dishes.
+    Handles redirecting users based on authentication status.
     """
-    if request.method == "POST":
-        if request.user.is_authenticated:
-            return redirect(
-                "restaurant:make_reservation"
-            )  # Redirect to make a reservation if logged in
+    if request.method == "POST": 
+        if request.user.is_authenticated:  # Check if the user is logged in
+            return redirect("restaurant:make_reservation")  # Redirect to make a reservation if logged in
         else:
             return redirect("account_login")  # Redirect to login if not logged in
-    else:
-        dishes = Dish.objects.all()  # Retrieve all dishes from the database
-        return render(
-            request, "reservations/home.html", {"dishes": dishes}
-        )  # Render the home page with dishes
-
+    else:  
+        return render(request, "reservations/home.html")  # Render the home page
 
 def menu(request):
     """
     View for the menu page.
-    Displays a list of dishes.
     """
-    dishes = Dish.objects.all()  # Retrieve all dishes from the database
-    context = {"dishes": dishes}
-    return render(
-        request, "reservations/menu.html", context
-    )  # Render the menu page with dishes
+    return render(request, "reservations/menu.html")
 
 
 def make_reservation(request):
@@ -53,12 +38,14 @@ def make_reservation(request):
     View for making a reservation.
     Handles form submission, checks availability, and saves the reservation.
     """
-    if request.method == "POST":
-        form = ReservationForm(request.POST)
-        if form.is_valid():
-            date = form.cleaned_data["date"]
-            time = form.cleaned_data["time"]
-            num_people = form.cleaned_data["num_people"]
+    if request.method == "POST": 
+        form = ReservationForm(
+            request.POST
+        )  
+        if form.is_valid():  # Check if the form is valid
+            date = form.cleaned_data["date"]  # Get the reservation date
+            time = form.cleaned_data["time"]  # Get the reservation time
+            num_people = form.cleaned_data["num_people"]  # Get the number of people
 
             # Check availability
 
@@ -85,11 +72,11 @@ def make_reservation(request):
                     reservation = form.save(
                         commit=False
                     )  # Create the Reservation object but don't save yet
-                    if request.user.is_authenticated:
+                    if request.user.is_authenticated:  # Check if the user is logged in
                         reservation.user = (
                             request.user
                         )  # Associate the reservation with the logged-in user
-                    reservation.save()  # Save the reservation to the database (this will call the clean() method)
+                    reservation.save()  # Save the reservation to the database 
 
                     # Redirect to confirmation page after successful reservation
 
@@ -97,9 +84,9 @@ def make_reservation(request):
                         "restaurant:reservation_confirmation",
                         reservation_id=reservation.id,
                     )
-                except ValidationError as e:
+                except ValidationError as e:  # Catch validation errors
                     form.add_error(None, e)  # Add the error to the form
-    else:
+    else: 
         form = ReservationForm()  # Create an empty reservation form
     return render(
         request, "reservations/make_reservation.html", {"form": form}
@@ -110,39 +97,38 @@ class MyLoginView(LoginView):
     """
     Custom login view to use a custom template.
     """
-
-    template_name = "account/login.html"  # Specify the custom template
+    template_name = "account/login.html"  
 
 
 @login_required  # Requires user to be logged in
 def my_reservations(request):
     """
     View for displaying a user's reservations.
-    Requires user to be logged in.
     """
     reservations = Reservation.objects.filter(user=request.user).order_by(
         "date", "time"
     )  # Fetch reservations for the logged-in user and order them
     context = {
         "reservations": reservations
-    }  # Create a context dictionary to pass to the template
+    }  
     return render(
         request, "reservations/my_reservations.html", context
     )  # Render the template with the context
 
 
-@login_required
+@login_required  # Requires user to be logged in
 def edit_reservation(request, reservation_id):
     """
     View for editing a reservation.
-    Requires user to be logged in and the reservation to belong to the user.
     """
     # Retrieve the reservation object, ensuring it exists and belongs to the logged-in user.
 
     reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
 
-    if request.method == "POST":
-        form = ReservationForm(request.POST, instance=reservation)
+    if request.method == "POST":  
+        form = ReservationForm(
+            request.POST, instance=reservation
+        )  
         if form.is_valid():  # Validate the form data
             form.save()  # Save the updated reservation
             messages.success(
@@ -151,25 +137,21 @@ def edit_reservation(request, reservation_id):
             return redirect(
                 "restaurant:my_reservations"
             )  # Redirect to user's reservations page
-    else:
+    else:  
         form = ReservationForm(
             instance=reservation
-        )  # Populate form with existing reservation data
+        )  
     return render(
         request,
         "reservations/edit_reservation.html",
-        {
-            "form": form,
-            "reservation": reservation,
-        },  # Pass form and reservation to the template
-    )
+        {"form": form, "reservation": reservation},
+    )  # Pass form and reservation to the template
 
 
-@login_required
+@login_required  # Requires user to be logged in
 def delete_reservation(request, reservation_id):
     """
     View for deleting a reservation.
-    Requires user to be logged in and the reservation to belong to the user.
     """
     # Retrieve the reservation object, ensuring it exists and belongs to the logged-in user.
 
@@ -186,29 +168,33 @@ def delete_reservation(request, reservation_id):
             "restaurant:my_reservations"
         )  # Redirect to user's reservations page
     return render(
-        request,
-        "reservations/delete_reservation.html",
-        {
-            "reservation": reservation
-        },  # Pass reservation to the template for confirmation
-    )
+        request, "reservations/delete_reservation.html", {"reservation": reservation}
+    )  # Pass reservation to the template for confirmation
 
 
-@ensure_csrf_cookie
+@ensure_csrf_cookie  # Ensures that the CSRF cookie is set for the response
 def register(request):
     """
     View for user registration.
     """
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            request.session['registration_successful'] = True
-            return redirect('restaurant:home')  # Redirect to home page after registration
-    else:
-        form = CustomUserCreationForm()
-    return render(request, 'account/signup.html', {'form': form})
+    if request.method == "POST":  
+        form = UserCreationForm(
+            request.POST
+        )  
+        if form.is_valid():  # Check if the form is valid
+            user = form.save()  # Save the new user
+            login(request, user)  # Log in the user
+            request.session["registration_successful"] = (
+                True 
+            )
+            return redirect(
+                "restaurant:home"
+            )  # Redirect to home page after registration
+    else: 
+        form = CustomUserCreationForm()  # Create an empty CustomUserCreationForm
+    return render(
+        request, "account/signup.html", {"form": form}
+    )  # Render the signup page with the form
 
 
 def reservation_confirmation(request, reservation_id):
@@ -222,64 +208,106 @@ def reservation_confirmation(request, reservation_id):
         request,
         "reservations/reservation_confirmation.html",
         {"reservation": reservation},
-    )
+    )  # Render the confirmation page with the reservation
 
 
-@login_required
-@user_passes_test(lambda u: u.is_superuser)
+@login_required  # Requires user to be logged in
+@user_passes_test(lambda u: u.is_superuser)  # Requires user to be a superuser
 def admin_reservations(request):
-    reservations = Reservation.objects.all()
-    context = {"reservations": reservations}
-    return render(request, "reservations/admin_reservations.html", context)
+    """
+    View for displaying all reservations to admin users.
+    """
+    reservations = Reservation.objects.all()  # Retrieve all reservations
+    context = {
+        "reservations": reservations
+    }  # Create a context dictionary to pass to the template
+    return render(
+        request, "reservations/admin_reservations.html", context
+    )  # Render the admin reservations page with the context
 
 
+@login_required  # Requires user to be logged in
+@user_passes_test(lambda u: u.is_superuser)  # Requires user to be a superuser
 def add_reservation(request):
-    if request.method == 'POST':
-        form = ReservationForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data["email"]
-            if User.objects.filter(email=email).exists():
-                user = User.objects.get(email=email)
-                reservation = form.save(commit=False) 
-                reservation.user = user
-                reservation.save()
-
-                return redirect('restaurant:admin_reservations')
+    """
+    View for adding a reservation (admin view).
+    """
+    if request.method == "POST":  
+        form = ReservationForm(
+            request.POST
+        )  
+        if form.is_valid():  # Check if the form is valid
+            email = form.cleaned_data["email"]  # Get the email from the form data
+            if User.objects.filter(
+                email=email
+            ).exists():  # Check if a user with this email exists
+                user = User.objects.get(email=email)  # Get the user object
+                reservation = form.save(
+                    commit=False
+                )  # Create the reservation object but don't save yet
+                reservation.user = user  # Assign the user to the reservation
+                reservation.save()  # Save the reservation
+                return redirect(
+                    "restaurant:admin_reservations"
+                )  # Redirect to the admin reservations page
             else:
-               
-                form.add_error('email', 'User with this email address does not exist.')
-    else:
-        form = ReservationForm()
-    return render(request, 'reservations/add_reservation.html', {'form': form})
+                form.add_error(
+                    "email", "User with this email address does not exist."
+                )  # Add an error to the form if the user doesn't exist
+    else: 
+        form = ReservationForm()  # Create an empty ReservationForm
+    return render(
+        request, "reservations/add_reservation.html", {"form": form}
+    )  # Render the add reservation page with the form
 
 
-@login_required
-@user_passes_test(lambda u: u.is_superuser)
+@login_required  # Requires user to be logged in
+@user_passes_test(lambda u: u.is_superuser)  # Requires user to be a superuser
 def admin_delete_reservation(request, pk):
-    reservation = get_object_or_404(Reservation, pk=pk)
-    if request.method == "POST":
-        reservation.delete()
-        return redirect("restaurant:admin_reservations")
+    """
+    View for deleting a reservation (admin view).
+    """
+    reservation = get_object_or_404(
+        Reservation, pk=pk
+    )  # Retrieve the reservation or return 404
+    if (
+        request.method == "POST"
+    ): 
+        reservation.delete()  # Delete the reservation
+        return redirect(
+            "restaurant:admin_reservations"
+        )  # Redirect to the admin reservations page
     return render(
         request,
         "reservations/admin_delete_reservation.html",
         {"reservation": reservation},
-    )
+    )  # Render the delete confirmation page with the reservation
 
 
-@login_required
-@user_passes_test(lambda u: u.is_superuser)
+@login_required  # Requires user to be logged in
+@user_passes_test(lambda u: u.is_superuser)  # Requires user to be a superuser
 def admin_edit_reservation(request, pk):
-    reservation = get_object_or_404(Reservation, pk=pk)
-    if request.method == "POST":
-        form = ReservationForm(request.POST, instance=reservation)
-        if form.is_valid():
-            form.save()
-            return redirect("restaurant:admin_reservations")
-    else:
-        form = ReservationForm(instance=reservation)
+    """
+    View for editing a reservation (admin view).
+    """
+    reservation = get_object_or_404(
+        Reservation, pk=pk
+    )  
+    if request.method == "POST":  
+        form = ReservationForm(
+            request.POST, instance=reservation
+        )  
+        if form.is_valid():  # Check if the form is valid
+            form.save()  # Save the updated reservation
+            return redirect(
+                "restaurant:admin_reservations"
+            )  # Redirect to the admin reservations page
+    else:  
+        form = ReservationForm(
+            instance=reservation
+        )  # Populate form with existing reservation data
     return render(
         request,
         "reservations/admin_edit_reservation.html",
         {"form": form, "reservation": reservation},
-    )
+    )  # Render the edit reservation page with the form and reservation

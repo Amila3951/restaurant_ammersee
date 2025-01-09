@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}Edit Reservation{% endblock %}
+{% block title %}Edit Reservation{% endblock %} 
 
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/reservations.css' %}">
+<link rel="stylesheet" href="{% static 'css/reservations.css' %}"> 
 
-<div id="edit-reservation-form">
+<div id="edit-reservation-form"> {# Container for the edit reservation form #}
   <h2>Edit Reservation</h2>
 
-  <form method="post">
-    {% csrf_token %}
+  <form method="post"> {# Form to edit a reservation #}
+    {% csrf_token %} 
 
-    {% if form.errors %}
+    {% if form.errors %} {# Display form errors #}
     <ul class="errorlist">
       {% for field, errors in form.errors.items %}
       {% for error in errors %}
@@ -22,6 +22,7 @@
     </ul>
     {% endif %}
 
+    {# Render individual form fields #}
     {{ form.name.label_tag }}
     {{ form.name }}
     {{ form.email.label_tag }}
@@ -30,7 +31,7 @@
     {{ form.phone }}
     {{ form.date.label_tag }}
     <input type="date" name="date" class="form-control" id="{{ form.date.id_for_label }}"
-      value="{{ form.date.value|date:'Y-m-d' }}">
+      value="{{ form.date.value|date:'Y-m-d' }}"> {# Date input field #}
     {{ form.time.label_tag }}
     {{ form.time }}
     {{ form.num_people.label_tag }}
@@ -38,7 +39,7 @@
     <button type="submit">Save Changes</button>
   </form>
 
-  <script>
+  <script>  // JavaScript to set minimum date to tomorrow 
     // Get the current date
     var today = new Date();
     // Set the minimum date to tomorrow

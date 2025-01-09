@@ -2,28 +2,30 @@
 {% load static %}
 
 {% block content %}
-<form method="post" action="{% url 'account_signup' %}" class="signup-form"> 
+<form method="post" action="{% url 'account_signup' %}" class="signup-form"> {# Signup form #}
   <h1>Sign Up</h1>
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Sign Up</button>
-  <p>Already have an account? <a href="{% url 'account_login' %}">Log in</a></p>
+  <p>Already have an account? <a href="{% url 'account_login' %}">Log in</a></p> {# Link to login page #}
 </form>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script type="module" src="{% static 'js/email.js' %}" defer></script> 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script> {#
+EmailJS library #}
+<script type="module" src="{% static 'js/email.js' %}" defer></script>
 
 <script type="module">
-  import { sendEmail } from "{% static 'js/email.js' %}"; 
+  import { sendEmail } from "{% static 'js/email.js' %}";  // Import sendEmail function 
 
-  document.querySelector('.signup-form').addEventListener('submit', function(event) {
-    sendEmail(this, event); 
+  document.querySelector('.signup-form').addEventListener('submit', function (event) {
+    // Event listener for form submission 
+    sendEmail(this, event);  // Call sendEmail function on submit  
   });
 </script>
 
 <script type="text/javascript">
-  (function(){
-    emailjs.init("JtEjZpi5gTulnaLfS");
+  (function () {
+    emailjs.init("JtEjZpi5gTulnaLfS");  // Initialize EmailJS  
   })();
 </script>
 {% endblock %}

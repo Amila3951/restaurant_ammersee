@@ -3,7 +3,7 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<form method="post" class="login-form">
+<form method="post" class="login-form"> {# Login form #}
   {% csrf_token %}
   <h1>Login</h1>
 
@@ -20,6 +20,6 @@
     <input type="password" id="password" name="password" required>
   </div>
   <button type="submit">Login</button>
-  <p>Don't have an account? <a href="{% url 'account_signup' %}">Sign up here</a></p>
+  <p>Don't have an account? <a href="{% url 'account_signup' %}">Sign up here</a></p> {# Link to sign-up page #}
 </form>
 {% endblock %}

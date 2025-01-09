@@ -1,30 +1,30 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"> {# Main navigation bar #}
   <div class="container">
-    <a class="navbar-brand" href="{% url 'home' %}" aria-label="Go to homepage">
+    <a class="navbar-brand" href="{% url 'home' %}" aria-label="Go to homepage"> {# Link to homepage #}
       <img src="{% static 'images/logo.png' %}" alt="Restaurant Ammersee Logo">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> {# Navigation toggle for mobile #}
       <span class="navbar-toggler-icon"></span>
     </button>
-    <nav class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+    <nav class="collapse navbar-collapse" id="navbarNav"> {# Collapsible navigation menu #}
+      <ul class="navbar-nav ms-auto"> {# Right-aligned navigation items #}
         <li class="nav-item">
           <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page"
-            href="{% url 'home' %}">Home</a>
+            href="{% url 'home' %}">Home</a> {# Link to homepage #}
         </li>
         <li class="nav-item">
           <a class="nav-link {% if '/menu/' in request.path %}active{% endif %}"
-            href="{% url 'restaurant:menu' %}">Menu</a>
+            href="{% url 'restaurant:menu' %}">Menu</a> {# Link to menu page #}
         </li>
-        {% if user.is_authenticated %}
-        {% if user.is_superuser %}
+        {% if user.is_authenticated %} {# Show these links if user is logged in #}
+        {% if user.is_superuser %} {# Show admin link for superusers #}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'restaurant:admin_reservations' %}">Reservations</a>
         </li>
-        {% else %}
+        {% else %} {# Show reservation links for regular users #}
         <li class="nav-item">
           <a class="nav-link {% if 'make_reservation' in request.path %}active{% endif %}"
             href="{% url 'restaurant:make_reservation' %}">Reserve a table</a>
@@ -35,16 +35,17 @@
         </li>
         {% endif %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'account_logout' %}" onclick="location.reload();">Log out</a>
+          <a class="nav-link" href="{% url 'account_logout' %}" onclick="location.reload();">Log out</a> {# Logout link
+          #}
         </li>
-        {% else %}
+        {% else %} {# Show these links if user is not logged in #}
         <li class="nav-item">
           <a class="nav-link {% if 'signup' in request.path %}active{% endif %}"
-            href="{% url 'account_signup' %}">Register</a>
+            href="{% url 'account_signup' %}">Register</a> {# Link to registration page #}
         </li>
         <li class="nav-item">
           <a class="nav-link {% if 'login' in request.path %}active{% endif %}" href="{% url 'account_login' %}">Log
-            in</a>
+            in</a> {# Link to login page #}
         </li>
         {% endif %}
       </ul>

@@ -5,17 +5,18 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/reservations.css' %}">
-<div class="container">
+
+<div class="container"> {# Container for my reservations #}
   <h2 class="text-center my-4">My Reservations</h2>
 
-  <table class="table">
+  <table class="table"> {# Table to display reservations #}
     <thead>
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Date</th>
         <th scope="col">Time</th>
         <th scope="col">Guests</th>
-        <th scope="col">Actions</th>
+        <th scope="col">Actions</th> {# Actions column (Edit/Delete) #}
       </tr>
     </thead>
     <tbody>
@@ -25,7 +26,7 @@
         <td>{{ reservation.date }}</td>
         <td>{{ reservation.time }}</td>
         <td>{{ reservation.num_people}}</td>
-        <td>
+        <td> {# Edit and delete links #}
           <a href="{% url 'reservations:edit_reservation' reservation.id %}" class="btn btn-edit btn-sm">Edit</a>
           <a href="{% url 'reservations:delete_reservation' reservation.id %}" class="btn btn-delete btn-sm">Delete</a>
         </td>
@@ -41,7 +42,7 @@
       <div> Date: {{ reservation.date }}</div>
       <div> Time: {{ reservation.time }}</div>
       <div> Guests: {{ reservation.num_people }}</div>
-      <div>
+      <div> {# Edit and delete links #}
         <a href="{% url 'reservations:edit_reservation' reservation.id %}" class="btn btn-edit btn-sm">Edit</a>
         <a href="{% url 'reservations:delete_reservation' reservation.id %}" class="btn btn-delete btn-sm">Delete</a>
       </div>

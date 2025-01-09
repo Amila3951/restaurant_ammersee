@@ -4,14 +4,14 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/reservations.css' %}">
 
-<div class="reservations-container">
+<div class="reservations-container"> {# Container for all reservations #}
   <h1>All Reservations</h1>
 
-  {% if user.is_superuser %}
+  {% if user.is_superuser %} {# Show "Add Reservation" link for admin users #}
   <a href="{% url 'restaurant:add_reservation' %}">Add Reservation</a> <br>
   {% endif %}
 
-  <table class="table">
+  <table class="table"> {# Table to display reservations #}
     <thead>
       <tr>
         <th scope="col">Name</th>
@@ -21,7 +21,7 @@
         <th scope="col">Time</th>
         <th scope="col">Guests</th>
 
-        {% if user.is_superuser %}
+        {% if user.is_superuser %} {# Show "Actions" column for admin users #}
         <th scope="col">Actions</th>
         {% endif %}
       </tr>
@@ -35,7 +35,7 @@
         <td>{{ reservation.date }}</td>
         <td>{{ reservation.time }}</td>
         <td>{{ reservation.num_people }}</td>
-        {% if user.is_superuser %}
+        {% if user.is_superuser %} {# Show edit and delete links for admin users #}
         <td>
           <a href="{% url 'restaurant:admin_edit_reservation' reservation.pk %}">Edit</a>
           <a href="{% url 'restaurant:admin_delete_reservation' reservation.pk %}">Delete</a>
@@ -66,5 +66,5 @@
   </div>
 </div>
 
-{% block footer %}{% endblock %}
+{% block footer %}{% endblock %} {# Empty footer block #}
 {% endblock content %}

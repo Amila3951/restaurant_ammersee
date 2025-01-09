@@ -2,38 +2,38 @@
 /*  General Styles     */
 /* -------------------- */
 
-.btn-edit {
+.btn-edit {  /* Style for edit buttons */
   background-color: transparent;
   color: blue;
   border: none;
 }
 
-.btn-delete {
+.btn-delete {  /* Style for delete buttons */
   background-color: transparent;
   color: red;
   border: none;
 }
 
-.table {
+.table {  /* General table styles */
   font-family: Arial, sans-serif;
 }
 
-.table td {
+.table td {  /* Table cell styles */
   vertical-align: middle;
   text-align: center;
 }
 
-.table th {
+.table th {  /* Table header cell styles */
   vertical-align: middle;
   text-align: center;
 }
 
 .table td,
-.table th {
+.table th {  /* Table cell and header cell border */
   border: 1px solid #dee2e6;
 }
 
-.errorlist {
+.errorlist {  /* Style for error lists */
   color: red;
   list-style: none;
   padding: 0;
@@ -44,7 +44,7 @@
 /*  Reservation Form   */
 /* -------------------- */
 
-#reservation-form {
+#reservation-form {  /* Styles for the reservation form container */
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 20px;
@@ -54,219 +54,32 @@
   text-align: center;
 }
 
-#reservation-form h2 {
-  margin-bottom: 20px;
+#reservation-form h2 {  /* Style for the form heading */
+  margin: 30px; 
 }
 
-#reservation-form p {
+#reservation-form p {  /* Style for form field paragraphs */
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 0.5fr 2fr;  
   gap: 5px;
   align-items: center;
   margin-bottom: 10px;
   justify-content: center;
 }
 
-#reservation-form label {
-  text-align: center;
-}
-
-#reservation-form input,
-#reservation-form select {
-  box-sizing: border-box;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
-#reservation-form button {
-  background-color: beige;
-  color: #000000;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 30px;
-}
-
-/* -------------------- */
-/*  Edit Reservation    */
-/* -------------------- */
-
-#edit-reservation-form {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
-  width: 40%;
-  margin: 50px auto;
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-
-#edit-reservation-form h1 {
-  margin: 20px 0 50px 0;
-}
-
-#edit-reservation-form form {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 10px;
-  align-items: center;
-}
-
-#edit-reservation-form label {
-  grid-column: 1;
-  text-align: right;
-  font-weight: bold;
-}
-
-#edit-reservation-form input,
-#edit-reservation-form select {
-  grid-column: 2;
-  box-sizing: border-box;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
-#edit-reservation-form button {
-  grid-column: 1 / span 2;
-  background-color: beige;
-  color: #000000;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 20px;
-}
-
-
-/* -------------------- */
-/*  Admin Reservations  */
-/* -------------------- */
-
-.reservations-container {
-  margin-top: 100px;
-  text-align: center;
-}
-
-.reservations-container h1 {
-  margin-bottom: 20px;
-}
-
-.reservations-container a {
-  display: inline-block;
-  margin-bottom: 30px;
-  padding: 10px 20px;
-  background-color: beige;
-  color: black;
-  text-decoration: none;
-  border: 1px solid black;
-}
-
-@media (min-width: 768px) {
-  .table {
-    display: table;
-  }
-
-  .table td a {
-    margin-right: 10px;
-    background: none;
-  }
-
-  .reservation-list {
-    display: none;
-  }
-
-  .table td a:first-child {
-    color: blue;
-  }
-
-  .table td a:last-child {
-    color: red;
-  }
-}
-
-/* -------------------- */
-/*  General Styles     */
-/* -------------------- */
-
-.btn-edit {
-  background-color: transparent;
-  color: blue;
-  border: none;
-}
-
-.btn-delete {
-  background-color: transparent;
-  color: red;
-  border: none;
-}
-
-.table {
-  font-family: Arial, sans-serif;
-}
-
-.table td {
-  vertical-align: middle;
-  text-align: center;
-}
-
-.table th {
-  vertical-align: middle;
-  text-align: center;
-}
-
-.table td,
-.table th {
-  border: 1px solid #dee2e6;
-}
-
-.errorlist {
-  color: red;
-  list-style: none;
-  padding: 0;
-}
-
-
-/* -------------------- */
-/*  Reservation Form   */
-/* -------------------- */
-
-#reservation-form {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
-  width: 60%;
-  margin: 50px auto;
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-
-#reservation-form h2 {
-  margin: 30px;
-}
-
-#reservation-form p {
-  display: grid;
-  grid-template-columns: 0.5fr 2fr;
-  gap: 5px;
-  align-items: center;
-  margin-bottom: 10px;
-  justify-content: center;
-}
-
-#reservation-form label {
+#reservation-form label {  /* Style for form labels */
   text-align: center;
   font-weight: bold;
 }
 
 #reservation-form input,
-#reservation-form select {
+#reservation-form select {  /* Style for form inputs and selects */
   box-sizing: border-box;
   padding: 10px;
   border: 1px solid #ccc;
 }
 
-#reservation-form button {
+#reservation-form button {  /* Style for the form submit button */
   background-color: beige;
   color: #000000;
   padding: 10px 20px;
@@ -281,45 +94,44 @@
 /*  Edit Reservation    */
 /* -------------------- */
 
-#edit-reservation-form {
+#edit-reservation-form {  /* Styles for the edit reservation form container */
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 10px;
   width: 40%;
-  
   font-family: Arial, sans-serif;
   text-align: center;
 }
 
-#edit-reservation-form h2 {
+#edit-reservation-form h2 {  /* Style for the form heading */
   margin: 30px;
 }
 
-#edit-reservation-form form {
+#edit-reservation-form form {  /* Style for the form element */
   display: grid;
-  grid-template-columns: 0.5fr 2fr;
+  grid-template-columns: 0.5fr 2fr; 
   gap: 10px;
   align-items: center;
-  justify-content: start; 
-  text-align: left;
+  justify-content: start;  /* Align items to the start */
+  text-align: left;  /* Align text to the left */
 }
 
-#edit-reservation-form label {
+#edit-reservation-form label {  /* Style for form labels */
   grid-column: 1;
-  text-align: center;
+  text-align: center;  
   font-weight: bold;
 }
 
 #edit-reservation-form input,
-#edit-reservation-form select {
+#edit-reservation-form select {  /* Style for form inputs and selects */
   grid-column: 2;
   box-sizing: border-box;
   padding: 10px;
   border: 1px solid #ccc;
 }
 
-#edit-reservation-form button {
-  grid-column: 1 / span 2;
+#edit-reservation-form button {  /* Style for the form submit button */
+  grid-column: 1 / span 2; 
   background-color: beige;
   color: #000000;
   padding: 10px 20px;
@@ -328,12 +140,13 @@
   width: 100%;
   margin-top: 20px;
 }
+
 
 /* -------------------- */
 /*  Reservation Confirmation */
 /* -------------------- */
 
-.reservation-confirmation {
+.reservation-confirmation {  /* Styles for the reservation confirmation container */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -347,20 +160,20 @@
   background-color: rgb(245, 245, 233);
 }
 
-.reservation-confirmation h1 {
+.reservation-confirmation h1 {  /* Style for the confirmation heading */
   font-size: 30px;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.reservation-confirmation h2 {
+.reservation-confirmation h2 {  /* Style for the details heading */
   font-size: 25px;
   margin-bottom: 1rem;
   margin-top: 2rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.reservation-confirmation p {
+.reservation-confirmation p {  /* Style for confirmation paragraphs */
   margin-bottom: 5px;
 }
 
@@ -369,7 +182,7 @@
 /*  My Reservations     */
 /* -------------------- */
 
-.container .text-center.my-4 {
+.container .text-center.my-4 {  /* Style for the "My Reservations" heading */
   margin-bottom: 100px;
 }
 
@@ -378,28 +191,52 @@
 /*  Delete Reservation  */
 /* -------------------- */
 
-#deleteModal .modal-content {
+#deleteModal .modal-content {  /* Styles for the delete reservation modal content */
   font-family: Arial, sans-serif;
-  top: 100px !important;
+  top: 100px !important;  /* Adjust modal position as needed */
   text-align: center;
 }
 
-#deleteModal .modal-title {
+#deleteModal .modal-title {  /* Style for the modal title */
   text-align: center;
   width: 100%;
 }
 
-#deleteModal .modal-body {
+#deleteModal .modal-body {  /* Style for the modal body */
   text-align: center;
 }
 
-#deleteModal .reservation-details p {
+#deleteModal .reservation-details p {  /* Style for reservation details in the modal */
   text-align: center;
 }
 
-#deleteModal .modal-footer {
+#deleteModal .modal-footer {  /* Style for the modal footer */
   display: flex;
   justify-content: center;
+}
+
+
+/* -------------------- */
+/*  Admin Reservations  */
+/* -------------------- */
+
+.reservations-container {  /* Styles for the admin reservations container */
+  margin-top: 100px;
+  text-align: center;
+}
+
+.reservations-container h1 {  /* Style for the heading */
+  margin-bottom: 20px;
+}
+
+.reservations-container a {  /* Style for links in the container */
+  display: inline-block;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  background-color: beige;
+  color: black;
+  text-decoration: none;
+  border: 1px solid black;
 }
 
 
@@ -407,74 +244,98 @@
 /*  Media Queries       */
 /* -------------------- */
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {  /* Styles for larger screens */
+  .table {  /* Display table as a table */
+    display: table;
+  }
+
+  .table td a {  /* Style links within table cells */
+    margin-right: 10px;
+    background: none;
+  }
+
+  .reservation-list {  /* Hide the reservation list on larger screens */
+    display: none;
+  }
+
+  .table td a:first-child {  /* Style for the first link in a table cell (edit) */
+    color: blue;
+  }
+
+  .table td a:last-child {  /* Style for the last link in a table cell (delete) */
+    color: red;
+  }
+}
+
+
+@media (max-width: 768px) {  /* Styles for smaller screens */
 
   #reservation-form,
-  #edit-reservation-form {
+  #edit-reservation-form {  /* Adjust form width */
     width: 90%;
   }
 
   #reservation-form p,
-  #edit-reservation-form p {
+  #edit-reservation-form p {  /* Stack form fields vertically */
     grid-template-columns: 1fr;
   }
 
   #reservation-form label,
-  #edit-reservation-form label {
+  #edit-reservation-form label {  /* Align labels to the left */
     text-align: left;
   }
 
-  .reservation-confirmation {
+  .reservation-confirmation {  /* Adjust confirmation message width */
     width: 90%;
   }
 
-  .table {
+  .table {  /* Hide the table on smaller screens */
     display: none;
   }
 
-  .reservation-list {
+  .reservation-list {  /* Show the reservation list on smaller screens */
     display: block;
     font-family: Arial, sans-serif;
     text-align: center;
   }
 
-  .reservation-item {
+  .reservation-item {  /* Style individual reservation items */
     border-bottom: 1px solid #dee2e6;
     padding: 10px 0;
   }
 
-  .reservation-item div {
+  .reservation-item div {  /* Style divs within reservation items */
     margin-bottom: 5px;
   }
 
-  #edit-reservation-form {
+  #edit-reservation-form {  /* Adjust padding for edit form */
     padding: 10px;
   }
 
-  #edit-reservation-form h1 {
+  #edit-reservation-form h1 {  /* Adjust heading size */
     font-size: 24px;
   }
 
   #edit-reservation-form input,
-  #edit-reservation-form select {
+  #edit-reservation-form select {  /* Adjust input padding */
     padding: 8px;
   }
 
-  .reservation-list {
+  .reservation-list {  /* Remove top margin */
     margin-top: 0;
   }
 
-  .reservation-item {
+  .reservation-item {  /* Add margin between reservation items */
     margin-bottom: 10px;
   }
 
-  .reservation-item .actions {
+  .reservation-item .actions {  /* Style the actions container */
     display: flex;
     justify-content: center;
     gap: 10px;
   }
 
-  .reservation-item .actions a {
+  .reservation-item .actions a {  /* Style action links (edit/delete) */
     display: inline-block;
     padding: 5px 10px;
     background-color: beige;
@@ -483,11 +344,11 @@
     border: 1px solid black;
   }
 
-  .reservation-item .actions a:first-child {
+  .reservation-item .actions a:first-child {  /* Style for the edit link */
     color: blue;
   }
 
-  .reservation-item .actions a:last-child {
+  .reservation-item .actions a:last-child {  /* Style for the delete link */
     color: red;
   }
 }

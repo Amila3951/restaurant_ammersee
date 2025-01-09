@@ -1,13 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/reservations.css' %}">
+<link rel="stylesheet" href="{% static 'css/reservations.css' %}"> 
+
 <div class="reservation-confirmation"> {# Container for the reservation confirmation message #}
     <h1>Reservation Confirmed!</h1>
     <p>Thank you for your reservation. We look forward to seeing you soon.</p>
 
-    <h2>Reservation Details:</h2>
+    <h2>Reservation Details:</h2> {# Display reservation details #}
     <p>Name: {{ reservation.name }}</p>
     <p>Email: {{ reservation.email }}</p>
     <p>Phone: {{ reservation.phone }}</p>
@@ -15,8 +16,9 @@
     <p>Time: {{ reservation.time }}</p>
     <p>Number of Guests: {{ reservation.num_people }}</p>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">  // Include the EmailJS library 
-    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script> {# Include the EmailJS library #}
+
     <script type="text/javascript">
         (function () {
             emailjs.init("JtEjZpi5gTulnaLfS");
