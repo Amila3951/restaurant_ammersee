@@ -1,0 +1,409 @@
+/* -------------------- */
+/* General Styles */
+/* -------------------- */
+
+html,
+body {  /* Basic styles for html and body elements */
+  width: 100%;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-bottom: 0;
+}
+
+/* -------------------- */
+/* Navigation */
+/* -------------------- */
+
+.navbar {  /* Styles for the navigation bar */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #f8f9fa;
+}
+
+.navbar-brand {  /* Styles for the navbar brand */
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+nav.navbar .navbar-brand img {  /* Styles for the navbar brand image */
+  max-height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.navbar-nav .nav-link {  /* Styles for the navigation links */
+  font-size: 1.2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.navbar .container {  /* Adjust container margin */
+  margin-left: 0;
+}
+
+/* -------------------- */
+/* Hero Section */
+/* -------------------- */
+
+.hero-image {  /* Styles for the hero image section */
+  background-image: url("/static/images/cover5.bbebd46693bb.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-text {  /* Styles for the text within the hero section */
+  position: relative;
+}
+
+.hero-buttons {  /* Styles for the button container in the hero section */
+  margin-top: 20px;
+}
+
+.hero-buttons .btn {  /* Styles for buttons within the hero section */
+  margin: 0 10px;
+}
+
+/* -------------------- */
+/* Buttons */
+/* -------------------- */
+
+.btn {  /* General button styles */
+  font-size: 1.2rem;
+  padding: 15px 30px;
+}
+
+.btn:hover {  /* Hover effect for buttons */
+  filter: brightness(0.8) contrast(1.1);
+}
+
+.btn-primary {  /* Styles for primary buttons */
+  background-color: beige;
+  color: black;
+  border: 1px solid black;
+}
+
+.btn-primary:hover {  /* Hover effect for primary buttons */
+  filter: brightness(0.8) contrast(1.1);
+}
+
+.btn-secondary {  /* Styles for secondary buttons */
+  background-color: black;
+  color: beige;
+  border: 1px solid beige;
+}
+
+/* -------------------- */
+/* Our Story Section */
+/* -------------------- */
+
+.our-story {  /* Styles for the "Our Story" section */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+  font-size: 20px;
+  color: black;
+}
+
+.our-story h2 {  /* Style for the heading in "Our Story" */
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+/* -------------------- */
+/* Content Wrapper */
+/* -------------------- */
+
+.content-wrapper {  /* Styles for the content wrapper */
+  flex: 1;
+  margin-top: 70px;
+}
+
+.spaced-paragraph {  /* Style for paragraphs with spacing */
+  margin-top: 20px;
+}
+
+/* -------------------- */
+/* Forms */
+/* -------------------- */
+
+.login-form,
+.signup-form {  /* General styles for login and signup forms */
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 660px;
+  font-size: 16px;
+  margin: auto;
+  overflow: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.login-form div,
+.signup-form div {  /* Styles for divs within forms */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.login-form h1,
+.signup-form h1 {  /* Styles for form headings */
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.login-form label,
+.signup-form label {  /* Styles for form labels */
+  display: block;
+  margin-bottom: 5px;
+  width: auto;
+}
+
+.login-form input,
+.signup-form input {  /* Styles for form inputs */
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.login-form button,
+.signup-form button {  /* Styles for form buttons */
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.optional {  /* Style for optional form fields */
+  font-size: smaller;
+  color: gray;
+}
+
+.signup-form .errorlist {  /* Style for error lists in signup form */
+  font-size: 14px;
+}
+
+.errorlist {  /* General style for error lists */
+  color: red;
+  margin-bottom: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+/* -------------------- */
+/* Footer */
+/* -------------------- */
+
+footer {  /* General footer styles */
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  padding: 40px 0;
+  line-height: 2;
+}
+
+footer a {  /* Style for links in the footer */
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+footer .h3 {  /* Style for headings in the footer */
+  margin-bottom: 15px;
+  font-size: 25px;
+}
+
+/* -------------------- */
+/* Menu */
+/* -------------------- */
+
+#menu-container {  /* Styles for the menu container */
+  text-align: center;
+  background-image: url("/static/images/cover4.c0076f176dcf.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.menu-content {  /* Styles for the menu content */
+  background-color: rgba(0, 0, 0, 0.5);  /* Semi-transparent background */
+  padding: 20px;
+  color: beige;
+  margin-top: 60px;
+}
+
+.menu-header {  /* Styles for the menu header */
+  margin-bottom: 50px;
+  padding-top: 30px;
+}
+
+.menu-header h2 {  /* Style for the menu heading */
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 36px;
+  color: rgb(212, 212, 135);
+}
+
+.menu-header p {  /* Style for the menu description */
+  font-style: italic;
+}
+
+.btn-secondary {  /* Style for the "Book a table" button in the menu */
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+  margin: 0 auto;
+  background-color: beige;
+  color: black;
+  border: 1px solid gold;
+}
+
+.category-heading {  /* Style for category headings in the menu */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  color: rgb(212, 212, 135);
+}
+
+.category-separator {  /* Style for the separator between menu categories */
+  width: 50px;
+  margin: 0 auto 20px auto;
+  border: none;
+  border-top: 1px solid beige;
+}
+
+.menu-column {  /* Style for columns in the menu */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-item {  /* Style for individual menu items */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.menu-item h4,
+.menu-item p {  /* Style for headings and paragraphs within menu items */
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+}
+
+.menu-item p:last-of-type {  /* Style for the last paragraph in a menu item (price) */
+  font-weight: bold;
+}
+
+.col-md-6 {  /* Style for medium-sized columns */
+  width: 50%;
+}
+
+.category-item {  /* Style for category items */
+  margin-top: 50px;
+  border: 1px solid beige;
+  padding: 20px;
+}
+
+/* -------------------- */
+/* Media Queries */
+/* -------------------- */
+
+@media (max-width: 768px) {  /* Styles for smaller screens */
+
+  #hero img {  /* Adjust hero image height */
+    height: 300px;
+  }
+
+  .btn {  /* Adjust button size */
+    font-size: 1rem;
+    padding: 15px 30px;
+  }
+
+  .carousel-caption {  /* Adjust carousel caption styles */
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: transparent;
+  }
+
+  .carousel-caption h3,
+  .carousel-caption p {  /* Hide carousel caption heading and paragraph */
+    display: none;
+  }
+
+  #about {  /* Adjust about section padding */
+    padding: 20px;
+  }
+
+  #about h2 {  /* Adjust about section heading size */
+    font-size: 2em;
+  }
+
+  #about p {  /* Adjust about section paragraph size */
+    font-size: 16px;
+  }
+
+  .login-form,
+  .signup-form {  /* Adjust form width and height */
+    width: 90%;
+    height: auto;
+    margin-bottom: 50px;
+  }
+
+  footer {  /* Adjust footer styles */
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer a {  /* Adjust footer link margins */
+    margin-bottom: 10px;
+  }
+
+  footer .col-md-4 {  /* Adjust footer column margins */
+    margin-bottom: 20px;
+  }
+
+  footer .h3 {  /* Adjust footer heading size */
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .hero-image {  /* Adjust hero image height */
+    min-height: 50vh;
+  }
+
+  .our-story {  /* Adjust font size in "Our Story" */
+    font-size: 16px;
+  }
+
+  .menu-item h4,
+  .menu-item p {  /* Adjust font size in menu items */
+    font-size: 20px;
+  }
+}

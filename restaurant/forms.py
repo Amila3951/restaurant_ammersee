@@ -33,6 +33,10 @@ class ReservationForm(forms.ModelForm):
                 attrs={"type": "time"}
             ),  # Use a time picker for the time field
             "email": forms.EmailInput(attrs={}),  # Use a default email input
+            "phone": forms.TextInput(attrs={
+                'placeholder': 'Enter your phone number',
+                'pattern': r'^\+?\d{9,15}$'
+            })
         }
 
     def clean_date(self):

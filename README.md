@@ -10,7 +10,6 @@ This project served as a valuable learning experience in various web development
 
 [Link to the live website of Restaurant am Ammersee](https://restaurant-ammersee-436b83e7ebb7.herokuapp.com/)
 
-
 ## Table of Contents
 
 * [Responsive Design](#responsive-design)
@@ -254,8 +253,7 @@ Upon logging in with these credentials, the admin user is presented with a speci
 The Reservations section within the Admin Panel is a core feature, offering a comprehensive overview and control over all reservations. It provides the following functionalities:
 
 * **View All Reservations:** Displays a table listing all existing reservations with details such as guest name, contact information, reservation date and time, and number of guests.
-* **Add Reservation:** Allows the admin to manually add new reservations to the system. This is useful for handling phone reservations or accommodating special requests. 
-    * **When an admin adds a reservation, the customer receives an email confirmation with the reservation details.** 
+* **Add Reservation:** Allows the admin to manually add new reservations to the system. This is useful for handling phone reservations.
     * **If the admin enters an email address of a user who is not registered, an error message is displayed.** 
 * **Edit Reservation:** Enables the admin to modify the details of existing reservations, such as changing the date, time, or number of guests.
 * **Delete Reservation:** Allows the admin to cancel existing reservations. A confirmation dialog is presented before deletion to prevent accidental cancellations.
@@ -272,3 +270,86 @@ The Admin Panel is designed with a user-friendly interface that is consistent wi
 ## Security
 
 The Admin Panel is secured by requiring users to log in with valid administrative credentials. This ensures that only authorized personnel can access and modify sensitive reservation data.
+
+## Future Features and Improvements
+
+This section outlines potential features and improvements that could be implemented in future versions of the Restaurant Ammersee website to enhance its functionality and user experience.
+
+**1. Account Management**
+
+* **Forgot/Reset Password:** Implement functionality for users to reset their passwords in case they forget them. This will improve account security and user experience.
+* **"Remember Me" Option:** Provide a "Remember Me" checkbox on the login form to allow users to stay logged in for a longer period.
+* **Show Password:** Add a "show password" toggle to the login and registration forms to allow users to see their password as they type. This improves usability and reduces errors.
+
+**2. Enhanced Reservation System**
+
+* **Interactive Table Reservation:**
+    * Display an interactive floor plan of the restaurant showing available tables.
+    * Allow users to visually select their preferred table during the reservation process.
+    * Clearly indicate occupied and available tables in real-time.
+
+**3. User Engagement and Feedback**
+
+* **Reviews and Ratings:**
+    * Enable users to leave reviews and ratings for the restaurant and its dishes.
+    * Display average ratings and the number of reviews to provide social proof.
+    * Allow users to filter reviews by rating or date.
+
+**4. Visual Appeal and Content**
+
+* **Image Gallery:**
+    * Showcase high-quality images of the restaurant's dishes, interior, and exterior to enhance visual appeal.
+
+**5. Website Design and User Experience**
+
+* **Enhanced Styling:** While the current design prioritizes simplicity and user-friendliness with minimal background images and straightforward forms, future iterations could explore more visually engaging elements and richer content. This could include:
+    * More sophisticated use of typography and color palettes.
+    * Integration of high-quality photography and videography.
+
+**6. Booking History Validation**
+
+* **Automatic Removal of Old Bookings:** Implement a mechanism to automatically remove outdated bookings from the user's booking history. This will ensure the history remains relevant and clutter-free by removing entries that are no longer valid against the current and future dates.
+
+**7. Admin Panel Improvements**
+
+* **Reservation Filtering and Sorting:**  Enhance the admin panel with the ability to filter and sort reservations by various criteria, including:
+    * Name
+    * Date
+    * Time
+    * Number of guests
+
+* **Email Confirmation for Admin-Created Reservations:** Currently, when an admin creates a reservation on behalf of a user, the user does not receive an email confirmation. In the future, this functionality should be implemented to ensure that all users receive confirmation emails for their reservations, regardless of how the reservation was created.
+
+## Technologies Used
+
+This project uses the following technologies:
+
+### Languages
+
+* **Python:** For backend logic.
+* **HTML:** For website structure.
+* **CSS:** For website styling.
+* **JavaScript:** For interactivity.
+
+### Libraries & Frameworks
+
+* **Django (4.2.16):** Python web framework.
+* **Django Allauth (65.3.0):** User authentication.
+* **Bootstrap:**  For styling and responsiveness.
+* **EmailJS:** For sending emails.
+* **asgiref (3.8.1):**  For asynchronous operations.
+* **django-debug-toolbar (4.4.6):**  For debugging.
+* **django-extensions (3.2.3):**  Extra Django tools.
+* **gunicorn (20.1.0):**  Production web server.
+* **oauthlib, PyJWT, python3-openid, requests-oauthlib:** For authentication.
+* **sqlparse (0.5.1):**  SQL query tool.
+* **whitenoise (6.5.0):**  For serving static files.
+* **Font Awesome:** For icons. 
+
+### Tools
+
+* **Git:** Version control.
+* **GitHub:** Code repository.
+* **Gitpod:** Development environment.
+* **Babel:** JavaScript compiler.
+* **Jest:** JavaScript testing.

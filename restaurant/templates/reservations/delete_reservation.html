@@ -26,8 +26,7 @@
         <form method="post"> {# Form for confirming deletion #}
           {% csrf_token %}
           <button type="submit" class="btn btn-danger">Delete</button> {# Delete button #}
-          <a href="{% url 'reservations:my_reservations' %}" class="btn btn-secondary">Cancel</a> {# Cancel button, link
-          to my reservations #}
+          <a href="{% url 'reservations:my_reservations' %}" class="btn btn-secondary">Cancel</a>
         </form>
       </div>
     </div>
