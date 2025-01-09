@@ -1,6 +1,10 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-from django.core.validators import MinValueValidator, EmailValidator, RegexValidator
+from django.core.validators import (
+    MinValueValidator,
+    EmailValidator,
+    RegexValidator,
+)
 from datetime import date, datetime, timedelta
 from django.conf import settings
 
@@ -25,15 +29,21 @@ class Reservation(models.Model):
 
     time = models.TimeField(blank=False, null=False)  # Reservation time
     num_people = models.IntegerField(
-        validators=[MinValueValidator(1)]  # Ensure the number of people is at least 1
+        validators=[
+            MinValueValidator(1)
+        ]  # Ensure the number of people is at least 1
     )
-    name = models.CharField(max_length=200)  # Name of the person making the reservation
+    name = models.CharField(
+        max_length=200
+    )  # Name of the person making the reservation
     email = models.EmailField(
         validators=[EmailValidator()], blank=True, null=True
     )  # Email address (optional)
     phone = models.CharField(
         max_length=20,
-        validators=[RegexValidator(r"^\+?\d{9,15}$")],  # Validate phone number format
+        validators=[
+            RegexValidator(r"^\+?\d{9,15}$")
+        ],  # Validate phone number format
     )
     date = models.DateField(
         validators=[validate_future_date]
@@ -49,18 +59,24 @@ class Reservation(models.Model):
         """
         String representation of the Reservation object.
         """
-        return f"Reservation for {self.num_people} by {self.name} on {self.date} at {self.time}"
+        return f"Reservation for {self.num_people} by {self.name} on {self.date} at {self.time}"  # noqa
 
     def clean(self):
         """
         Additional validation to check if the reservation time is within
         the restaurant's opening hours.
         """
-        opening_time = datetime.strptime("10:00", "%H:%M").time()  # Opening time
-        closing_time = datetime.strptime("22:00", "%H:%M").time()  # Closing time
+        opening_time = datetime.strptime(
+            "10:00", "%H:%M"
+        ).time()  # Opening time
+        closing_time = datetime.strptime(
+            "22:00", "%H:%M"
+        ).time()  # Closing time
 
         if self.time < opening_time or self.time > closing_time:
-            raise ValidationError("Reservation time must be between 10:00 and 22:00.")
+            raise ValidationError(
+                "Reservation time must be between 10:00 and 22:00."
+            )
 
 
 class Dish(models.Model):
@@ -76,7 +92,9 @@ class Dish(models.Model):
     )
     name = models.CharField(max_length=255)  # Name of the dish
     description = models.TextField(blank=True)
-    price = models.DecimalField(max_digits=8, decimal_places=2)  # Price of the dish
+    price = models.DecimalField(
+        max_digits=8, decimal_places=2
+    )  # Price of the dish
     category = models.CharField(
         max_length=200, default="Main Courses"
     )  # Category of the dish

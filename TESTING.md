@@ -9,20 +9,130 @@ While the current testing strategy provides a solid foundation, future iteration
 
 ### HTML
 
-* **W3C Markup Validation Service:** All HTML code was validated using the official W3C Markup Validation Service to ensure adherence to web standards and identify any potential issues.
+**W3C Markup Validation Service:** All HTML code was validated using the official W3C Markup Validation Service to ensure adherence to web standards and identify any potential issues.
 
 <details>
 <summary>Screenshots and results for all templates.</summary>
 <br>
 
-**HOME**
+* **Home**
 
-**MENU**
+![HtmlValidator](documentation/home-htmlpagevalidator.png)
 
-**REGISTER**
-Some HTML validation errors are ignored due to the limitations of Django's template engine in generating perfectly valid HTML for forms. These errors do not affect the functionality or user experience of the website.
+* **Menu**
 
-**LOG IN**
+![HtmlValidator](documentation/menu-htmlpagevalidator.png)
+
+* **Register**
+
+    * Some HTML validation errors are ignored due to the limitations of Django's template engine in generating perfectly valid HTML for forms. These errors do not affect the functionality or user experience of the website.
+
+![HtmlValidator](documentation/register-htmlpagevalidator.png)
+
+* **Log In**
+
+![HtmlValidator](documentation/login-htmlpagevalidator.png)
+
+* **Make a Reservation**
+
+
+
+* **My Reservations**
+
+![HtmlValidator](documentation/my-reservations-htmlpagevalidator.png)
+
+* **Edit Reservation**
+
+![HtmlValidator](documentation/edit_reservation-htmlpagevalidator.png)
+
+* **Delete Reservation**
+
+![HtmlValidator](documentation/delete_reservation-htmlpagevalidator.png)
+
+* **Admin Reservation**
+
+![HtmlValidator](documentation/adminreservations-htmlpagevalidator.png)
+
+* **Admin Add Reservation**
+
+![HtmlValidator](documentation/admin_add_reservations-htmlpagevalidator.png)
+
+* **Admin Edit Reservation**
+
+![HtmlValidator](documentation/admin_edit_reservation-htmlpagevalidator.png)
+
+* **Admin Delete Reservation**
+
+![HtmlValidator](documentation/admin_delete_reservation-htmlpagevalidator.png)
+
+</details>
+
+<br>
+
+### CSS
+
+CSS code was tested using the **W3C CSS Validation Service** via text input.
+
+<details>
+<summary>Screenshots and results for all templates.</summary>
+<br>
+
+* **Style.css**
+
+![CssValidator](documentation/style.css-validator.png)
+
+* **Reservations.css**
+
+![CssValidator](documentation/reservations.css-validator.png)
+
+</details>
+
+<br>
+
+### Python
+
+Python code was tested using [Code Institute's Python Linter](https://pep8ci.herokuapp.com/).
+
+<details>
+
+<summary>Screenshots and results for all python files</summary>
+
+* settings.py
+
+![CI Python Linter](documentation/settings.py.png)
+
+* ammersee/urls.py
+
+![CI Python Linter](documentation/ammersee_urls.py.png)
+
+* wsgi.py
+
+![CI Python Linter](documentation/wsgi.py.png)
+
+* forms.py
+
+![CI Python Linter](documentation/forms.py.png)
+
+* models.py
+
+![CI Python Linter](documentation/models.py.png)
+
+
+* tests.py
+
+![CI Python Linter](documentation/test.py.png)
+
+* urls.py
+
+![CI Python Linter](documentation/urls.py.png)
+
+* views.py
+
+![CI Python Linter](documentation/views.py.png)
+
+</details>
+
+<br>
 
 ## Automated Tests
 

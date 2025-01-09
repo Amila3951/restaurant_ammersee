@@ -20,7 +20,9 @@ class MakeReservationViewTest(TestCase):
         today = timezone.now().date()
         tomorrow = today + timedelta(days=1)
         data = {
-            "date": tomorrow.strftime("%Y-%m-%d"),  # Format the date as YYYY-MM-DD
+            "date": tomorrow.strftime(
+                "%Y-%m-%d"
+            ),  # Format the date as YYYY-MM-DD
             "time": "18:00",
             "num_people": 2,
             "name": "Test User",  # Add a name
@@ -46,14 +48,16 @@ class MakeReservationViewTest(TestCase):
 
     def test_make_reservation_invalid_form(self):
         """
-        Test that an invalid reservation form does not create a new reservation.
+        Test that an invalid reservation form does not create a new reservation
         """
         # Create data for the form with an invalid date (in the past)
 
         today = timezone.now().date()
         yesterday = today - timedelta(days=1)
         data = {
-            "date": yesterday.strftime("%Y-%m-%d"),  # Format the date as YYYY-MM-DD
+            "date": yesterday.strftime(
+                "%Y-%m-%d"
+            ),  # Format the date as YYYY-MM-DD
             "time": "18:00",
             "num_people": 2,
             "name": "Test User",

@@ -21,13 +21,13 @@ urlpatterns = [
         name="edit_reservation",
     ),
     path(
-        "my_reservations/<int:reservation_id>/delete/",  # Delete reservation page
+        "my_reservations/<int:reservation_id>/delete/",  # Delete reservation page  # noqa
         views.delete_reservation,
         name="delete_reservation",
     ),
     path(
         "accounts/login/", MyLoginView.as_view(), name="account_login"
-    ),  # Login page 
+    ),  # Login page
     path(
         "accounts/logout/",  # Logout page
         auth_views.LogoutView.as_view(
@@ -42,10 +42,14 @@ urlpatterns = [
     ),
     # Admin URLs
     path(
-        "admin/reservations/", views.admin_reservations, name="admin_reservations"
+        "admin/reservations/",
+        views.admin_reservations,
+        name="admin_reservations",
     ),  # Admin reservations page
     path(
-        "admin/reservations/add/", views.add_reservation, name="add_reservation"
+        "admin/reservations/add/",
+        views.add_reservation,
+        name="add_reservation",
     ),  # Add reservation page (admin)
     path(
         "admin/reservations/<int:pk>/edit/",

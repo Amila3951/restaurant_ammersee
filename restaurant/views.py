@@ -18,13 +18,14 @@ def home(request):
     View for the home page.
     Handles redirecting users based on authentication status.
     """
-    if request.method == "POST": 
+    if request.method == "POST":
         if request.user.is_authenticated:  # Check if the user is logged in
-            return redirect("restaurant:make_reservation")  # Redirect to make a reservation if logged in
+            return redirect("restaurant:make_reservation")  # Redirect to make a reservation if logged in  # noqa
         else:
-            return redirect("account_login")  # Redirect to login if not logged in
-    else:  
-        return render(request, "reservations/home.html")  # Render the home page
+            return redirect("account_login")  # Redirect to login if not logged in  # noqa
+    else:
+        return render(request, "reservations/home.html")
+
 
 def menu(request):
     """
@@ -38,14 +39,14 @@ def make_reservation(request):
     View for making a reservation.
     Handles form submission, checks availability, and saves the reservation.
     """
-    if request.method == "POST": 
+    if request.method == "POST":
         form = ReservationForm(
             request.POST
-        )  
+        )
         if form.is_valid():  # Check if the form is valid
             date = form.cleaned_data["date"]  # Get the reservation date
             time = form.cleaned_data["time"]  # Get the reservation time
-            num_people = form.cleaned_data["num_people"]  # Get the number of people
+            num_people = form.cleaned_data["num_people"]  # Get the number of people  # noqa
 
             # Check availability
 
@@ -57,14 +58,14 @@ def make_reservation(request):
                     "num_people__sum"
                 ]
                 or 0
-            )  # Calculate the total number of people with reservations at that time
+            )  # Calculate the total number of people with reservations at that time  # noqa
 
             if (
-                total_people_at_that_time + num_people > settings.RESTAURANT_CAPACITY
+                total_people_at_that_time + num_people > settings.RESTAURANT_CAPACITY  # noqa
             ):  # Check if there is enough space
                 # If there is not enough space, display an error message
 
-                form.add_error(None, "Sorry, we don't have enough space at that time.")
+                form.add_error(None, "Sorry, we don't have enough space at that time.")  # noqa
             else:
                 # If there is enough space, try to save the reservation
 
@@ -72,13 +73,13 @@ def make_reservation(request):
                     reservation = form.save(
                         commit=False
                     )  # Create the Reservation object but don't save yet
-                    if request.user.is_authenticated:  # Check if the user is logged in
+                    if request.user.is_authenticated:  # Check if the user is logged in  # noqa
                         reservation.user = (
                             request.user
                         )  # Associate the reservation with the logged-in user
-                    reservation.save()  # Save the reservation to the database 
+                    reservation.save()  # Save the reservation to the database
 
-                    # Redirect to confirmation page after successful reservation
+                    # Redirect to confirmation page after successful reservation  # noqa
 
                     return redirect(
                         "restaurant:reservation_confirmation",
@@ -86,7 +87,7 @@ def make_reservation(request):
                     )
                 except ValidationError as e:  # Catch validation errors
                     form.add_error(None, e)  # Add the error to the form
-    else: 
+    else:
         form = ReservationForm()  # Create an empty reservation form
     return render(
         request, "reservations/make_reservation.html", {"form": form}
@@ -97,7 +98,7 @@ class MyLoginView(LoginView):
     """
     Custom login view to use a custom template.
     """
-    template_name = "account/login.html"  
+    template_name = "account/login.html"
 
 
 @login_required  # Requires user to be logged in
@@ -110,7 +111,7 @@ def my_reservations(request):
     )  # Fetch reservations for the logged-in user and order them
     context = {
         "reservations": reservations
-    }  
+    }
     return render(
         request, "reservations/my_reservations.html", context
     )  # Render the template with the context
@@ -121,14 +122,14 @@ def edit_reservation(request, reservation_id):
     """
     View for editing a reservation.
     """
-    # Retrieve the reservation object, ensuring it exists and belongs to the logged-in user.
+    # Retrieve the reservation object, ensuring it exists and belongs to the logged-in user.  # noqa
 
-    reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
+    reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)  # noqa
 
-    if request.method == "POST":  
+    if request.method == "POST":
         form = ReservationForm(
             request.POST, instance=reservation
-        )  
+        )
         if form.is_valid():  # Validate the form data
             form.save()  # Save the updated reservation
             messages.success(
@@ -137,10 +138,10 @@ def edit_reservation(request, reservation_id):
             return redirect(
                 "restaurant:my_reservations"
             )  # Redirect to user's reservations page
-    else:  
+    else:
         form = ReservationForm(
             instance=reservation
-        )  
+        )
     return render(
         request,
         "reservations/edit_reservation.html",
@@ -153,9 +154,9 @@ def delete_reservation(request, reservation_id):
     """
     View for deleting a reservation.
     """
-    # Retrieve the reservation object, ensuring it exists and belongs to the logged-in user.
+    # Retrieve the reservation object, ensuring it exists and belongs to the logged-in user.  # noqa
 
-    reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)
+    reservation = get_object_or_404(Reservation, id=reservation_id, user=request.user)  # noqa
 
     if (
         request.method == "POST"
@@ -168,7 +169,7 @@ def delete_reservation(request, reservation_id):
             "restaurant:my_reservations"
         )  # Redirect to user's reservations page
     return render(
-        request, "reservations/delete_reservation.html", {"reservation": reservation}
+        request, "reservations/delete_reservation.html", {"reservation": reservation}  # noqa
     )  # Pass reservation to the template for confirmation
 
 
@@ -177,21 +178,21 @@ def register(request):
     """
     View for user registration.
     """
-    if request.method == "POST":  
+    if request.method == "POST":
         form = UserCreationForm(
             request.POST
-        )  
+        )
         if form.is_valid():  # Check if the form is valid
             user = form.save()  # Save the new user
             login(request, user)  # Log in the user
             request.session["registration_successful"] = (
-                True 
+                True
             )
             return redirect(
                 "restaurant:home"
             )  # Redirect to home page after registration
-    else: 
-        form = CustomUserCreationForm()  # Create an empty CustomUserCreationForm
+    else:
+        form = CustomUserCreationForm()  # Create an empty CustomUserCreationForm # noqa
     return render(
         request, "account/signup.html", {"form": form}
     )  # Render the signup page with the form
@@ -232,12 +233,12 @@ def add_reservation(request):
     """
     View for adding a reservation (admin view).
     """
-    if request.method == "POST":  
+    if request.method == "POST":
         form = ReservationForm(
             request.POST
-        )  
+        )
         if form.is_valid():  # Check if the form is valid
-            email = form.cleaned_data["email"]  # Get the email from the form data
+            email = form.cleaned_data["email"]  # Get the email from the form data  # noqa
             if User.objects.filter(
                 email=email
             ).exists():  # Check if a user with this email exists
@@ -254,7 +255,7 @@ def add_reservation(request):
                 form.add_error(
                     "email", "User with this email address does not exist."
                 )  # Add an error to the form if the user doesn't exist
-    else: 
+    else:
         form = ReservationForm()  # Create an empty ReservationForm
     return render(
         request, "reservations/add_reservation.html", {"form": form}
@@ -272,7 +273,7 @@ def admin_delete_reservation(request, pk):
     )  # Retrieve the reservation or return 404
     if (
         request.method == "POST"
-    ): 
+    ):
         reservation.delete()  # Delete the reservation
         return redirect(
             "restaurant:admin_reservations"
@@ -292,17 +293,17 @@ def admin_edit_reservation(request, pk):
     """
     reservation = get_object_or_404(
         Reservation, pk=pk
-    )  
-    if request.method == "POST":  
+    )
+    if request.method == "POST":
         form = ReservationForm(
             request.POST, instance=reservation
-        )  
+        )
         if form.is_valid():  # Check if the form is valid
             form.save()  # Save the updated reservation
             return redirect(
                 "restaurant:admin_reservations"
             )  # Redirect to the admin reservations page
-    else:  
+    else:
         form = ReservationForm(
             instance=reservation
         )  # Populate form with existing reservation data

@@ -15,4 +15,6 @@ from whitenoise import WhiteNoise
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ammersee.settings")
 
 application = get_wsgi_application()
-application = WhiteNoise(application, root="/workspace/restaurant_ammersee/static/")
+application = WhiteNoise(
+    application, root="/workspace/restaurant_ammersee/static/"
+)
