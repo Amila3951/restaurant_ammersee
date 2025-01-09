@@ -39,4 +39,15 @@
   </div>
 </div>
 
+<div id="registration-message" style="display: none;"></div> 
+
+<script>
+  const registrationMessage = document.getElementById('registration-message');
+  if ('{{ registration_successful }}' === 'True') {
+    registrationMessage.textContent = 'registration_successful';
+  }
+</script>
+
+<script type="module" src="{% static 'js/email.js' %}" defer></script> 
+
 {% endblock %}

@@ -1,7 +1,4 @@
-import emailjs from 'emailjs-com';
-export function sendEmail(form, event) {
-    event.preventDefault();
-
+export function sendEmail(form) { 
     const email = form.elements['email'].value;
     const username = form.elements['username'].value;
 
@@ -10,22 +7,30 @@ export function sendEmail(form, event) {
         username: username
     };
 
-    try {
-       
-        if (typeof emailjs.send === 'function') {
-            emailjs.send('service_ab2vrqc', 'template_oo7qvf5', templateParams)
-                .then((result) => {
-                    console.log('Email sent successfully:', result.text);
-                    form.submit();
-                })
-                .catch((error) => {
-                    console.error('Error sending email:', error);
-                });
-        } else {
-            console.error('emailjs.send is not a function');
-        }
+    if (typeof emailjs !== 'undefined' && typeof emailjs.send === 'function') {
+        emailjs.send('service_ab2vrqc', 'template_oo7qvf5', templateParams)
+            .then((result) => {
+                console.log('Email sent successfully:', result.text);
 
-    } catch (error) {
-        console.error('Unexpected error:', error);
+                const registrationMessage = document.getElementById('registration-message');
+                if (registrationMessage) {
+                    registrationMessage.textContent = 'You have successfully registered!';
+                }
+
+            })
+            .catch((error) => {
+                console.error('Error sending email:', error);
+            });
+    } else {
+        console.error('EmailJS is not loaded or initialized properly.');
     }
 }
+
+export function checkRegistrationMessage() {
+    const registrationMessage = document.getElementById('registration-message');
+    if (registrationMessage && registrationMessage.textContent === 'registration_successful') {
+        sendEmail(document.querySelector('.signup-form'));
+    }
+}
+
+window.onload = checkRegistrationMessage;

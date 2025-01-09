@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 
 
@@ -203,11 +204,11 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            request.session['registration_successful'] = True
             return redirect('restaurant:home')  # Redirect to home page after registration
     else:
         form = CustomUserCreationForm()
     return render(request, 'account/signup.html', {'form': form})
-
 
 
 def reservation_confirmation(request, reservation_id):
