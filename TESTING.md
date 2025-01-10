@@ -134,6 +134,33 @@ Python code was tested using [Code Institute's Python Linter](https://pep8ci.her
 
 <br>
 
+### JavaScript
+
+JavaScript code was tested using [JSHint](https://jshint.com/).
+
+<details>
+
+<summary>Screenshots and results for all JS files</summary>
+
+<br>
+
+* email.js
+
+**JSHint Warning: "One undefined variable emailjs"**
+
+This warning occurs because JSHint analyzes JavaScript code independently and doesn't recognize the emailjs variable loaded from HTML.
+
+![JSHint](documentation/email.js.png)
+
+
+* reservation.js
+
+![JSHint](documentation/reservation.js.png)
+
+</details>
+
+<br>
+
 ## Automated Tests
 
 Automated tests were implemented using the Django testing framework. These tests focus on verifying the behavior of specific units of code and their integration within the application.
@@ -153,3 +180,13 @@ This test suite focuses on the `my_reservations` view, which displays a user's e
 * **`test_my_reservations_logged_in`:** This test case checks that the view correctly displays the user's reservations when they are logged in.
 * **`test_my_reservations_not_logged_in`:** This test case verifies that the view redirects to the login page when the user is not logged in.
 
+## Manual testing
+
+* **Objective:** To verify the functionality and user experience of the Restaurant Ammersee website and ensure it aligns with the specified requirements.
+
+* **Methodology:**  A series of test cases were executed manually, covering key user interactions and functionalities across different sections of the website. Each test case involved specific actions and observations to determine if the actual outcome matched the expected behavior.
+
+<details>
+<br>
+
+**NAVBAR**
