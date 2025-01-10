@@ -2,45 +2,66 @@
 
 /*
  * Function to send an email using EmailJS.
- * 
- * @param {HTMLFormElement} form The form element containing the user's email and username.
+ *
+ * @param {HTMLFormElement} form The form element 
+ * containing the user's email and username.
  */
-function sendEmail(form) { 
-    const email = form.elements.email.value;  // Get the email address from the form 
-    const username = form.elements.username.value;  // Get the username from the form 
+export function sendEmail(form) {
+    const email = form.elements.email.value;
+    const username = form.elements.username.value;
 
-    const templateParams = {  // Create an object with the email and username for the email template
+    const templateParams = {
         to_email: email,
-        username: username
+        username: username,
     };
 
-    // Check if EmailJS is loaded and initialized correctly
-    if (typeof emailjs !== 'undefined' && typeof emailjs.send === 'function') {
-        emailjs.send('service_ab2vrqc', 'template_oo7qvf5', templateParams)  // Send the email using EmailJS
-            .then(result => {  // Use arrow function for the promise
-                console.log('Email sent successfully:', result.text);  // Log success message to the console
+    if (
+        typeof emailjs !== "undefined" &&
+        typeof emailjs.send === "function"
+    ) {
+        emailjs.send(
+            "service_ab2vrqc",
+            "template_oo7qvf5",
+            templateParams
+        )
+            .then((result) => {
+                console.log(
+                    "Email sent successfully:",
+                    result.text
+                );
 
-                const registrationMessage = document.getElementById('registration-message');  // Get the registration message element
+                const registrationMessage = document.getElementById(
+                    "registration-message"
+                );
                 if (registrationMessage) {
-                    registrationMessage.textContent = 'You have successfully registered!';  // Update the registration message
+                    registrationMessage.textContent =
+                        "You have successfully registered!";
                 }
             })
-            .catch(error => {  // Use arrow function for the promise
-                console.error('Error sending email:', error);  // Log error message to the console
+            .catch((error) => {
+                console.error("Error sending email:", error);
             });
     } else {
-        console.error('EmailJS is not loaded or initialized properly.');  // Log error if EmailJS is not loaded
+        console.error(
+            "EmailJS is not loaded or initialized properly."
+        );
     }
 }
 
 /*
- * Function to check for a registration success message and send an email if found.
+ * Function to check for a registration success 
+ * message and send an email if found.
  */
-function checkRegistrationMessage() {
-    const registrationMessage = document.getElementById('registration-message');  // Get the registration message element
-    // Check if the message element exists and its content indicates successful registration
-    if (registrationMessage && registrationMessage.textContent === 'registration_successful') {
-        sendEmail(document.querySelector('.signup-form'));  // Send the email using the signup form data
+export function checkRegistrationMessage() {
+    const registrationMessage = document.getElementById(
+        "registration-message"
+    );
+    if (
+        registrationMessage &&
+        registrationMessage.textContent ===
+            "registration_successful"
+    ) {
+        sendEmail(document.querySelector(".signup-form"));
     }
 }
 
