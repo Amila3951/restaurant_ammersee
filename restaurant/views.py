@@ -241,7 +241,7 @@ def add_reservation(request):
         if form.is_valid():
             reservation = form.save(commit=False)
             # Directly save the reservation without checking for user
-            reservation.save()  
+            reservation.save()
             return redirect("restaurant:admin_reservations")
     else:
         form = ReservationForm()

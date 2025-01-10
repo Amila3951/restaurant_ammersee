@@ -35,6 +35,7 @@ This project served as a valuable learning experience in various web development
 * [Future Features and Improvements](#future-features-and-improvements)
 * [Technologies Used](#technologies-used)
 * [Testing](#testing)
+* [Deployment](#deployment)
 
 
 ## Responsive Design
@@ -92,6 +93,50 @@ To provide a seamless online experience for Restaurant am Ammersee, offering eas
 
 
 # Features
+
+## Structure / Design
+
+This website prioritizes user experience through a clean and intuitive design, ensuring easy navigation and a consistent look and feel across all pages.  It features a responsive layout that adapts seamlessly to various screen sizes, from smartphones (320px) to large desktop displays (2560px).
+
+A persistent navigation menu, visible on every page, includes the restaurant logo and a user-friendly hamburger menu on mobile devices. This menu provides effortless access to essential sections, including Home, Menu, Registration, Login, and Logout functionalities.
+
+Each page is complemented by a uniform footer, housing links to the restaurant's social media presence. These links open in new tabs to maintain an uninterrupted browsing experience for the user. The footer also presents essential information such as the restaurant's address, contact details, a map for easy location, phone number, and email address. These elements are also linked and open in new tabs for user convenience. This consistent footer design reinforces the website's visual identity and streamlines navigation.
+
+The home page effectively introduces the restaurant, featuring prominent hero sections that display the restaurant's name and compelling call-to-action buttons directing users to explore the menu or make a reservation. Additionally, the home page offers insights into the restaurant's background and atmosphere.
+
+A dedicated menu page provides a comprehensive overview of the culinary offerings, categorized into appetizers, main courses, beverages, and desserts. Convenient links for table reservations are also readily available on this page.
+
+User registration and login are facilitated through easily accessible pages linked from the main navigation menu. These pages are designed with clarity and user-friendliness in mind, adhering to web standards for a smooth and intuitive account creation and login process.
+
+For administrative purposes, a dedicated interface offers specialized views for managing reservations. This includes functionalities for adding new reservations, editing existing ones, and deleting reservations with confirmation steps to prevent unintended actions.
+
+Overall, the website's structure and design are carefully crafted to prioritize user-friendliness, clarity, and a consistent experience across all pages and functions, catering to both general users and administrators.
+
+## Diagrams
+
+This project began with simple diagrams outlining the core website functionalities. These visuals provided a framework for development and a user-centric design. As the project evolved, adjustments were made to ensure the site met required standards and delivered a seamless user experience, including responsiveness, accessibility, security, and performance. This iterative process of refinement resulted in a polished and effective platform that is both user-friendly and efficient.
+
+<details>
+<summary>Diagrams</summary>
+
+* **Home Page**
+
+![Home Page Diagram](documentation/homepage-diagram.png)
+
+* **Register**
+
+![Register Diagrams](documentation/registerdiagrams.png)
+
+* **User (Logged in)**
+
+![User Diagram](documentation/usersdiagrams.png)
+
+* **Admin**
+
+![Admin Diagram](documentation/admin-diagrams.png)
+
+</details>
+
 
 ## Existing Features
 
@@ -282,7 +327,6 @@ The Reservations section within the Admin Panel is a core feature, offering a co
 
 * **View All Reservations:** Displays a table listing all existing reservations with details such as guest name, contact information, reservation date and time, and number of guests.
 * **Add Reservation:** Allows the admin to manually add new reservations to the system. This is useful for handling phone reservations.
-    * **If the admin enters an email address of a user who is not registered, an error message is displayed.** 
 * **Edit Reservation:** Enables the admin to modify the details of existing reservations, such as changing the date, time, or number of guests.
 * **Delete Reservation:** Allows the admin to cancel existing reservations. A confirmation dialog is presented before deletion to prevent accidental cancellations.
 
@@ -380,15 +424,102 @@ This project uses the following technologies:
 * **Git:** Version control.
 * **GitHub:** Code repository.
 * **Gitpod:** Development environment.
-* **Babel:** JavaScript compiler.
-* **Jest:** JavaScript testing.
 * **W3C Validator:**  A validator which checks the markup validity of Web documents in HTML, XHTML, SMIL, MathML, etc.
 * **W3C CSS Validation Service:** A validator which checks the validity of CSS code.
 * **Code Institute's Python Linter:** Highlights syntactical and stylistic problems in Python source code.
 * **Chrome DevTools:** Web Developer Tools.
 * **Google Fonts:** Fonts
+* **JSHint** A JavaScript code analysis tool used to detect errors and potential problems
 
 
 # Testing
 
-For detailed information on testing procedures, please refer to the [TESTING.md](TESTING.md) file. 
+For detailed information on testing procedures, please refer to the [TESTING.md](TESTING.md) file.
+
+
+# Deployment
+
+This project is deployed to Heroku.
+
+**Prerequisites:**
+
+* **Heroku Account:** A free Heroku account is required to deploy and manage your application. Sign up at [heroku.com](https://www.heroku.com).
+* **PostgreSQL Database:** A PostgreSQL database is necessary for data persistence. You can provision a database through Heroku Postgres or utilize an external provider.
+* **Git:** Git is used for version control and to push your code to Heroku. Ensure Git is installed on your local machine.
+
+**Deployment Steps:**
+
+1. **Create a Heroku Application:**
+   * Log in to your Heroku account and navigate to the dashboard.
+   * Click the "New" button and select "Create new app."
+   * Provide a unique name for your application and choose the appropriate region.
+   * Click "Create app" to initialize your Heroku application.
+
+2. **Create the PostgreSQL Database**
+   * Login to https://dbs.ci-dbs.net/.
+   * step 1: enter your email address and submit.  
+   * step 2: creates a database.  
+   * step 3: receive the database link on your email id. 
+
+3. **Configure Environment Variables:**
+   * **Environment File:** Create a file named `env.py` in your project's root directory.
+   * **Database URL:** In `env.py`, define the `DATABASE_URL` variable with the connection URL obtained in the previous step.
+   * **Secret Key:** Generate a secure secret key and assign it to the `SECRET_KEY` variable in `env.py`.
+   * **Gitignore:** Add `env.py` to your `.gitignore` file to prevent sensitive information from being committed to version control.
+   * **Settings Configuration:** Modify your project's `settings.py` file to:
+      * Import `dj_database_url` and load environment variables from `env.py`.
+      * Configure the database connection using `dj_database_url.parse()`.
+      * Add your Heroku app's URL to the `ALLOWED_HOSTS` setting.
+
+4. **Create a Procfile:**
+   * In your project's root directory, create a file named `Procfile` (without any file extension).
+   * This file specifies the commands executed by Heroku to run your application.
+   * Add the following line to your `Procfile`, replacing `your_project_name` with your project's actual name:
+      ```
+      web: gunicorn your_project_name.wsgi
+      ```
+
+5. **Prepare for Deployment:**
+   * **Dependency Management:** Install `gunicorn` (WSGI server) and `psycopg2-binary` (PostgreSQL adapter) using `pip install gunicorn psycopg2-binary`.
+   * **Requirements File:** Update your `requirements.txt` file to include the newly installed packages.
+   * **Commit and Push:** Commit all your changes and push them to your Git repository.
+
+6. **Deploy to Heroku:**
+   * In your Heroku app's dashboard, navigate to the "Deploy" tab.
+   * Select "GitHub" as the deployment method and connect your GitHub repository.
+   * Choose the branch you want to deploy and click "Deploy Branch."
+   * Heroku will build your application and deploy it to its servers. Once the process is complete, you will see a success message.
+
+7. **Final Deployment:**
+   * **Disable Debug Mode:** In your project's `settings.py` file, set `DEBUG = False` to disable debug mode for production.
+   * **Enable Static Files Collection:** In your Heroku app's settings, remove the `DISABLE_COLLECTSTATIC` config var to allow Heroku to collect static files.
+   * **Redeploy:** Redeploy your application to apply these changes.
+
+**Note:** These instructions provide a comprehensive guide to deploying your Django application to Heroku. However, depending on your specific project configuration and requirements, you may need to make further adjustments. Refer to the official Heroku documentation for more detailed information and troubleshooting tips.
+
+## Credits and Acknowledgements
+
+This project wouldn't have been possible without the support and inspiration from various resources. I extend my sincere thanks to the following:
+
+**Educational Foundations:**
+
+* **Code Institute:** The Diploma in Software Development program, along with its comprehensive curriculum and hands-on projects like the "I Think Therefore I Am Blog," laid the groundwork for my understanding of web development principles. 
+I would also like to express my sincere gratitude for the outstanding support provided by Code Institute's tutors. Their prompt, efficient, and insightful guidance was invaluable throughout the development process. Their expertise and willingness to help were essential to overcoming challenges and achieving the project's goals.
+* **Code Institute's LMS:** The Learning Management System proved to be an invaluable resource, offering ongoing support and guidance throughout the project's lifecycle.
+* **Official Documentation:**  I relied heavily on the official documentation for Django, Bootstrap, and Django Allauth to gain a deep understanding of their functionalities and best practices.
+
+**Development Tools & Technologies:**
+
+* **Version Control & Collaboration:** Git and GitHub were essential for managing code revisions and facilitating a collaborative development workflow.
+* **Code Quality & Validation:** Tools like JSHint,  W3C Validator played a crucial role in ensuring code quality, cross-browser compatibility, and adherence to web standards.
+* **Debugging & Optimization:** Chrome DevTools proved invaluable for debugging front-end code and optimizing website performance.
+* **Design Resources:** Google Fonts provided a diverse selection of typefaces to enhance the visual appeal of the website.
+
+**General Assistance:**
+
+* **Google Search:**  A constant companion throughout the project, providing answers, solutions, and inspiration whenever needed.
+
+![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+
+[Back To Top](#table-of-contents)
+____

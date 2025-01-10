@@ -244,9 +244,13 @@ This test suite focuses on the `my_reservations` view, which displays a user's e
 
 ![Log out](documentation/logout-testing.png)
 
-**Administration panel**
+**ADMINISTRATION PANEL**
 
 ![Admin Panel](documentation/admin_panel-testing.png)
+
+**EMAILJS**
+
+![EmailJS](documentation/emailjs-testing.png)
 
 </details>
 
