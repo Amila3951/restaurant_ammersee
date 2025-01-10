@@ -11,6 +11,7 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
+from django.http import Http404
 
 
 def home(request):
@@ -232,34 +233,19 @@ def admin_reservations(request):
 def add_reservation(request):
     """
     View for adding a reservation (admin view).
+    Allows adding reservations with any email address,
+    without checking for user registration.
     """
     if request.method == "POST":
-        form = ReservationForm(
-            request.POST
-        )
-        if form.is_valid():  # Check if the form is valid
-            email = form.cleaned_data["email"]  # Get the email from the form data  # noqa
-            if User.objects.filter(
-                email=email
-            ).exists():  # Check if a user with this email exists
-                user = User.objects.get(email=email)  # Get the user object
-                reservation = form.save(
-                    commit=False
-                )  # Create the reservation object but don't save yet
-                reservation.user = user  # Assign the user to the reservation
-                reservation.save()  # Save the reservation
-                return redirect(
-                    "restaurant:admin_reservations"
-                )  # Redirect to the admin reservations page
-            else:
-                form.add_error(
-                    "email", "User with this email address does not exist."
-                )  # Add an error to the form if the user doesn't exist
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            reservation = form.save(commit=False)
+            # Directly save the reservation without checking for user
+            reservation.save()  
+            return redirect("restaurant:admin_reservations")
     else:
-        form = ReservationForm()  # Create an empty ReservationForm
-    return render(
-        request, "reservations/add_reservation.html", {"form": form}
-    )  # Render the add reservation page with the form
+        form = ReservationForm()
+    return render(request, "reservations/add_reservation.html", {"form": form})
 
 
 @login_required  # Requires user to be logged in

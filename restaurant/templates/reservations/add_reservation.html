@@ -5,11 +5,28 @@
 <link rel="stylesheet" href="{% static 'css/reservations.css' %}">
 
 <div id="reservation-form">
-  <h2>Add Reservation</h2>  
+  <h2>Add Reservation</h2>   
   <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Add Reservation</button>
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Add Reservation</button>
   </form>
 </div>
+
+<script>
+  // Get the current date
+  var today = new Date();
+
+  // Set the minimum date to tomorrow
+  var tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  // Format the date in YYYY-MM-DD format
+  var minDate = tomorrow.toISOString().split('T')[0];
+
+  // Set the min attribute of the date field
+  document.getElementById("id_date").min = minDate;
+</script>
+
 {% endblock %}

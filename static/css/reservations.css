@@ -48,7 +48,7 @@
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 20px;
-  width: 60%;
+  width: 40%;
   margin: 50px auto;
   font-family: Arial, sans-serif;
   text-align: center;
@@ -171,7 +171,6 @@
   font-size: 25px;
   margin-bottom: 1rem;
   margin-top: 2rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .reservation-confirmation p {  /* Style for confirmation paragraphs */
