@@ -38,7 +38,7 @@ class Reservation(models.Model):
     )  # Name of the person making the reservation
     email = models.EmailField(
         validators=[EmailValidator()], blank=True, null=True
-    )  # Email address (optional)
+    )  # Email address
     phone = models.CharField(
         max_length=20,
         validators=[
@@ -52,7 +52,7 @@ class Reservation(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         null=True,
-        blank=True,  # Link to the User model (optional)
+        blank=True,  # Link to the User model
     )
 
     def __str__(self):

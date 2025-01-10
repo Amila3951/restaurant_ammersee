@@ -188,7 +188,7 @@ The home page serves as the landing page for the Restaurant Ammersee website. It
 *   **Functionality:**
     *   **Menu Navigation:** The "Our Menu" button directs visitors to the menu page, where they can explore the restaurant's culinary offerings in detail.
     *   **Conditional Booking:** The "Book a table" button dynamically adjusts its behavior based on the user's authentication status.
-        *   **Authenticated Users:** If the user is logged in, the button directs them to the reservation form to seamlessly book a table.
+        *   **Authenticated Users:** If the user is logged in, the button directs them to the reservation form to book a table.
         *   **Guests:** If the user is not logged in, the button redirects them to the login page, prompting them to authenticate before proceeding with a reservation.
 
 The home page is designed to give visitors a quick and engaging overview of Restaurant Ammersee. It's the perfect starting point for exploring the website and discovering all that the restaurant has to offer.
@@ -198,7 +198,7 @@ The home page is designed to give visitors a quick and engaging overview of Rest
 
 ### Menu Page
 
-The menu page displays the restaurant's culinary offerings in a structured and visually appealing manner. It is organized into categories (Appetizers, Main Courses, Desserts, Drinks) for easy browsing. Each menu item includes the dish name, a brief description, and the price. The page also features a prominent "Book a table" button, providing a convenient way for users to make a reservation after browsing the menu.
+The menu page displays the restaurant's culinary offerings in a structured and visually appealing manner. It is organized into categories (Appetizers, Main Courses, Desserts, Drinks) for easy browsing. Each menu item includes the dish name, a brief description, and the price. The page also features a prominent "Book a Table" button, providing a convenient way for users to make a reservation after browsing the menu.
 
 [Back to top](#restaurant-am-ammersee) <br>
 
@@ -248,8 +248,6 @@ The login page provides a secure gateway for registered users to access their ac
 
 ### Logout Page
 
-**Logout Functionality**
-
 The Restaurant Ammersee website provides a secure logout process for authenticated users. This functionality is accessible through a dedicated "Logout" option in the navigation bar, visible only to users who are currently logged in.
 
 *   **Log Out:** Clicking the "Log Out" button within the confirmation dialog initiates the logout process. This action clears the user's session data, effectively logging them out of their account. Upon successful logout, users are redirected back to the home page.
@@ -276,7 +274,6 @@ The Restaurant Ammersee website provides a secure logout process for authenticat
     * **Error Handling:** If any errors are detected during validation, informative error messages are displayed to guide the user in correcting their input.
     * **Reservation Processing:** Upon successful submission, the reservation request is processed by the system, checking for availability and confirming the reservation.
     * **Confirmation Email:** A confirmation email is sent to the user's registered email address, containing the details of their reservation and any relevant information they may need.
-    * **User Feedback:** The user is provided with immediate feedback on the status of their reservation request, whether it's confirmed, pending, or unavailable.
 * **User Experience:** The "Reserve a Table" page prioritizes a seamless and user-friendly reservation process. The form is designed to be intuitive and easy to complete, with clear instructions and helpful error messages. The integration of date and time pickers further enhances the user experience by providing convenient selection tools. The confirmation email provides reassurance and all necessary details for the reservation.
 
 
@@ -429,7 +426,7 @@ This project uses the following technologies:
 * **Code Institute's Python Linter:** Highlights syntactical and stylistic problems in Python source code.
 * **Chrome DevTools:** Web Developer Tools.
 * **Google Fonts:** Fonts
-* **JSHint** A JavaScript code analysis tool used to detect errors and potential problems
+* **JSHint:** A JavaScript code analysis tool used to detect errors and potential problems
 
 
 # Testing
