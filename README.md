@@ -26,6 +26,15 @@ This project served as a valuable learning experience in various web development
     * [Logout Page](#logout-page)
     * [Reserve a Table Page](#reserve-a-table-page)
     * [My Reservations Page](#my-reservations-page)
+* [Admin Panel](#admin-panel)
+    * [Overview](#overview)
+    * [Accessing the Admin Panel](#accessing-the-admin-panel)
+    * [Reservation Management](#reservation-management)
+    * [User Interface](#user-interface)
+    * [Security](#security)
+* [Future Features and Improvements](#future-features-and-improvements)
+* [Technologies Used](#technologies-used)
+* [Testing](#testing)
 
 
 ## Responsive Design
@@ -33,6 +42,8 @@ This project served as a valuable learning experience in various web development
 Ensures a seamless user experience across various devices (desktops, tablets, and mobile phones).
 
 ![Am I responsive image](documentation/amiresponsive.png)
+
+[Back to top](#restaurant-am-ammersee) <br>
 
 
 ## Agile Methodology
@@ -42,7 +53,7 @@ This project was developed following Agile principles, which emphasize iterative
 Agile development allowed me to adapt to new insights and challenges throughout the project lifecycle. By breaking down the project into smaller, manageable tasks and prioritizing essential features, I ensured a consistent focus on delivering a functional and valuable product.
 
 <details>
-<summary> Kanban Board </summary>
+<summary>Kanban Board</summary>
 
 ![Kanban board](documentation/kanbanboard.png)
 </details>
@@ -50,28 +61,34 @@ Agile development allowed me to adapt to new insights and challenges throughout 
 
 To visually manage the project's workflow and track progress, I utilized a Kanban board. This provided a clear overview of tasks and their progress without imposing strict time constraints, allowing for flexibility and adaptability throughout the development process. While I opted for a flexible approach without fixed timeboxes for each iteration, the Kanban board helped me visualize the workflow and prioritize tasks effectively, ultimately contributing to better time management and a more focused development process.
 
+[Back to top](#restaurant-am-ammersee) <br>
+
 
 ## Site Goals
 
 To provide a seamless online experience for Restaurant am Ammersee, offering easy access to the menu, location information, and a user-friendly reservation system across all devices.
+
+[Back to top](#restaurant-am-ammersee) <br>
 
 
 ## User Stories
 
 ### As an Admin
 
-* **Accept online reservations only from the next day onward:** As an admin/business owner, I want to accept online reservations only from the next day onward so that I can manage reservations efficiently.
-* **Manage reservations (edit and cancel):** As an admin, I want to manage reservations, including editing and canceling them, so I can handle changes and cancellations.
-* **View all reservations:** As an admin, I want to view all reservations so I can have an overview of bookings.
+*   **Accept online reservations only from the next day onward:** As an admin/business owner, I want to accept online reservations only from the next day onward so that I can manage reservations efficiently.
+*   **Manage reservations (edit and cancel):** As an admin, I want to manage reservations, including editing and canceling them, so I can handle changes and cancellations.
+*   **View all reservations:** As an admin, I want to view all reservations so I can have an overview of bookings.
 
 ### As a User/Guest
 
-* **Responsive website:** As a user, I want the website to be responsive and work well on all my devices (desktop, tablet, mobile) so I can access it from anywhere.
-* **User registration/login:** As a user, I want to be able to register with my name, email address, and a secure password, and then log in to access my account.
-* **Receive a confirmation email after making a reservation:** As a guest, I want to receive a confirmation email after making a reservation.
-* **Make a reservation for a specific date and time:** As a guest, I want to be able to make a reservation for a specific date and time.
-* **Easily find the restaurant's location and contact information:** As a guest, I want to easily find the restaurant's location and contact information.
-* **View the restaurant's menu:** As a guest, I want to view the restaurant's menu to see what they offer.
+*   **Responsive website:** As a user, I want the website to be responsive and work well on all my devices (desktop, tablet, mobile) so I can access it from anywhere.
+*   **User registration/login:** As a user, I want to be able to register with my name, email address, and a secure password, and then log in to access my account.
+*   **Receive a confirmation email after making a reservation:** As a guest, I want to receive a confirmation email after making a reservation.
+*   **Make a reservation for a specific date and time:** As a guest, I want to be able to make a reservation for a specific date and time.
+*   **Easily find the restaurant's location and contact information:** As a guest, I want to easily find the restaurant's location and contact information.
+*   **View the restaurant's menu:** As a guest, I want to view the restaurant's menu to see what they offer.
+
+[Back to top](#restaurant-am-ammersee) <br>
 
 
 # Features
@@ -82,108 +99,121 @@ To provide a seamless online experience for Restaurant am Ammersee, offering eas
 
 Featured on all pages, the fully responsive header of Restaurant am Ammersee ensures seamless navigation across all devices:
 
-* **Logo:** Positioned on the left, the logo acts as a clickable link, smoothly redirecting users to the homepage.
-* **Navigation Bar (Large Screens):** On larger screens, a user-friendly navigation bar provides clear links to key sections: Home, Menu, Register, Log in.
-* **Hamburger Menu (Small Screens):** For smaller screens, a compact hamburger menu declutters the interface. Upon activation, it expands to reveal a complete navigation list, mirroring the options available on larger screens.
-* **Dynamic Login/User Links:** The navigation bar intelligently adapts to the user's status:
-    * **Guests:** Presented with "Register" and "Login" options.
-    * **Logged-in Users:** Links change to "Reserve a table", "My Reservations", and "Logout" for quick access to account management.
-* **Admin Access:** A dedicated admin profile with the credentials "username: admin" and "password: admin123" allows the restaurant owner to access a specialized navigation bar upon login. This admin navigation includes: Home, Menu, Reservations, Logout.
+*   **Logo:** Positioned on the left, the logo acts as a clickable link, smoothly redirecting users to the homepage.
+*   **Navigation Bar (Large Screens):** On larger screens, a user-friendly navigation bar provides clear links to key sections: Home, Menu, Register, Log in.
+*   **Hamburger Menu (Small Screens):** For smaller screens, a compact hamburger menu declutters the interface. Upon activation, it expands to reveal a complete navigation list, mirroring the options available on larger screens.
+*   **Dynamic Login/User Links:** The navigation bar intelligently adapts to the user's status:
+    *   **Guests:** Presented with "Register" and "Login" options.
+    *   **Logged-in Users:** Links change to "Reserve a table", "My Reservations", and "Logout" for quick access to account management.
+*   **Admin Access:** A dedicated admin profile with the credentials "username: admin" and "password: admin123" allows the restaurant owner to access a specialized navigation bar upon login. This admin navigation includes: Home, Menu, Reservations, Logout.
 
 This dynamic header ensures intuitive navigation and a personalized experience for both guests and the restaurant administrator.
+
+[Back to top](#restaurant-am-ammersee) <br>
 
 
 ### Footer
 
 The responsive footer of Restaurant am Ammersee provides valuable information and encourages user engagement across all devices. It features a clear three-column layout:
 
-* **Left Column (Social Media):** Connects users to the restaurant's social media presence with icons linking to platforms like Facebook, Instagram, and YouTube. These links open in new tabs.
-* **Center Column (Location Details):** Displays the restaurant's complete address, ensuring visitors can easily find the establishment.
-* **Right Column (Contact and Map):** Provides essential contact information and location visualization:
-    * **Contact Details:**
-        * Telephone: Clickable phone number that initiates a call on mobile devices or displays the number for dialing on desktops.
-        * Email: Clickable email address that opens the user's default email client, pre-populated with the restaurant's address.
-    * **Interactive Map:** An embedded map allows users to visually locate the restaurant, explore the surrounding area, and obtain directions.
-* **Copyright Notice:** A concise copyright statement is positioned at the bottom of the footer.
-* **Visual Cues:** All links throughout the footer are styled with a pointer cursor to provide clear visual feedback to users.
+*   **Left Column (Social Media):** Connects users to the restaurant's social media presence with icons linking to platforms like Facebook, Instagram, and YouTube. These links open in new tabs.
+*   **Center Column (Location Details):** Displays the restaurant's complete address, ensuring visitors can easily find the establishment.
+*   **Right Column (Contact and Map):** Provides essential contact information and location visualization:
+    *   **Contact Details:**
+        *   Telephone: Clickable phone number that initiates a call on mobile devices or displays the number for dialing on desktops.
+        *   Email: Clickable email address that opens the user's default email client, pre-populated with the restaurant's address.
+    *   **Interactive Map:** An embedded map allows users to visually locate the restaurant, explore the surrounding area, and obtain directions.
+*   **Copyright Notice:** A concise copyright statement is positioned at the bottom of the footer.
+*   **Visual Cues:** All links throughout the footer are styled with a pointer cursor to provide clear visual feedback to users.
 
 This structured footer ensures users can easily connect with Restaurant am Ammersee, find its location, and access relevant contact information through their preferred channels, enhancing communication and fostering a positive user experience.
+
+[Back to top](#restaurant-am-ammersee) <br>
 
 
 ### Home Page
 
 The home page serves as the landing page for the Restaurant Ammersee website. It provides a visually appealing introduction to the restaurant and its offerings.
 
-* **Features:**
-    * **Hero Section:** A large hero image with welcoming text and call-to-action buttons.
-    * **Welcome Message:** A concise welcome message greets visitors and sets a friendly tone.
-    * **Call-to-Action Buttons:** Two primary call-to-action buttons, "Our Menu" and "Book a table," facilitate easy navigation to key sections of the website. These buttons are enhanced with a hover effect to provide visual feedback to the user.
-    * **Our Story:** This section provides a narrative overview of the restaurant's history, values, and commitment to culinary excellence. It aims to establish a connection with visitors by conveying the restaurant's unique identity and passion for hospitality.
-* **Functionality:**
-    * **Menu Navigation:** The "Our Menu" button directs visitors to the menu page, where they can explore the restaurant's culinary offerings in detail.
-    * **Conditional Booking:** The "Book a table" button dynamically adjusts its behavior based on the user's authentication status.
-        * **Authenticated Users:** If the user is logged in, the button directs them to the reservation form to seamlessly book a table.
-        * **Guests:** If the user is not logged in, the button redirects them to the login page, prompting them to authenticate before proceeding with a reservation.
+*   **Features:**
+    *   **Hero Section:** A large hero image with welcoming text and call-to-action buttons.
+    *   **Welcome Message:** A concise welcome message greets visitors and sets a friendly tone.
+    *   **Call-to-Action Buttons:** Two primary call-to-action buttons, "Our Menu" and "Book a table," facilitate easy navigation to key sections of the website. These buttons are enhanced with a hover effect to provide visual feedback to the user.
+    *   **Our Story:** This section provides a narrative overview of the restaurant's history, values, and commitment to culinary excellence. It aims to establish a connection with visitors by conveying the restaurant's unique identity and passion for hospitality.
+*   **Functionality:**
+    *   **Menu Navigation:** The "Our Menu" button directs visitors to the menu page, where they can explore the restaurant's culinary offerings in detail.
+    *   **Conditional Booking:** The "Book a table" button dynamically adjusts its behavior based on the user's authentication status.
+        *   **Authenticated Users:** If the user is logged in, the button directs them to the reservation form to seamlessly book a table.
+        *   **Guests:** If the user is not logged in, the button redirects them to the login page, prompting them to authenticate before proceeding with a reservation.
 
 The home page is designed to give visitors a quick and engaging overview of Restaurant Ammersee. It's the perfect starting point for exploring the website and discovering all that the restaurant has to offer.
+
+[Back to top](#restaurant-am-ammersee) <br>
 
 
 ### Menu Page
 
 The menu page displays the restaurant's culinary offerings in a structured and visually appealing manner. It is organized into categories (Appetizers, Main Courses, Desserts, Drinks) for easy browsing. Each menu item includes the dish name, a brief description, and the price. The page also features a prominent "Book a table" button, providing a convenient way for users to make a reservation after browsing the menu.
 
+[Back to top](#restaurant-am-ammersee) <br>
+
 
 ### Register Page
 
 The register page is a crucial component of the Restaurant Ammersee website, as it enables new users to create accounts and gain access to personalized features such as online reservations and managing their booking history.
 
-* **Purpose:** The primary purpose of the register page is to facilitate the registration of new users by providing a user-friendly interface for creating an account. This process involves collecting essential information from the user, validating the input, and securely storing the data for future authentication.
-* **Features:**
-    * **Registration Form:** The page features a concise registration form that prompts users to provide their email address and a password. The form employs Django's built-in form handling mechanisms, ensuring efficient data processing and validation.
-    * **Email Field:** The email field is designed to capture the user's email address.
-    * **Password Field:** The password field allows users to set a secure password for their account. The field enforces password complexity rules to enhance security.
-    * **Submit Button:** The "Sign Up" button triggers the form submission, initiating the registration process.
-    * **Login Link:** A link to the login page is provided for users who already have an account, allowing them to access their existing profiles.
-* **Functionality:**
-    * **Form Handling:** The form utilizes Django's `UserCreationForm` to handle user registration, leveraging the framework's built-in capabilities for user management.
-    * **EmailJS Integration:** The page integrates with EmailJS, a third-party email service, to send a welcome email to newly registered users. This integration enhances the user experience by providing immediate confirmation of successful registration.
-    * **Client-Side Validation:** JavaScript code is employed to perform client-side validation of the form input, ensuring that the email address is in a valid format and that the password meets the required complexity criteria.
-    * **Automatic Login:** Upon successful registration, the user is automatically logged in to their new account, providing a seamless transition to the website's features.
-* **User Experience:** The register page prioritizes a user-friendly experience by providing a clear and concise registration form, immediate feedback on form submission, and a seamless transition to the user's new account. The integration of EmailJS adds a professional touch by sending a personalized welcome email, further enhancing user satisfaction.
+*   **Purpose:** The primary purpose of the register page is to facilitate the registration of new users by providing a user-friendly interface for creating an account. This process involves collecting essential information from the user, validating the input, and securely storing the data for future authentication.
+*   **Features:**
+    *   **Registration Form:** The page features a concise registration form that prompts users to provide their email address and a password. The form employs Django's built-in form handling mechanisms, ensuring efficient data processing and validation.
+    *   **Email Field:** The email field is designed to capture the user's email address.
+    *   **Password Field:** The password field allows users to set a secure password for their account. The field enforces password complexity rules to enhance security.
+    *   **Submit Button:** The "Sign Up" button triggers the form submission, initiating the registration process.
+    *   **Login Link:** A link to the login page is provided for users who already have an account, allowing them to access their existing profiles.
+*   **Functionality:**
+    *   **Form Handling:** The form utilizes Django's `UserCreationForm` to handle user registration, leveraging the framework's built-in capabilities for user management.
+    *   **EmailJS Integration:** The page integrates with EmailJS, a third-party email service, to send a welcome email to newly registered users. This integration enhances the user experience by providing immediate confirmation of successful registration.
+    *   **Client-Side Validation:** JavaScript code is employed to perform client-side validation of the form input, ensuring that the email address is in a valid format and that the password meets the required complexity criteria.
+    *   **Automatic Login:** Upon successful registration, the user is automatically logged in to their new account, providing a seamless transition to the website's features.
+*   **User Experience:** The register page prioritizes a user-friendly experience by providing a clear and concise registration form, immediate feedback on form submission, and a seamless transition to the user's new account. The integration of EmailJS adds a professional touch by sending a personalized welcome email, further enhancing user satisfaction.
+
+[Back to top](#restaurant-am-ammersee) <br>
 
 
 ### Login Page
 
 The login page provides a secure gateway for registered users to access their accounts on the Restaurant Ammersee website. It presents a straightforward login form that prompts users to enter their credentials for authentication.
 
-* **Purpose:** The primary purpose of the login page is to authenticate users who have previously registered on the website. This process involves verifying the user's identity by comparing their entered credentials with the stored data in the system. Successful authentication grants users access to personalized features and functionalities.
-* **Features:**
-    * **Login Form:** The page features a concise login form that requires users to provide their username and password. The form utilizes Django's built-in form handling mechanisms for efficient data processing and validation.
-    * **Username Field:** The username field prompts users to enter their unique username, which serves as their identifier in the system.
-    * **Password Field:** The password field requires users to enter their secret password associated with their account. The field is designed to mask the entered characters for security purposes.
-    * **Submit Button:** The "Login" button triggers the form submission, initiating the authentication process.
-    * **Registration Link:** A link to the registration page is provided for users who do not have an account, allowing them to create a new profile.
-    * **Error Message:** An error message is displayed if the user enters invalid credentials, providing immediate feedback and guiding them to correct their input.
-* **Functionality:**
-    * **Form Handling:** The form utilizes Django's authentication framework to handle user login, leveraging the framework's built-in capabilities for user management and security.
-    * **Authentication:** The entered username and password are compared against the stored credentials in the database. If the credentials match, the user is authenticated and granted access to their account.
-    * **Error Handling:** If the entered credentials are invalid, an error message is displayed to inform the user and prevent unauthorized access.
-    * **Session Management:** Upon successful login, a session is created to maintain the user's authenticated state throughout their interaction with the website.
-* **User Experience:** The login page prioritizes a user-friendly experience by providing a clear and concise login form, immediate feedback on authentication attempts, and a convenient link to the registration page for new users. The error message provides clear guidance in case of invalid credentials, ensuring a smooth and efficient login process.
+*   **Purpose:** The primary purpose of the login page is to authenticate users who have previously registered on the website. This process involves verifying the user's identity by comparing their entered credentials with the stored data in the system. Successful authentication grants users access to personalized features and functionalities.
+*   **Features:**
+    *   **Login Form:** The page features a concise login form that requires users to provide their username and password. The form utilizes Django's built-in form handling mechanisms for efficient data processing and validation.
+    *   **Username Field:** The username field prompts users to enter their unique username, which serves as their identifier in the system.
+    *   **Password Field:** The password field requires users to enter their secret password associated with their account. The field is designed to mask the entered characters for security purposes.
+    *   **Submit Button:** The "Login" button triggers the form submission, initiating the authentication process.
+    *   **Registration Link:** A link to the registration page is provided for users who do not have an account, allowing them to create a new profile.
+    *   **Error Message:** An error message is displayed if the user enters invalid credentials, providing immediate feedback and guiding them to correct their input.
+*   **Functionality:**
+    *   **Form Handling:** The form utilizes Django's authentication framework to handle user login, leveraging the framework's built-in capabilities for user management and security.
+    *   **Authentication:** The entered username and password are compared against the stored credentials in the database. If the credentials match, the user is authenticated and granted access to their account.
+    *   **Error Handling:** If the entered credentials are invalid, an error message is displayed to inform the user and prevent unauthorized access.
+    *   **Session Management:** Upon successful login, a session is created to maintain the user's authenticated state throughout their interaction with the website.
+*   **User Experience:** The login page prioritizes a user-friendly experience by providing a clear and concise login form, immediate feedback on authentication attempts, and a convenient link to the registration page for new users. The error message provides clear guidance in case of invalid credentials, ensuring a smooth and efficient login process.
+
+[Back to top](#restaurant-am-ammersee) <br>
 
 
-## Logout Page
+### Logout Page
 
 **Logout Functionality**
 
 The Restaurant Ammersee website provides a secure logout process for authenticated users. This functionality is accessible through a dedicated "Logout" option in the navigation bar, visible only to users who are currently logged in.
 
-* **Log Out:** Clicking the "Log Out" button within the confirmation dialog initiates the logout process. This action clears the user's session data, effectively logging them out of their account. Upon successful logout, users are redirected back to the home page.
+*   **Log Out:** Clicking the "Log Out" button within the confirmation dialog initiates the logout process. This action clears the user's session data, effectively logging them out of their account. Upon successful logout, users are redirected back to the home page.
 
+[Back to top](#restaurant-am-ammersee) <br>
 
-### Reserve a Table Page
+## Reserve a Table Page
 
-The "Reserve a Table" page is where **logged-in visitors** can make online reservations at Restaurant Ammersee. It's designed to be user-friendly and efficient, guiding guests through a simple process to secure their desired dining experience.
+**On this page:**
 
 * **Purpose:** This page serves as the primary interface for guests to submit reservation requests. It collects essential information from the guest, such as contact details, preferred date and time, and the number of people in their party. This information is then used to manage reservations and ensure a smooth dining experience for all guests.
 * **Access:** To ensure personalized service and manage reservations effectively, the "Reserve a Table" page is accessible only to logged-in users. Guests who are not logged in will be redirected to the login page before they can make a reservation.
@@ -205,32 +235,30 @@ The "Reserve a Table" page is where **logged-in visitors** can make online reser
 * **User Experience:** The "Reserve a Table" page prioritizes a seamless and user-friendly reservation process. The form is designed to be intuitive and easy to complete, with clear instructions and helpful error messages. The integration of date and time pickers further enhances the user experience by providing convenient selection tools. The confirmation email provides reassurance and all necessary details for the reservation.
 
 
+## My Reservations Page
 
-### My Reservations Page
-
-The "My Reservations" page provides logged-in users with a centralized overview of their existing reservations at Restaurant Ammersee. It allows users to view, edit, and delete their upcoming reservations, offering a convenient way to manage their dining plans.
+**On this page:**
 
 * **Purpose:** This page serves as a personal reservation management tool for registered users. It enables users to easily access and modify their upcoming reservations, providing flexibility and control over their dining arrangements.
-
 * **Features:**
     * **Reservation List:** A comprehensive list of the user's upcoming reservations is displayed in a clear and organized format.
     * **Reservation Details:** Each reservation entry includes essential details such as the name on the reservation, date, time, and the number of guests.
     * **Action Buttons:** Each reservation entry includes "Edit" and "Delete" buttons, allowing users to modify or cancel their reservations with ease.
     * **Responsive Design:** The reservation list is presented in a responsive table format, ensuring optimal viewing on various devices, including desktops, tablets, and mobile phones.
     * **User-Friendly Interface:** The page is designed with a user-friendly interface, making it easy for users to navigate and manage their reservations.
-
 * **Functionality:**
     * **Reservation Retrieval:** The page dynamically retrieves and displays the logged-in user's upcoming reservations from the database.
     * **Edit Reservation:** The "Edit" button allows users to modify the details of an existing reservation, such as the date, time, or number of guests.
     * **Delete Reservation:** The "Delete" button enables users to cancel a reservation, freeing up the reserved time slot for other guests.
     * **Confirmation:** Before deleting a reservation, a confirmation dialog is presented to prevent accidental cancellations.
-
 * **User Experience:** The "My Reservations" page prioritizes user convenience and control over their dining plans. The clear and organized reservation list, combined with the intuitive action buttons, provides a seamless experience for managing reservations. The responsive design ensures that users can access and manage their reservations from any device. Overall, the page empowers users to easily maintain and adjust their dining arrangements at Restaurant Ammersee.
 
 
 # Admin Panel
 
 ## Overview
+
+**On this page:**
 
 The Admin Panel for "Restaurant am Ammersee" provides administrative users with privileged access to manage reservations and view key data. This panel is designed to streamline operations and provide a centralized hub for managing the restaurant's online reservation system.
 
@@ -244,7 +272,7 @@ The Admin Panel is accessible only to users with administrative privileges. The 
 Upon logging in with these credentials, the admin user is presented with a specialized navigation bar that provides access to the following sections:
 
 * **Home:** Redirects to the restaurant's home page.
-* **Menu:**  Displays the restaurant's menu.
+* **Menu:** Displays the restaurant's menu.
 * **Reservations:** Provides access to the reservation management section.
 * **Logout:** Logs the admin user out of the system.
 
@@ -265,11 +293,12 @@ The Admin Panel is designed with a user-friendly interface that is consistent wi
 * **Clear Navigation:** The specialized navigation bar provides quick and easy access to all admin functionalities.
 * **Organized Tables:** Reservation data is presented in organized tables with clear headings and concise information.
 * **Action Buttons:** Intuitive action buttons ("Edit" and "Delete") are provided for each reservation entry to facilitate quick actions.
-* **Confirmation Dialogs:**  Confirmation dialogs are used for critical actions like deleting reservations to prevent unintended consequences.
+* **Confirmation Dialogs:** Confirmation dialogs are used for critical actions like deleting reservations to prevent unintended consequences.
 
 ## Security
 
 The Admin Panel is secured by requiring users to log in with valid administrative credentials. This ensures that only authorized personnel can access and modify sensitive reservation data.
+
 
 ## Future Features and Improvements
 
@@ -312,13 +341,13 @@ This section outlines potential features and improvements that could be implemen
 
 **7. Admin Panel Improvements**
 
-* **Reservation Filtering and Sorting:**  Enhance the admin panel with the ability to filter and sort reservations by various criteria, including:
+* **Reservation Filtering and Sorting:** Enhance the admin panel with the ability to filter and sort reservations by various criteria, including:
     * Name
     * Date
     * Time
     * Number of guests
-
 * **Email Confirmation for Admin-Created Reservations:** Currently, when an admin creates a reservation on behalf of a user, the user does not receive an email confirmation. In the future, this functionality should be implemented to ensure that all users receive confirmation emails for their reservations, regardless of how the reservation was created.
+
 
 ## Technologies Used
 
@@ -335,15 +364,15 @@ This project uses the following technologies:
 
 * **Django (4.2.16):** Python web framework.
 * **Django Allauth (65.3.0):** User authentication.
-* **Bootstrap:**  For styling and responsiveness.
+* **Bootstrap:** For styling and responsiveness.
 * **EmailJS:** For sending emails.
-* **asgiref (3.8.1):**  For asynchronous operations.
-* **django-debug-toolbar (4.4.6):**  For debugging.
-* **django-extensions (3.2.3):**  Extra Django tools.
-* **gunicorn (20.1.0):**  Production web server.
+* **asgiref (3.8.1):** For asynchronous operations.
+* **django-debug-toolbar (4.4.6):** For debugging.
+* **django-extensions (3.2.3):** Extra Django tools.
+* **gunicorn (20.1.0):** Production web server.
 * **oauthlib, PyJWT, python3-openid, requests-oauthlib:** For authentication.
-* **sqlparse (0.5.1):**  SQL query tool.
-* **whitenoise (6.5.0):**  For serving static files.
+* **sqlparse (0.5.1):** SQL query tool.
+* **whitenoise (6.5.0):** For serving static files.
 * **Font Awesome:** For icons. 
 
 ### Tools
@@ -353,3 +382,13 @@ This project uses the following technologies:
 * **Gitpod:** Development environment.
 * **Babel:** JavaScript compiler.
 * **Jest:** JavaScript testing.
+* **W3C Validator:**  A validator which checks the markup validity of Web documents in HTML, XHTML, SMIL, MathML, etc.
+* **W3C CSS Validation Service:** A validator which checks the validity of CSS code.
+* **Code Institute's Python Linter:** Highlights syntactical and stylistic problems in Python source code.
+* **Chrome DevTools:** Web Developer Tools.
+* **Google Fonts:** Fonts
+
+
+# Testing
+
+For detailed information on testing procedures, please refer to the [TESTING.md](TESTING.md) file. 

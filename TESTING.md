@@ -1,8 +1,19 @@
 # Testing
 
-This document outlines the testing strategy employed to ensure the quality and functionality of the Restaurant Ammersee website.  A combination of manual and automated testing was utilized to provide comprehensive coverage. Manual testing was conducted to thoroughly assess core functionality, user experience, and usability. Automated testing, specifically unit and integration tests, was implemented to increase efficiency and repeatability in verifying individual code units and their interactions.  Furthermore, code validation was performed using various validators to ensure adherence to web standards and best practices.
+This document outlines the testing strategy employed to ensure the quality and functionality of the Restaurant Ammersee website. A combination of manual and automated testing was utilized to provide comprehensive coverage. Manual testing was conducted to thoroughly assess core functionality, user experience, and usability. Automated testing, specifically unit and integration tests, was implemented to increase efficiency and repeatability in verifying individual code units and their interactions. Furthermore, code validation was performed using various validators to ensure adherence to web standards and best practices.
 
 While the current testing strategy provides a solid foundation, future iterations will focus on expanding automated testing coverage to further enhance the robustness and reliability of the application.
+
+
+## Table of Contents
+
+* [Code Validation](#code-validation)
+    * [HTML](#html)
+    * [CSS](#css)
+    * [Python](#python)
+    * [JavaScript](#javascript)
+* [Automated Tests](#automated-tests)
+* [Manual Testing](#manual-testing)
 
 
 ## Code Validation
@@ -25,7 +36,7 @@ While the current testing strategy provides a solid foundation, future iteration
 
 * **Register**
 
-    * Some HTML validation errors are ignored due to the limitations of Django's template engine in generating perfectly valid HTML for forms. These errors do not affect the functionality or user experience of the website.
+   * Some HTML validation errors are ignored due to the limitations of Django's template engine in generating perfectly valid HTML for forms. These errors do not affect the functionality or user experience of the website.
 
 ![HtmlValidator](documentation/register-htmlpagevalidator.png)
 
@@ -35,7 +46,7 @@ While the current testing strategy provides a solid foundation, future iteration
 
 * **Make a Reservation**
 
-
+![HtmlValidator](documentation/make_reservation-htmlpagevalidator.png)
 
 * **My Reservations**
 
@@ -67,7 +78,8 @@ While the current testing strategy provides a solid foundation, future iteration
 
 </details>
 
-<br>
+[Back to top](#testing) <br>
+
 
 ### CSS
 
@@ -87,14 +99,13 @@ CSS code was tested using the **W3C CSS Validation Service** via text input.
 
 </details>
 
-<br>
+[Back to top](#testing) <br>
 
 ### Python
 
 Python code was tested using [Code Institute's Python Linter](https://pep8ci.herokuapp.com/).
 
 <details>
-
 <summary>Screenshots and results for all python files</summary>
 
 * settings.py
@@ -132,16 +143,14 @@ Python code was tested using [Code Institute's Python Linter](https://pep8ci.her
 
 </details>
 
-<br>
+[Back to top](#testing) <br>
 
 ### JavaScript
 
 JavaScript code was tested using [JSHint](https://jshint.com/).
 
 <details>
-
 <summary>Screenshots and results for all JS files</summary>
-
 <br>
 
 * email.js
@@ -159,13 +168,18 @@ This warning occurs because JSHint analyzes JavaScript code independently and do
 
 </details>
 
-<br>
+[Back to top](#testing) <br>
+
 
 ## Automated Tests
 
 Automated tests were implemented using the Django testing framework. These tests focus on verifying the behavior of specific units of code and their integration within the application.
 
-###  `MakeReservationViewTest`
+<details>
+<summary>Test Suites</summary>
+<br>
+
+###  `MakeReservationViewTest`
 
 This test suite focuses on the `make_reservation` view, which handles the creation of new reservations.
 
@@ -180,13 +194,62 @@ This test suite focuses on the `my_reservations` view, which displays a user's e
 * **`test_my_reservations_logged_in`:** This test case checks that the view correctly displays the user's reservations when they are logged in.
 * **`test_my_reservations_not_logged_in`:** This test case verifies that the view redirects to the login page when the user is not logged in.
 
-## Manual testing
+</details>
 
-* **Objective:** To verify the functionality and user experience of the Restaurant Ammersee website and ensure it aligns with the specified requirements.
+[Back to top](#testing) <br>
 
-* **Methodology:**  A series of test cases were executed manually, covering key user interactions and functionalities across different sections of the website. Each test case involved specific actions and observations to determine if the actual outcome matched the expected behavior.
+## Manual Testing
+
+**Objective:** To verify the functionality and user experience of the Restaurant Ammersee website and ensure it aligns with the specified requirements.
+
+**Methodology:** A series of test cases were executed manually, covering key user interactions and functionalities across different sections of the website. Each test case involved specific actions and observations to determine if the actual outcome matched the expected behavior.
 
 <details>
+<summary>Test Cases and Results</summary>
 <br>
 
 **NAVBAR**
+
+![Navbar](documentation/navbar-testing.png)
+
+**BUTTONS (HOME PAGE)**
+
+![Buttons (Home Page)](documentation/buttons_homepage-testing.png)
+
+**SOCIAL MEDIA ICONS (FOOTER)**
+
+![Social Media Icons (Footer)](documentation/social_media_icons-testing.png)
+
+**CONTACT LINKS (FOOTER)**
+
+![Contact Links (Footer)](documentation/contact_links-testing.png)
+
+**BUTTONS (MENU PAGE)**
+
+![Buttons (Menu Page)](documentation/buttons_menupage-testing.png)
+
+**RESERVE A TABLE**
+
+![Reserve a table](documentation/reserve_a_table-testing.png)
+
+**MY RESERVATIONS**
+
+![My Reservations](documentation/my_reservations-testing.png)
+
+**REGISTER / SIGN UP**
+
+![Register / Sign Up](documentation/register-testing.png)
+
+**LOG OUT**
+
+![Log out](documentation/logout-testing.png)
+
+**Administration panel**
+
+![Admin Panel](documentation/admin_panel-testing.png)
+
+</details>
+
+[Back to top](#testing) <br>
+
+[Back to README](README.md)
